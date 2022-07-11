@@ -1,0 +1,295 @@
+<section >
+  <!-- Slider main container-->
+  <div class="swiper-container detail-slider slider-gallery swiper-gal">
+    <!-- Additional required wrapper-->
+    <div class="swiper-wrapper">
+      <!-- Slides-->
+      <div class="col-lg-4 col-md-6 col-sm-12 swiper-slide" *ngFor="let image of productImages"><a data-toggle="gallery-top" title="Our street"><img [src]="image.path + image.image" alt="Our street" class="img-fluid"></a></div>
+    </div>
+    <div class="swiper-pagination swiper-pagination-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+  </div>
+</section>
+<section class="pt80 pb80 listingDetails Campaigns" *ngIf="serviceDetails">
+  <div class="container">
+    <div class="row">
+      <!-- Tab line -->
+      <div class="col-lg-12 col-md-12 col-sm-12 ">
+        <h1 class="text-capitalize">{{serviceDetails.name}} / {{serviceDetails.type}}</h1>
+        <ul class="nav nav-tabs tab-line">
+          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-de-1"> Description
+            </a> </li>
+          <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-de-2"> Availability </a> </li> -->
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane show active" id="tab-de-1">
+            <div class="text-block NopaddingDetails">
+              <h5 class="mb-4"><span class="h4 text-primary">${{serviceDetails.priceperhr}}</span> / hr
+                <button class="btn btn-primary pull-right" (click)="bookNow(serviceDetails)">Book Now</button>
+              </h5>
+              <p [innerHtml]="serviceDetails.description"></p>
+            </div>
+          </div>
+          <!-- <div class="tab-pane booking-search" id="tab-de-2">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding8">
+                    <div class="form-group"> <span class="fas fa-map-marker-alt"></span>
+                      <input class="form-control" type="text" placeholder="City, Point of Interest or U.S. Zip Code">
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
+                    <div class="form-group"> <span class="far fa-calendar-alt"></span>
+                      <input class="form-control" type="text" id="datepicker" autocomplete="off" placeholder="Check-in">
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
+                    <div class="form-group"> <span class="far fa-calendar-alt"></span>
+                      <input class="form-control" type="text" id="datepicker-out" autocomplete="off" placeholder="Check-out">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 padding8">
+                    <div class="form-group">
+                      <select class="custom-select select-big">
+                        <option selected="">Rooms</option>
+                        <option value="location1">01</option>
+                        <option value="location2">02</option>
+                        <option value="location3">03</option>
+                        <option value="location4">04</option>
+                        <option value="location5">05</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 padding8">
+                    <div class="form-group">
+                      <select class="custom-select select-big">
+                        <option selected="">Guests</option>
+                        <option value="location1">01</option>
+                        <option value="location2">02</option>
+                        <option value="location3">03</option>
+                        <option value="location4">04</option>
+                        <option value="location5">05</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 padding8">
+                    <div class="form-group">
+                      <button class="btn btn-primary btn-lg btn-grad" type="submit">Search</button>
+                    </div>
+                  </div>
+                </div>	
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h5 class="mb-4">Available Hotels</h5>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="listing-item ">
+                    <article class="TravelGo-category-listing fl-wrap">
+                      <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-img TravelGo-category-list-img"> <a routerLink="/service-detail"><img src="assets/images/hotels/room8.jpg" alt=""></a>
+                            <div class="TravelGo-category-opt">
+                              <div class="listing-rating card-popup-rainingvis" data-starrating2="5"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                              <div class="rate-class-name">
+                                <div class="score"><strong>Very Good</strong>27 Reviews </div>
+                                <span>5.0</span> </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-content fl-wrap title-sin_item">
+                            <div class="TravelGo-category-content-title fl-wrap">
+                              <div class="TravelGo-category-content-title-item">
+                                <h3 class="title-sin_map"><a routerLink="/service-detail">Asia &amp; African Hotels</a></h3>
+                                <div class="TravelGo-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a> <span>$ 200</span> </div>
+                              </div>
+                            </div>
+                            <p>Sed interdum metus at nisi tempor laoreet Integer.</p>
+                            <ul class="facilities-list fl-wrap">
+                              <li><i class="fas fa-wifi"></i><span>Free WiFi</span></li>
+                              <li><i class="fas fa-parking"></i><span>Parking</span></li>
+                              <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                              <li><i class="fas fa-utensils"></i><span> Restaurant</span></li>
+                            </ul>
+                            <div class="TravelGo-category-footer fl-wrap">
+                              <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span></div>
+                              <div class="TravelGo-opt-list"> <a href="#" class="single-map-item"><i class="fas fa-map-marker-alt"></i><span class="TravelGo-opt-tooltip">On the map</span></a> <a href="#" class="TravelGo-js-favorite"><i class="fas fa-heart"></i><span class="TravelGo-opt-tooltip">Save</span></a> <a href="#" class="TravelGo-js-booking"><i class="fas fa-retweet"></i><span class="TravelGo-opt-tooltip">Find Directions</span></a> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="listing-item ">
+                    <article class="TravelGo-category-listing fl-wrap">
+                      <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-img TravelGo-category-list-img"> <a routerLink="/service-detail"><img src="assets/images/hotels/room7.jpg" alt=""></a>
+                            <div class="TravelGo-category-opt">
+                              <div class="listing-rating card-popup-rainingvis" data-starrating2="5"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                              <div class="rate-class-name">
+                                <div class="score"><strong>Very Good</strong>27 Reviews </div>
+                                <span>5.0</span> </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-content fl-wrap title-sin_item">
+                            <div class="TravelGo-category-content-title fl-wrap">
+                              <div class="TravelGo-category-content-title-item">
+                                <h3 class="title-sin_map"><a routerLink="/service-detail">Asia &amp; African Hotels</a></h3>
+                                <div class="TravelGo-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a> <span>$ 200</span> </div>
+                              </div>
+                            </div>
+                            <p>Sed interdum metus at nisi tempor laoreet Integer.</p>
+                            <ul class="facilities-list fl-wrap">
+                              <li><i class="fas fa-wifi"></i><span>Free WiFi</span></li>
+                              <li><i class="fas fa-parking"></i><span>Parking</span></li>
+                              <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                              <li><i class="fas fa-utensils"></i><span> Restaurant</span></li>
+                            </ul>
+                            <div class="TravelGo-category-footer fl-wrap">
+                              <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span></div>
+                              <div class="TravelGo-opt-list"> <a href="#" class="single-map-item"><i class="fas fa-map-marker-alt"></i><span class="TravelGo-opt-tooltip">On the map</span></a> <a href="#" class="TravelGo-js-favorite"><i class="fas fa-heart"></i><span class="TravelGo-opt-tooltip">Save</span></a> <a href="#" class="TravelGo-js-booking"><i class="fas fa-retweet"></i><span class="TravelGo-opt-tooltip">Find Directions</span></a> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="listing-item ">
+                    <article class="TravelGo-category-listing fl-wrap">
+                      <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-img TravelGo-category-list-img"> <a routerLink="/service-detail"><img src="assets/images/hotels/room6.jpg" alt=""></a>
+                            <div class="TravelGo-category-opt">
+                              <div class="listing-rating card-popup-rainingvis" data-starrating2="5"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                              <div class="rate-class-name">
+                                <div class="score"><strong>Very Good</strong>27 Reviews </div>
+                                <span>5.0</span> </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-content fl-wrap title-sin_item">
+                            <div class="TravelGo-category-content-title fl-wrap">
+                              <div class="TravelGo-category-content-title-item">
+                                <h3 class="title-sin_map"><a routerLink="/service-detail">Asia &amp; African Hotels</a></h3>
+                                <div class="TravelGo-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a> <span>$ 200</span> </div>
+                              </div>
+                            </div>
+                            <p>Sed interdum metus at nisi tempor laoreet Integer.</p>
+                            <ul class="facilities-list fl-wrap">
+                              <li><i class="fas fa-wifi"></i><span>Free WiFi</span></li>
+                              <li><i class="fas fa-parking"></i><span>Parking</span></li>
+                              <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                              <li><i class="fas fa-utensils"></i><span> Restaurant</span></li>
+                            </ul>
+                            <div class="TravelGo-category-footer fl-wrap">
+                              <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span></div>
+                              <div class="TravelGo-opt-list"> <a href="#" class="single-map-item"><i class="fas fa-map-marker-alt"></i><span class="TravelGo-opt-tooltip">On the map</span></a> <a href="#" class="TravelGo-js-favorite"><i class="fas fa-heart"></i><span class="TravelGo-opt-tooltip">Save</span></a> <a href="#" class="TravelGo-js-booking"><i class="fas fa-retweet"></i><span class="TravelGo-opt-tooltip">Find Directions</span></a> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="listing-item ">
+                    <article class="TravelGo-category-listing fl-wrap">
+                      <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-img TravelGo-category-list-img"> <a routerLink="/service-detail"><img src="assets/images/hotels/room4.jpg" alt=""></a>
+                            <div class="TravelGo-category-opt">
+                              <div class="listing-rating card-popup-rainingvis" data-starrating2="5"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                              <div class="rate-class-name">
+                                <div class="score"><strong>Very Good</strong>27 Reviews </div>
+                                <span>5.0</span> </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-12">
+                          <div class="TravelGo-category-content fl-wrap title-sin_item">
+                            <div class="TravelGo-category-content-title fl-wrap">
+                              <div class="TravelGo-category-content-title-item">
+                                <h3 class="title-sin_map"><a routerLink="/service-detail">Asia &amp; African Hotels</a></h3>
+                                <div class="TravelGo-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a> <span>$ 200</span> </div>
+                              </div>
+                            </div>
+                            <p>Sed interdum metus at nisi tempor laoreet Integer.</p>
+                            <ul class="facilities-list fl-wrap">
+                              <li><i class="fas fa-wifi"></i><span>Free WiFi</span></li>
+                              <li><i class="fas fa-parking"></i><span>Parking</span></li>
+                              <li><i class="fas fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                              <li><i class="fas fa-utensils"></i><span> Restaurant</span></li>
+                            </ul>
+                            <div class="TravelGo-category-footer fl-wrap">
+                              <div class="TravelGo-category-price btn-grad"><span>2 days 3 nights</span></div>
+                              <div class="TravelGo-opt-list"> <a href="#" class="single-map-item"><i class="fas fa-map-marker-alt"></i><span class="TravelGo-opt-tooltip">On the map</span></a> <a href="#" class="TravelGo-js-favorite"><i class="fas fa-heart"></i><span class="TravelGo-opt-tooltip">Save</span></a> <a href="#" class="TravelGo-js-booking"><i class="fas fa-retweet"></i><span class="TravelGo-opt-tooltip">Find Directions</span></a> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="Categories pt80 pb60 hotelsamilar">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-8">
+        <p class="subtitle text-secondary nopadding">Similar Services</p>
+        <h1 class="paddtop1 font-weight lspace-sm">You may also like </h1>
+      </div>
+      <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="" class="blist text-sm ml-2"> See
+          all Services<i class="fas fa-angle-double-right ml-2"></i></a></div>
+    </div>
+    <div class="row">
+      <div class="swiper-container guides-slider-popular">
+        <!-- Additional required wrapper-->
+        <div class="swiper-wrapper">
+          <!-- Slides-->
+          <div class="col-lg-4 col-md-6 col-sm-12 swiper-slide" *ngFor="let product of similarProducts">
+            <div class="listroBox">
+              <a routerLink="/service-detail/{{product.route}}">
+                <figure> <img [src]="product.path + product.thumbnail" class="img-fluid" alt="">
+                  <div class="read_more"><span>Read more</span></div>
+                </figure>
+              </a>
+              <a routerLink="/service-detail/{{product.route}}">
+                <div class="listroBoxmain">
+                  <h3>{{product.name}}</h3>
+                  <p [innerHtml]="product.shortdescription"></p>
+                </div>
+              </a>
+              <ul>
+                <li>
+                  <p class="card-text text-muted"><span
+                      class="h4 text-primary"><span>&#8364;</span>{{product.priceperhr}}</span> / hr</p>
+                </li>
+                <li>
+                  <div class="R_retings">
+                    <button class="btn btn-primary" (click)="bookNow(product)">Book Now</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination d-md-none"> </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <app-book-now-popup></app-book-now-popup> -->

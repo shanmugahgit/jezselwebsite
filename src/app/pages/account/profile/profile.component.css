@@ -1,0 +1,13 @@
+.tab-content{
+    padding: 0px !important;
+}
+.login-area .login-box{
+    width: 100%;
+}
+.login-area {
+    padding: 0px;
+}
+.profile-popup-content{
+    max-height: 300px;
+    overflow-y: scroll;
+}

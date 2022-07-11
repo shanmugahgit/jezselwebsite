@@ -1,0 +1,129 @@
+<!-- =======================
+	Banner innerpage -->
+<div class="innerpage-banner left bg-overlay-dark-7 py-7"
+    style="background:url(assets/images/07.jpg) repeat; background-size:cover;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title">Cart</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================= Banner innerpage -->
+
+<section class="pt80 pb80 cruise-grid-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-9 col-sm-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" *ngFor="let data of dataLists;let i = index;">
+                        <div class="listing-item ">
+                            <article class="TravelGo-category-listing fl-wrap">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6 col-sm-12">
+                                        <div class="TravelGo-category-img TravelGo-category-list-img">
+                                            <a routerLink="/service-detail/{{data.route}}"><img
+                                                    [src]="data.path + data.thumbnail" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-6 col-sm-12">
+                                        <div class="TravelGo-category-content fl-wrap title-sin_item">
+                                            <div class="TravelGo-category-content-title fl-wrap">
+                                                <div class="TravelGo-category-content-title-item">
+                                                    <h3 class="title-sin_map"><a
+                                                            routerLink="/service-detail/{{data.route}}">{{data.name}}</a><a
+                                                            class="TravelGo-js-booking pull-right"><i
+                                                                class="fas fa-trash"
+                                                                (click)="delete(i)"></i></a><span>&#8364;{{data.priceperhr}}</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="TravelGo-category-content-title fl-wrap pb-2">
+                                                <div class="TravelGo-category-content-title-item schedule">
+                                                    <h5 class="title-sin_map"><i
+                                                            class="fas fa-map-marker"></i><a>{{data.search.location}}</a>
+                                                        <i class="fas fa-calendar mal-5"></i><a>{{data.search.checkindate}}
+                                                            | {{data.search.checkintime}}</a> <i
+                                                            class="fas fa-calendar mal-5"></i><a>{{data.search.checkoutdate}}
+                                                            | {{data.search.checkouttime}}</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-check" *ngFor="let x of data['Extras']">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" (click)="addExtra($event,x, i)"
+                                                    [checked]="x.checked" [disabled]="x.isDisabled">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    {{x.description}} - <b> <span>&#8364;</span>{{x.price}}</b>
+                                                </label>
+                                            </div>
+                                            <h4 class="cancel-options">Cancel Options</h4>
+                                            <div class="form-check" *ngFor="let x of data.cancelLists">
+                                                <input class="form-check-input" type="radio" value=""
+                                                    id="flexCheckDefault" name="{{i}}" (change)="updateProducts($event, i, x.id)" value="{{x.label}}" [checked]="x.selected">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    {{x.label}} - <b><span>&#8364;</span>{{x.price}}</b>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="dataLists.length==0">
+                        <p>No Products added</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-3 col-sm-12 Filter-left">
+                <form action="#" autocomplete="off">
+                    <div class="pb-left">
+                        <div id="moreFilters" class="collapse show">
+                            <div class="filter-block">
+                                <h6 class="mb-3">Summary</h6>
+                                <hr>
+                                <div class="summary" *ngFor="let product of dataLists;let i =index;">
+                                    <table class="w-100">
+                                        <tr>
+                                            <td>
+                                                <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-80">Price Per Hour</td>
+                                            <td class="w-20"><span>&#8364;</span>{{product.priceperhr}}</td>
+                                        </tr>
+                                        <tr *ngFor="let x of product['Extras']">
+                                            <td *ngIf="x.checked">{{x.description}}</td>
+                                            <td *ngIf="x.checked"><span>&#8364;</span>{{x.price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4>Advance Payment</h4>
+                                            </td>
+                                            <td>
+                                                <h4><span>&#8364;</span><span [innerHtml]="getAdvancePayment(product.advancePayment)">{{product.advancePayment}}</span></h4>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <hr>
+                                </div>
+                                <h5>Total: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="mb-left">
+                            <button class="btn btn-primary btn-grad FilterBtn" [disabled]="dataLists.length==0"
+                                (click)="proceed()"> Proceed </button>
+                            <button type="submit" class="btn btn-primary btn-grad FilterBtn" routerLink="/"> Continue
+                                Shopping </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.modal{
+    z-index: 11111;
+    top: 18%;
+}
+
+.drop {
+    background: #ffffff;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 20%);
+    display: block;
+    left: 0;
+    list-style: none;
+    margin-top: 0;
+    position: relative;
+    right: 0;
+    top: 100%;
+    z-index: 2;
+    border: 1px solid #f3f3f3 !important;
+    z-index: 9999;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.drop li {
+    padding: 5px 10px;
+}
+
+.drop li:hover {
+    background-color: #ed1c24 !important;
+    cursor: pointer;
+}
+
+.drop li:hover a {
+    color: #ffffff !important;
+}
+
+.wrap-drop.active .drop {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.wrap-drop .drop li a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.wrap-drop .drop {
+    background: #ffffff;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 20%);
+    display: block;
+    left: 0;
+    list-style: none;
+    margin-top: 0;
+    /* opacity: 0; */
+    padding-left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 2;
+    border: 1px solid #f3f3f3 !important;
+    width: 92%;
+    z-index: 99999;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.drop::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.drop::-webkit-scrollbar-track {
+    background: #3e593c54;
+}
+
+.drop::-webkit-scrollbar-thumb {
+    background: #969f6e;
+}
+
+.drop::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.form-control{
+    border: 1px solid #ededed;
+}
+.limit-3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.drop-slider{
+    height: 450px;
+}

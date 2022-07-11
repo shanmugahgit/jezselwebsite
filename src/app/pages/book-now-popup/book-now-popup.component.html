@@ -1,0 +1,211 @@
+<ng-template #template>
+    <div id="myModalId" class="jezl-b-popup-g">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">{{selectedProduct.name}}</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body mb-2">
+            <section id="content1" class="tab-content">
+                <form [formGroup]="formGroup" (ngSubmit)="search()"> 
+                    <div class="row"  id="jezl-hm-search">
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group" (clickOutside)="onClickedOutside($event)"> 
+                                <label>Location</label>
+                                <span><img src="assets/images/icon/location.png"></span>                           
+                                <input class="form-control" type="text" readonly placeholder="City, Point of Interest or U.S. Zip Code" formControlName="location">
+                                <!-- <input class="form-control" type="text" readonly placeholder="City, Point of Interest or U.S. Zip Code" (focus)="showLocationData()" (keypress)="showLocationData()" formControlName="location"> -->
+                                <!-- <ul class="drop" *ngIf="showSelectLocation">
+                                    <li *ngFor="let loc of locations | filterArray:formGroup.value.location"
+                                        (click)="selectedLocation(loc)"><a>{{loc.name}}</a></li>
+                                </ul> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group"> 
+                                <label>Checkin Date</label>
+                                <span><img src="assets/images/icon/calendar.png"></span>
+                                <input class="form-control" type="text" id="popupcheckindate" autocomplete="off"
+                                    placeholder="Check-in" data-provide='datepicker' data-date-container='#myModalId'>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Checkin Time</label>
+                                <span><img src="assets/images/icon/time.png"></span>
+                                <select class="form-control" placeholder="check-in Time" formControlName="checkintime" (change)="changeCheckin()">
+                                    <option value="">check-in Time</option>
+                                    <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)" value="{{x}}">{{x}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group"> 
+                                <label>Checkout Date</label>
+                                <span><img src="assets/images/icon/calendar.png"></span>
+                                <input class="form-control" type="text" id="popuocheckoutdate" autocomplete="off"
+                                    placeholder="Check-out" data-provide='datepicker' data-date-container='#myModalId'>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Checkout Time</label>
+                                <span><img src="assets/images/icon/time.png"></span>
+                                <select class="form-control" placeholder="check-out Time"
+                                    formControlName="checkouttime">
+                                    <option value="">check-out Time</option>
+                                    <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)" value="{{x}}">{{x}}</option>
+                                </select>
+
+                            </div>
+                        </div>  
+
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group jezl-popup-f-btn">
+                                <button class="btn btn-primary btn-lg mt-1-35" type="submit"
+                                    [disabled]="formGroup.invalid">Find Price</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>  
+            </section>
+
+
+            <section class="Categories mb-2" *ngIf="calculated">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                               <div class="jezl-service-popup-detail">
+
+
+                                <div class="jezl-ser-popup-ltclm">
+                                    <div class="jezl-title">Volvo FE 4X2 Koel vries Bakwagen</div>
+                                    <div class="jezl-vehile-data-title">Voertuig gegevens</div>
+                                    <!-- title end here -->
+                                    <div class="jezl-service-popup-details-g">
+
+                                        <ul>
+                                            <li><div>Referentienr.</div> <div>:</div> <div>70096537</div></li>
+                                            <li><div>Merk</div> <div>:</div> <div>Volvo</div></li>
+                                            <li><div>Type</div> <div>:</div> <div>FE</div></li>
+                                            <li><div>Cabine</div> <div>:</div> <div>Kort</div></li>
+
+                                        </ul>
+
+
+
+                                    </div>
+                                   <!-- Details end here--> 
+
+                                   <div class="jezl-vehile-data-title">Technische specificaties</div>
+                                   <div class="jezl-service-popup-details-g">
+
+                                    <ul>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>
+                                        <li><div>Motor</div> <div>:</div> <div>250 pk Euro 6</div></li>                                                                                                                                                                                                                                                                                        
+
+
+                                    </ul>
+
+
+
+                                </div>
+                               <!-- Details end here--> 
+
+                            </div>
+                            <!-- left clmn end here -->
+
+                        <div class="jezl-ser-popup-rtclm">
+                            
+                            <div class="jezl-pop-upt-rat-hr">€35 <span class="text-muted">/ hr</span></div>
+                            <button class="btn btn-primary">Book Now</button>
+                            
+
+                        </div>
+                        <!-- right clmn end here -->
+                        </div> 
+                         <!-- g end here -->
+
+
+
+
+
+
+
+                               <!--<div class="listroBox">
+                                <a>
+                                    <div class="listroBoxmain">
+                                        <h3><a>{{selectedProduct.name}}</a></h3>
+                                        <p [innerHtml]="selectedProduct.shortdescription"></p>
+                                    </div>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <p class="card-text text-muted"><span
+                                                class="h4 text-primary">${{selectedProduct.priceperhr}}</span>
+                                            / hr</p>
+                                    </li>
+                                    <li>
+                                        <div class="R_retings">
+                                            <button class="btn btn-primary" (click)="bookNow(selectedProduct)">Book
+                                                Now</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                         -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="Categories" *ngIf="alreadyBooked">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="listroBox">
+                                <a>
+                                    <div class="listroBoxmain">
+                                        <h3><a>{{selectedProduct.name}}</a></h3>
+                                        <p [innerHtml]="selectedProduct.shortdescription"></p>
+                                    </div>
+                                </a>
+                                <h2 class="pb-5 text-center text-danger">{{selectedProduct.name}} has been already booked in this slot. Please select different slot.</h2>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="Categories" *ngIf="notavailable">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="listroBox">
+                                <a>
+                                    <div class="listroBoxmain">
+                                        <h3><a>{{selectedProduct.name}}</a></h3>
+                                        <p [innerHtml]="selectedProduct.shortdescription"></p>
+                                    </div>
+                                </a>
+                                <h2 class="pb-5 text-center text-danger">{{selectedProduct.name}} is available one for {{selectedProduct.availabledays}} days.</h2>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</ng-template>

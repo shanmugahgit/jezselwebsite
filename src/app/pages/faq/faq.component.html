@@ -1,0 +1,37 @@
+<!-- =======================
+	Banner innerpage -->
+<div class="innerpage-banner left bg-overlay-dark-7 py-7 drop-slider"
+    style="background:url(assets/images/faq.jpg) repeat; background-size:cover;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title">FAQ</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================= Banner innerpage -->
+<section class="faq-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="faq-box">
+                    <div class="card" *ngFor="let data of dataLists">
+                        <div class="card-header">
+                            <a href="" class="d-flex justify-content-between" data-toggle="collapse"
+                                data-target="#faq1">
+                                <span>Q. {{data.title}}</span>
+                                <i class="la la-plus"></i>
+                            </a>
+                        </div>
+                        <div id="faq1" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <p [innerHtml]="data.content"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

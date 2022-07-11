@@ -1,0 +1,51 @@
+<!-- =======================
+	Banner innerpage -->
+<div class="innerpage-banner left bg-overlay-dark-7 py-7" style="background:url(assets/images/07.jpg) repeat; background-size:cover;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title">Payment Status</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =======================Banner innerpage -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 align-self-center mt-lg-0 mt-3">
+                <h6 class="mb-3">Summary</h6>
+                <hr>
+                <div class="summary" *ngFor="let product of order.Orderhistories;let i =index;">
+                    <table>
+                        <tr *ngIf="!product.extra_id">
+                            <td>
+                                <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
+                            </td>
+                            <td>
+                                <h4><span>&#8364;</span>{{product.price}}</h4>
+                            </td>
+                        </tr>
+                        <tr *ngIf="product.extra_id">
+                            <td>{{product.name}}</td>
+                            <td><span>&#8364;</span>{{product.price}}</td>
+                        </tr>
+                        <tr *ngIf="!product.extra_id">
+                            <td>
+                                <h4>Advance Payment</h4>
+                            </td>
+                            <td>
+                                <h4><span>&#8364;</span>{{product.advancepaid}}</h4>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                </div>
+                <h5>Total: <span class="float-right"> <span>&#8364;</span>{{order.total}}</span>
+                </h5>
+                <br><br>
+                <button class="btn btn-primary btn-lg btn-grad" (click)="payNow()">Pay Now</button>
+            </div>
+        </div>
+    </div>
+</div>

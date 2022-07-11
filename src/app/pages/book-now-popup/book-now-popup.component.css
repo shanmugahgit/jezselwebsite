@@ -1,0 +1,20 @@
+.form-control{
+    padding-left: 2rem;
+}
+.modal-content{
+    margin-bottom: 0.5rem !important;
+}
+.tab-content .form-group span{
+    line-height: 40px;
+}
+.form-group.jezl-popup-f-btn button{ border-radius: 10px;}
+.mt-1-35{
+    margin-top: 1.35rem !important;
+}
+.modal-body{
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+option:disabled { background-color: #f3f3f3; }
+

@@ -1,0 +1,246 @@
+<!-- ======================= Banner innerpage -->
+<div class="innerpage-banner left bg-overlay-dark-7 py-7"
+    style="background:url(assets/images/07.jpg) repeat; background-size:cover;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title title">Booking</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================= Banner innerpage -->
+
+
+
+
+<!-- =======================
+	Form -->
+<section class="pt80 pb80 eleform">
+    <div class="container">      
+        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left">
+            <form action="#" autocomplete="off">
+                <div class="pb-left">
+                    <div id="moreFilters" class="collapse show">
+                        <div class="filter-block">
+                            <h2 class="mb-3">Summary</h2>
+                            <hr>
+                            <div class="summary" *ngFor="let product of dataLists;let i =index;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
+                                        </td>
+                                        <td class="pl-2">
+                                            <h4><span>&#8364;</span>{{product.priceperhr}}</h4>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let x of product['Extras']">
+                                        <td *ngIf="x.checked">{{x.description}}</td>
+                                        <td class="pl-2" *ngIf="x.checked"><span>&#8364;</span>{{x.price}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Advance Payment</h4>
+                                        </td>
+                                        <td class="pl-2">
+                                            <h4><span>&#8364;</span>{{product.advancePayment}}</h4>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <hr>
+                            </div>
+                            <h4 *ngIf="couponPrice">Discount: <span class="float-right"> <span>&#8364;</span>{{couponPrice}}</span>
+                                <hr>
+                            </h4>
+                            <h5>Total: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Coupon Code" [(ngModel)]="coupon">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="applyCoupon()">Apply</button>
+                </div>
+            </div>
+        </div>  
+        <form class="mt-4" [formGroup]="formGroup" (ngSubmit)="orderNow()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <select class="form-control" formControlName="type">
+                            <option value="">Type</option>
+                            <option value="business">Business</option>
+                            <option value="customer">Customer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div *ngIf="formGroup.value.type == 'business'">
+                        <h3>Company details</h3>
+                        <div class="form-group mt-4">
+                            <input class="form-control" type="text" placeholder="Bedrijfsnaam"
+                                formControlName="bedrijfsnaam">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="KVK" formControlName="kvk">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="BTW nr." formControlName="btwnr">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Vesigingsadres</h3>
+                        <div class="form-group mt-4">
+                            <input class="form-control" type="text" placeholder="Straat" formControlName="vesigingstraat">
+                        </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Huisnr en toevoeging"
+                            formControlName="vesiginghuisnr">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Postcode"
+                            formControlName="vesigingpostcode">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Plaats" formControlName="vesigingplaats">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Land" formControlName="vesigingland">
+                    </div>
+                    <div class="form-check mt-4">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"
+                            (change)="sync($event)">
+                        <label class="form-check-label" for="defaultCheck1">
+                            (Vestigingsadres) is the same as the invoice adres
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <h3>Factuuradres</h3>
+                        <div class="form-group mt-4">
+                            <input class="form-control" type="text" placeholder="Straat"
+                                formControlName="factuurstraat">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Huisnr en toevoeging"
+                                formControlName="factuurhuisnr">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Postcode"
+                                formControlName="factuurpostcode">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Plaats"
+                                formControlName="factuurplaats">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Land" formControlName="factuurland">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="mt-4">Contact Details</h3>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <select class="form-control" formControlName="aanhef">
+                            <option value="">Aanhef</option>
+                            <option value="dhr">Dhr</option>
+                            <option value="mevr">Mevr</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Voornaam" formControlName="voornaam">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Achternaam" formControlName="achternaam">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Tussenvoegsel"
+                            formControlName="tussenvoegsel">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Factuur e-mail"
+                            formControlName="factuuremail">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Telefoon nr."
+                            formControlName="telefoonnr">
+                    </div>
+                </div>
+                <div class="col-md-12" *ngIf="currentBalance">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault2" formControlName="useBalance">
+                        <label class="form-check-label" for="flexCheckDefault2">
+                            Use Balance {{currentBalance}}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault" formControlName="termsAndConditions">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            I agree to the 
+                        </label><a (click)="openTermsModal()" class="text-info"> Terms of Service</a>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-grad" type="submit"
+                            [disabled]="formGroup.invalid||(!formGroup.value.termsAndConditions||formGroup.value.termsAndConditions==false)">Order
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- =======================
+	Form -->
+<ng-template #template>
+    <div id="myModalId">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Order Now</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body mb-2 text-center">
+            <button class="btn btn-primary" (click)="bookNow()">Pay Now</button>
+            <button class="btn btn-primary ml-2" (click)="sendPaymentLink()">Send Payment Link</button>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #termstemplate>
+    <div id="myModalId">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Terms And Conditions</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body mb-2">
+            <p [innerHtml]="termsAndConditions"></p>
+        </div>
+    </div>
+
+</ng-template>

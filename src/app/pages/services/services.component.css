@@ -1,0 +1,9 @@
+.title {
+    text-transform: capitalize;
+}
+
+.disablediv {
+    pointer-events: none;
+    opacity: 0.4;
+}
+option:disabled { background-color: #f3f3f3; }

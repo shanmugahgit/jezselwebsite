@@ -1,0 +1,20 @@
+select option:hover {
+    background: #3E593C !important;
+}
+
+
+.booking-search select{
+    padding: 12px 15px 12px 12px;
+    color: #7a8797;
+}
+.enable-popup{
+    display: block;
+    opacity: 1;
+}
+.disable-popup{
+    display: none;
+    opacity: 0;
+}
+option:disabled { background-color: #f3f3f3; }
+
+

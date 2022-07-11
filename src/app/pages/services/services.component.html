@@ -1,0 +1,254 @@
+<!-- ======================= Banner innerpage -->
+<div class="innerpage-banner left bg-overlay-dark-7 py-7 drop-slider"
+style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <!-- <h1 class="innerpage-title title">{{title}}</h1> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================= Banner innerpage -->
+
+<section class="mt-lg-n9 mt-sm-0 pb-0 z-index-9 booking-search">
+    <div class="container ">
+        <div class="row border-radius-3">
+            <div class="col-md-12 np">
+                <div class="feature-box h-100">  
+                    <div class="tab_container">
+                        <input id="tab1" type="radio" name="tabs" [checked]="formGroup.value.type == 'rent'" (click)="selectSection('rent')">
+                        <label for="tab1"><img src="assets/images/icon/verhuur-icon.png"><span>Rent</span></label>
+                        <input id="tab2" type="radio" name="tabs" [checked]="formGroup.value.type == 'staffing'" (click)="selectSection('staffing')">
+                        <label for="tab2"><img src="assets/images/icon/uitzenden-icon.png" class="staffing"><span>Staffing</span></label>
+                        <input id="tab3" type="radio" name="tabs" [checked]="formGroup.value.type == 'transport'" (click)="selectSection('transport')">
+                        <label for="tab3"><img src="assets/images/icon/transport-icon.png"><span>Transporting</span></label>
+                        <section id="content1" class="tab-content">
+                            <form [formGroup]="formGroup" (ngSubmit)="search()">
+                                <div class="row"  id="jezl-hm-search">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
+                                        <div class="form-group"> <span><img src="assets/images/icon/location.png"></span>
+                                            <!-- <input type="hidden" formControlName="locationid"> -->
+                                            <input class="form-control" type="text" placeholder="City, Point of Interest or U.S. Zip Code" (focus)="showLocationData()" (keypress)="showLocationData()" formControlName="location">
+                                            <ul class="drop" *ngIf="showSelectLocation">
+                                                <li *ngFor="let loc of locations | filterArray:formGroup.value.location" (click)="selectedLocation(loc)"><a>{{loc.name}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                        <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
+                                            <input class="form-control" type="text" id="datepicker" autocomplete="off" placeholder="Check-in">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                        <div class="form-group">
+                                            <span><img src="assets/images/icon/time.png"></span>
+                                            <!-- <input class="form-control" type="text" id="timepicker" autocomplete="off" placeholder="Check-in"> -->
+                                            <select class="form-control" placeholder="check-in Time" formControlName="checkintime" (change)="changeCheckin()">
+                                            <option value="">check-in Time</option>
+                                            <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)" value="{{x}}">{{x}}</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                        <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
+                                            <input class="form-control" type="text" id="datepicker-out" autocomplete="off" placeholder="Check-out">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                        <div class="form-group">
+                                            <span><img src="assets/images/icon/time.png"></span>
+                                            <select class="form-control" placeholder="check-out Time" formControlName="checkouttime">
+                                            <option value="">check-out Time</option>
+                                            <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)" value="{{x}}">{{x}}</option>
+                                        </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 padding8">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary btn-lg btn-grad" type="submit"
+                                            [disabled]="formGroup.invalid"><img src="assets/images/icon/search.png"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="pt80 pb80 cruise-grid-view">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-4 col-md-4 col-sm-12 jezl-ser-list-g ">
+                <div class="Filter-left shadow">
+                    <div class="jezl-ser-list-lt-title">Filters</div>
+                    <form action="#" autocomplete="off" class="jezl-ckbrb-mrglt">
+                        <div class="pb-left">
+                            <div id="moreFilters" class="collapse show">
+                                <div class="filter-block" *ngFor="let main of filters | keyvalue">
+                                    <h6>{{main.key}}</h6>
+                                    <!-- {{filters[main.key] | json}} -->
+
+                                    <ul class="list-unstyled mb-0">
+                                        <li *ngFor="let x of filtersRaw | categoryfilter:{category: main.key};let i=index">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="amenities_{{x.id}}" name="filter{{x.id}}" [(ngModel)]="x.checked" class="custom-control-input" (change)="filterRecords();">
+
+                                                <label for="amenities_{{x.id}}" class="custom-control-label">{{x.name}}</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    <button type="submit" class="jezl-ser-shw-btn">Show 255 Results</button>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="resultBar barSpaceAdjust">
+                    <h2>We found <span>{{config.totalItems}}</span> Results for you</h2>
+                </div>
+                <div class="row jezl-hm-services-gclm">
+
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="item">
+                            <div class="jezl-hm-truck-image">
+                                <img src="assets/images/services/truck.jpg">
+                            </div>
+                            <div class="jezl-t-title">
+                                Volvo FE 4X2 Koel Vries Bakwagen/ Rent 
+                            </div>
+                            <div class="jezl-cst-bnbtn">
+                                <div class="t-rat-hr">€35 / hr</div>
+                                 <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            </div>
+                        </div>
+                        <!-- item end here -->
+                    </div>
+                    <!--Clmn end here -->   
+
+
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="item">
+                            <div class="jezl-hm-truck-image">
+                                <img src="assets/images/services/truck.jpg">
+                            </div>
+                            <div class="jezl-t-title">
+                                Volvo FE 4X2 Koel Vries Bakwagen/ Rent 
+                            </div>
+                            <div class="jezl-cst-bnbtn">
+                                <div class="t-rat-hr">€35 / hr</div>
+                                 <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            </div>
+                        </div>
+                        <!-- item end here -->
+                    </div>
+                    <!--Clmn end here -->   
+                    
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="item">
+                            <div class="jezl-hm-truck-image">
+                                <img src="assets/images/services/truck.jpg">
+                            </div>
+                            <div class="jezl-t-title">
+                                Volvo FE 4X2 Koel Vries Bakwagen/ Rent 
+                            </div>
+                            <div class="jezl-cst-bnbtn">
+                                <div class="t-rat-hr">€35 / hr</div>
+                                 <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            </div>
+                        </div>
+                        <!-- item end here -->
+                    </div>
+                    <!--Clmn end here -->  
+                    
+                    
+
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="item">
+                            <div class="jezl-hm-truck-image">
+                                <img src="assets/images/services/truck.jpg">
+                            </div>
+                            <div class="jezl-t-title">
+                                Volvo FE 4X2 Koel Vries Bakwagen/ Rent 
+                            </div>
+                            <div class="jezl-cst-bnbtn">
+                                <div class="t-rat-hr">€35 / hr</div>
+                                 <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            </div>
+                        </div>
+                        <!-- item end here -->
+                    </div>
+                    <!--Clmn end here -->                    
+
+
+
+
+                    <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products | paginate: config">
+                        <div class="listroBox">
+                            <a routerLink="/service-detail/{{product.route}}">
+                                <figure><img [src]="product.path + product.thumbnail" class="img-fluid" alt="">
+                                    <div class="read_more"><span>Read More</span></div>
+                                </figure>
+                            </a>
+                            <a routerLink="/service-detail/{{product.route}}">
+                                <div class="listroBoxmain">
+                                    <h3><a>{{product.name}}</a></h3>
+                                    <p [innerHtml]="product.shortdescription" class="limit-3"></p>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <p class="card-text text-muted"><span class="h4 text-primary"><span>&#8364;</span>{{product.priceperhr}}</span> / hr</p>
+                                </li>
+                                <li>
+                                    <div class="R_retings">
+                                        <button class="btn btn-primary" (click)="bookNow(product)">Book Now</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)">
+                </pagination-controls>
+               <div class="paginationCommon blogPagination categoryPagination">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-left"
+                                            aria-hidden="true"></i></span> </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+
+                            <li>
+                                <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-right"
+                                            aria-hidden="true"></i></span> </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,120 @@
+<!-- =======================
+	Banner innerpage -->
+<div class="innerpage-banner left bg-overlay-dark-7 py-7"
+    style="background:url(assets/images/07.jpg) repeat; background-size:cover;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title">My Orders</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =======================Banner innerpage -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 align-self-center mt-lg-0 mt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Services</th>
+                            <th>BookedOn</th>
+                            <th>Interest</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of dataLists;let i= index;">
+                            <td>{{i+1}}</td>
+                            <td>{{data.services}}</td>
+                            <td>{{data.updatedAt|date:'mediumDate'}}</td>
+                            <td>{{data.interestAmount}}</td>
+                            <td><button class="btn btn-primary" (click)="viewDetails(data)">View Details</button></td>
+                        </tr>
+                        <tr class="text-center" *ngIf="dataLists.length==0">
+                            <td colspan="5">No Orders found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div id="myModalId">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">View Order Details</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row" *ngFor="let order of selectedProduct.Orderhistories;let i = index;">
+                    <div class="col-md-12">
+                        <h5>{{order.name}} | {{order.type}}</h5>
+                    </div>
+                    <div class="row mt-4 m-0">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Price</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{order.price}}</span>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Checkin Date</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{order.checkindate|date:'mediumDate'}}</span>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Checkin Time</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{order.checkintime}}</span>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Checkout Date</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{order.checkoutdate|date:'mediumDate'}}</span>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Checkout Time</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <span>{{order.checkouttime}}</span>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="modalRef?.hide()">Close</button>
+        </div>
+    </div>
+
+</ng-template>
