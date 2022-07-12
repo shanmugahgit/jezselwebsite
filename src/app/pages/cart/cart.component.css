@@ -83,3 +83,10 @@ a.jezsel-cart-service-trash{
     right: -10px; 
     color: #ff0000;
 }
+.jezsel-cart-lfdtd{
+display: grid;
+grid-template-columns: 1.5fr 1fr 1fr;
+align-items: center;
+}
+.jezsel-cart-lfdtd img{ width: 15px; height: auto;}
+
