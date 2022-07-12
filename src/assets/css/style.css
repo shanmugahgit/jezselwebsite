@@ -9437,7 +9437,7 @@ contact-pg-section
 }
 
 .TravelGo-category-content {
-	padding: 35px 10px 20px 0px;
+	padding-top:10px;
 	z-index: 2;
 }
 
@@ -9745,6 +9745,7 @@ contact-pg-section
     border: 1px solid var(--jezl-g-red);;
     border-radius: 10px;
     background-color: #fafafa;
+    padding: 20px;
 }
 
 .TravelGo-category-list-img {

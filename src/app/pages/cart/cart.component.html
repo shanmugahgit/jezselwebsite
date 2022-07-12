@@ -51,24 +51,30 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-check" *ngFor="let x of data['Extras']">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault" (click)="addExtra($event,x, i)"
-                                                    [checked]="x.checked" [disabled]="x.isDisabled">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    {{x.description}} - <b> <span>&#8364;</span>{{x.price}}</b>
-                                                </label>
-                                            </div>
-                                            <h4 class="cancel-options">Cancel Options</h4>
-                                            <div class="form-check" *ngFor="let x of data.cancelLists">
-                                                <input class="form-check-input" type="radio" value=""
-                                                    id="flexCheckDefault" name="{{i}}" (change)="updateProducts($event, i, x.id)" value="{{x.label}}" [checked]="x.selected">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    {{x.label}} - <b><span>&#8364;</span>{{x.price}}</b>
-                                                </label>
-                                            </div>
+
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-12 mt-4">
+                                        <div class="form-check" *ngFor="let x of data['Extras']">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault" (click)="addExtra($event,x, i)"
+                                                [checked]="x.checked" [disabled]="x.isDisabled">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                {{x.description}} - <b> <span>&#8364;</span>{{x.price}}</b>
+                                            </label>
+                                        </div>
+                                        <h4 class="cancel-options">Cancel Options</h4>
+                                        <div class="form-check" *ngFor="let x of data.cancelLists">
+                                            <input class="form-check-input" type="radio" value=""
+                                                id="flexCheckDefault" name="{{i}}" (change)="updateProducts($event, i, x.id)" value="{{x.label}}" [checked]="x.selected">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                {{x.label}} - <b><span>&#8364;</span>{{x.price}}</b>
+                                            </label>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </article>
                         </div>
