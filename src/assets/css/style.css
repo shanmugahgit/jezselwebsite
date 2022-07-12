@@ -13245,7 +13245,7 @@ Footer Area CSS
         max-width: 400px;
     }*/
 
-.modal{padding-bottom: 50px !important;}
+.modal{padding-bottom: 50px !important;} 
 
 .jezl-b-popup-g .modal-header{
     background-color:var(--jezl-g-red);
