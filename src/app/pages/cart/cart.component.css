@@ -74,3 +74,5 @@
 .jezsel-cart-txt-right{ text-align: right; font-weight: bold; white-space: no-wrap;}
 .jezsel-cart-text-b{font-weight: bold;}
 h4.jezsel-cart-advance-payment{ margin-top: 20px; margin-bottom: 0px !important;}
+.jezsel-cart-pr-btn{ background-color: #05ac1c;}
+.jezsel-cart-pr-btn:hover{ background-color: #037313;}
