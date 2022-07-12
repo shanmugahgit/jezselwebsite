@@ -9437,8 +9437,8 @@ contact-pg-section
 }
 
 .TravelGo-category-content {
-    padding: 20px;
-    z-index: 2;
+	padding: 35px 10px 20px 0px;
+	z-index: 2;
 }
 
 .fl-wrap {
@@ -9476,6 +9476,7 @@ contact-pg-section
     position: relative;
     z-index: 1;
 }
+
 
 .TravelGo-category-content h3,
 .cart-details_text .TravelGo-category-content-title-item h3 {
@@ -9708,17 +9709,17 @@ contact-pg-section
 .gallery-item img {
     width: 100%;
     height: auto;
-    -webkit-transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
+   /*  -webkit-transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-    transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;
+    transition: all 2000ms cubic-bezier(.19, 1, .22, 1) 0ms;*/
 }
 
 .TravelGo-category-img:hover img,
 .gallery-item:hover img {
-    -webkit-transform: scale(1.15);
+   /* -webkit-transform: scale(1.15);
     -moz-transform: scale(1.15);
-    transform: scale(1.15);
+    transform: scale(1.15);*/
 }
 
 .TravelGo-category-content-title span {

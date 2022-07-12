@@ -77,3 +77,6 @@ h4.jezsel-cart-advance-payment{ margin-top: 20px; margin-bottom: 0px !important;
 .jezsel-cart-pr-btn{ background-color: #05ac1c;}
 .jezsel-cart-pr-btn:hover{ background-color: #037313;}
 .jezselcart-rtb {    background: #FFE3E3 !important;}
+a.jezsel-cart-service-trash{ position: absolute;
+    top: -25px;
+    right: 0; color: #ff0000;}
