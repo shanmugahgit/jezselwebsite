@@ -9741,8 +9741,8 @@ contact-pg-section
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     margin: 0 0 30px 0;
-    border: 1px solid #eee;
-    border-radius: 10px 10px 0 0;
+    border: 1px solid var(--jezl-g-red);;
+    border-radius: 10px;
 }
 
 .TravelGo-category-list-img {
@@ -10258,14 +10258,15 @@ h5,
 }
 
 .filter-block h6.mb-3 {
-    font-size: 16px;
-    text-transform: uppercase;
-    margin: 0 !important;
-    padding: 15px 0;
+	font-size: 24px;
+	text-transform: uppercase;
+	margin: 0 !important;
+	padding: 20px 10px 0px 10px;
+	font-weight: bold;
 }
 
 .Filter-left {
-    background: #f8f9fa;
+    background: #FFE3E3;
     border: 1px solid #9a99a2;
 }
 

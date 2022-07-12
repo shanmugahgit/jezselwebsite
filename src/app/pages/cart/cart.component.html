@@ -88,30 +88,30 @@
                                 <div class="summary" *ngFor="let product of dataLists;let i =index;">
                                     <table class="w-100">
                                         <tr>
-                                            <td>
+                                            <td colspan="2">
                                                 <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-80">Price Per Hour</td>
-                                            <td class="w-20"><span>&#8364;</span>{{product.priceperhr}}</td>
+                                            <td class="w-60">Price Per Hour</td>
+                                            <td class="w-40 jezsel-cart-txt-right"><span>&#8364;</span>{{product.priceperhr}}</td>
                                         </tr>
                                         <tr *ngFor="let x of product['Extras']">
                                             <td *ngIf="x.checked">{{x.description}}</td>
-                                            <td *ngIf="x.checked"><span>&#8364;</span>{{x.price}}</td>
+                                            <td *ngIf="x.checked" class="jezsel-cart-txt-right"><span>&#8364;</span>{{x.price}}</td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <h4>Advance Payment</h4>
+                                                <h4 class="jezsel-cart-advance-payment">Advance Payment</h4> 
                                             </td>
-                                            <td>
+                                            <td class="jezsel-cart-txt-right">
                                                 <h4><span>&#8364;</span><span [innerHtml]="getAdvancePayment(product.advancePayment)">{{product.advancePayment}}</span></h4>
                                             </td>
-                                        </tr>
+                                        </tr> 
                                     </table>
                                     <hr>
                                 </div>
-                                <h5>Total: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                                <h5 class="jezsel-cart-text-b">Total: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
                                 </h5>
                             </div>
                         </div>
