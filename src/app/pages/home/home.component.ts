@@ -49,26 +49,32 @@ export class HomeComponent implements OnInit {
         $('.accordion-title').not($(ev.target)).removeClass('active');
       });
     });
-    $('.testi.owl-carousel').owlCarousel({
-      items: 2,
-      margin: 50,
-      lazyLoad: true,
-      dots: true,
-      autoPlay: true,
-      autoPlayTimeout: 1500,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 2,
-        },
-        1000: {
-          items: 2,
-        }
-      }
-    });
 
+
+  }
+
+  loadCarousel() {
+    setTimeout(() => {
+      $('.testi.owl-carousel').owlCarousel({
+        items: 2,
+        margin: 50,
+        lazyLoad: true,
+        dots: true,
+        autoPlay: true,
+        autoPlayTimeout: 1500,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 2,
+          },
+          1000: {
+            items: 2,
+          }
+        }
+      });
+    });
   }
 
   loadDatePicker() {
@@ -96,6 +102,7 @@ export class HomeComponent implements OnInit {
     this.http.post('products', { limit: 3, type: 'Rent' }).subscribe(
       (response: any) => {
         this.rentproducts = response && response.data;
+        this.loadCarousel();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -103,6 +110,7 @@ export class HomeComponent implements OnInit {
     this.http.post('products', { limit: 3, type: 'Staffing' }).subscribe(
       (response: any) => {
         this.staffingproducts = response && response.data;
+        this.loadCarousel();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -110,6 +118,7 @@ export class HomeComponent implements OnInit {
     this.http.post('products', { limit: 3, type: 'Transport' }).subscribe(
       (response: any) => {
         this.transportproducts = response && response.data;
+        this.loadCarousel();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
