@@ -12972,7 +12972,9 @@ Home services CSS
     }
 
 
-.jezl-hm-services-g .item .jezl-hm-truck-image img, .jezl-hm-services-gclm .item .jezl-hm-truck-image img{ border-top-left-radius: 10px; border-top-right-radius: 10px;}
+.jezl-hm-services-g .item .jezl-hm-truck-image img, .jezl-hm-services-gclm .item .jezl-hm-truck-image img{ border-top-left-radius: 10px; border-top-right-radius: 10px;	height: 200px;
+	width: 100%;
+	object-fit: cover;}
 	
 .jezl-hm-services-g .item .jezl-t-title, .jezl-hm-services-gclm .item .jezl-t-title{
     width: 100%;
@@ -12987,6 +12989,7 @@ Home services CSS
     letter-spacing: normal;
     text-align: center;
     border-bottom:1px solid #fff;
+    height: 73px;
 }
 .jezl-hm-services-g .item .jezl-cst-bnbtn, .jezl-hm-services-gclm .item .jezl-cst-bnbtn{
     width: 100%;
