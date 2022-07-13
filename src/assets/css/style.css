@@ -10071,7 +10071,7 @@ h5,
 
 .listingDetails .tab-content {
     background: #fff;
-    padding: 30px 15px 15px 15px;
+   /* padding: 30px 15px 15px 15px;*/
 }
 
 .listingDetails .nav-tabs.tab-line {
@@ -12972,7 +12972,9 @@ Home services CSS
     }
 
 
-.jezl-hm-services-g .item .jezl-hm-truck-image img, .jezl-hm-services-gclm .item .jezl-hm-truck-image img{ border-top-left-radius: 10px; border-top-right-radius: 10px;}
+.jezl-hm-services-g .item .jezl-hm-truck-image img, .jezl-hm-services-gclm .item .jezl-hm-truck-image img{ border-top-left-radius: 10px; border-top-right-radius: 10px;	height: 200px;
+	width: 100%;
+	object-fit: cover;}
 	
 .jezl-hm-services-g .item .jezl-t-title, .jezl-hm-services-gclm .item .jezl-t-title{
     width: 100%;
@@ -12987,6 +12989,7 @@ Home services CSS
     letter-spacing: normal;
     text-align: center;
     border-bottom:1px solid #fff;
+    height: 73px;
 }
 .jezl-hm-services-g .item .jezl-cst-bnbtn, .jezl-hm-services-gclm .item .jezl-cst-bnbtn{
     width: 100%;
@@ -13242,6 +13245,48 @@ Footer Area CSS
         margin-top: 10px;
         position: relative;
     }
+
+
+   
+/*================================================
+    Service Detail Product Page CSS
+=================================================*/  
+.jezsel-ser-dpp-data-g{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+margin-top: 50px;
+grid-gap:20px;
+}
+
+.jezsel-ser-dpp{border: 1px solid #ff0000;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #FFEEEE;}
+ .jezsel-ser-dpp-data-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--jezl-g-red);
+ }
+ .jezsel-ser-dpp ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+margin-bottom: 10px;
+}
+.jezsel-ser-dpp ul li{
+display: grid;
+grid-template-columns: 1fr 0.9fr;
+align-items: center;
+font-size: 12px;
+margin-bottom: 10px;
+}
+.jezsel-ser-dpp ul.extra-d li { grid-template-columns: 1fr 20px ;}
+
+.jezsel-ser-dpp-data-g ul li div:first-child{ font-weight: bold;}
+
+.jezsel-ser-dpp ul li i{ color:#44cf0e;}
+.jezsel-ser-dpp ul li i.fa-times{ color: var(--jezl-g-red);}
 
 /*================================================
    Modal Pop Up CSS
