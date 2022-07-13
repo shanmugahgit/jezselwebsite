@@ -81,25 +81,14 @@
 
 
                                 <div class="jezl-ser-popup-ltclm">
-                                    <div class="jezl-title">Volvo FE 4X2 Koel vries Bakwagen</div>
-                                    <div class="jezl-vehile-data-title">Voertuig gegevens</div>
+                                    <div class="jezl-title">{{selectedProduct.name}}</div>
+                                    <!-- <div class="jezl-vehile-data-title">Voertuig gegevens</div> -->
                                     <!-- title end here -->
-                                    <div class="jezl-service-popup-details-g">
-
-                                        <ul>
-                                            <li><div>Referentienr.</div> <div>:</div> <div>70096537</div></li>
-                                            <li><div>Merk</div> <div>:</div> <div>Volvo</div></li>
-                                            <li><div>Type</div> <div>:</div> <div>FE</div></li>
-                                            <li><div>Cabine</div> <div>:</div> <div>Kort</div></li>
-
-                                        </ul>
-
-
-
+                                    <div class="jezl-service-popup-details-g" [innerHtml]="selectedProduct.shortdescription">
                                     </div>
                                    <!-- Details end here--> 
 
-                                   <div class="jezl-vehile-data-title">Technische specificaties</div>
+                                   <!-- <div class="jezl-vehile-data-title">Technische specificaties</div>
                                    <div class="jezl-service-popup-details-g">
 
                                     <ul>
@@ -118,7 +107,7 @@
 
 
 
-                                </div>
+                                </div> -->
                                <!-- Details end here--> 
 
                             </div>
@@ -126,8 +115,8 @@
 
                         <div class="jezl-ser-popup-rtclm">
                             
-                            <div class="jezl-pop-upt-rat-hr">€35 <span class="text-muted">/ hr</span></div>
-                            <button class="btn btn-primary">Book Now</button>
+                            <div class="jezl-pop-upt-rat-hr">€{{selectedProduct.priceperhr}} <span class="text-muted">/ hr</span></div>
+                            <button class="btn btn-primary" (click)="bookNow(selectedProduct)">Book Now</button>
                             
 
                         </div>

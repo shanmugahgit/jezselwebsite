@@ -29,20 +29,22 @@
         <div class="row border-radius-3">
             <div class="col-md-12 np jezl-booking-search">
                 <div class="feature-box h-100 ">
-                    <div class="tab_container" >
-                        
+                    <div class="tab_container">
+
                         <input id="tab1" type="radio" name="tabs" checked (click)="selectSection('rent')">
                         <label for="tab1"><img src="assets/images/icon/verhuur-icon.png"><span>Rent</span></label>
                         <input id="tab2" type="radio" name="tabs" (click)="selectSection('staffing')">
-                        <label for="tab2"><img src="assets/images/icon/uitzenden-icon.png" class="staffing"><span>Staffing</span></label>
+                        <label for="tab2"><img src="assets/images/icon/uitzenden-icon.png"
+                                class="staffing"><span>Staffing</span></label>
                         <input id="tab3" type="radio" name="tabs" (click)="selectSection('transport')">
-                        <label for="tab3"><img src="assets/images/icon/transport-icon.png"><span>Transporting</span></label>
+                        <label for="tab3"><img
+                                src="assets/images/icon/transport-icon.png"><span>Transporting</span></label>
                         <section id="content1" class="tab-content">
                             <form [formGroup]="formGroup" (ngSubmit)="search()">
                                 <div class="row" id="jezl-hm-search">
                                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
                                         <div class="form-group" (clickOutside)="onClickedOutside($event)">
-                                             <span><img src="assets/images/icon/location.png"></span>
+                                            <span><img src="assets/images/icon/location.png"></span>
                                             <!-- <input type="hidden" formControlName="locationid"> -->
                                             <input class="form-control" type="text"
                                                 placeholder="City, Point of Interest or U.S. Zip Code"
@@ -55,7 +57,8 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                                        <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
+                                        <div class="form-group"> <span><img
+                                                    src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker" autocomplete="off"
                                                 placeholder="Check-in">
                                         </div>
@@ -67,12 +70,14 @@
                                             <select class="form-control" placeholder="check-in Time"
                                                 formControlName="checkintime" (change)="changeCheckin()">
                                                 <option value="">check-in Time</option>
-                                                <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)" value="{{x}}">{{x}}</option>
+                                                <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)"
+                                                    value="{{x}}">{{x}}</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
-                                        <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
+                                        <div class="form-group"> <span><img
+                                                    src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker-out"
                                                 autocomplete="off" placeholder="Check-out">
                                         </div>
@@ -84,7 +89,8 @@
                                             <select class="form-control" placeholder="check-out Time"
                                                 formControlName="checkouttime">
                                                 <option value="">check-out Time</option>
-                                                <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)" value="{{x}}">{{x}}</option>
+                                                <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)"
+                                                    value="{{x}}">{{x}}</option>
                                             </select>
 
                                         </div>
@@ -93,7 +99,8 @@
                                     <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 padding8">
                                         <div class="form-group">
                                             <button class="btn btn-primary btn-lg btn-grad" type="submit"
-                                                [disabled]="formGroup.invalid"><img src="assets/images/icon/search.png"></button>
+                                                [disabled]="formGroup.invalid"><img
+                                                    src="assets/images/icon/search.png"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -111,22 +118,35 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 mb-3 col-md-12">
-                    <img src="assets/images/welcome.png" class="img-fluid">
+                <img src="assets/images/welcome.png" class="img-fluid">
             </div>
             <div class="col-lg-7">
                 <div class="jezl-hm-ons">Over Ons</div>
                 <div class="jezl-hm-weltxt">Welcome to Jezsel</div>
-                <p class="mb-3">Jezsel is a service company in transport and logistics. We provide you with people (drivers and logistics staff) and mobility (trucks and delivery vans) on a temporary basis. You can schedule the capacity you need yourself via our unique and fully transparent order system. Availability and costs are immediately clear. This way you can plan (far) ahead, which also makes hiring with us cheaper.</p>
-                
+                <p class="mb-3">Jezsel is a service company in transport and logistics. We provide you with people
+                    (drivers and logistics staff) and mobility (trucks and delivery vans) on a temporary basis. You can
+                    schedule the capacity you need yourself via our unique and fully transparent order system.
+                    Availability and costs are immediately clear. This way you can plan (far) ahead, which also makes
+                    hiring with us cheaper.</p>
+
                 <ul class="jezl-hn-wel-ser">
 
-                    <li><div><img src="assets/images/icon/check-box.png"></div><div>Met materieel – verhuur trucks en bestelbussen</div></li>
-                    <li><div><img src="assets/images/icon/check-box.png"></div><div>Met mensen – chauffeurs en logistiek medewerkers</div></li>
-                    <li><div><img src="assets/images/icon/check-box.png"></div><div>Met transport – wij voeren uw transportopdracht uit</div></li>
+                    <li>
+                        <div><img src="assets/images/icon/check-box.png"></div>
+                        <div>Met materieel – verhuur trucks en bestelbussen</div>
+                    </li>
+                    <li>
+                        <div><img src="assets/images/icon/check-box.png"></div>
+                        <div>Met mensen – chauffeurs en logistiek medewerkers</div>
+                    </li>
+                    <li>
+                        <div><img src="assets/images/icon/check-box.png"></div>
+                        <div>Met transport – wij voeren uw transportopdracht uit</div>
+                    </li>
 
                 </ul>
 
-        </div>            
+            </div>
         </div>
     </div>
 </section>
@@ -141,24 +161,29 @@
                     <ul class="wwd-ser">
                         <li>
                             <div class="wwd-cle"><img src="assets/images/icon/verhuur-icon.png"></div>
-                            <div>Verhuur -  Onze trucks en bestelbussen zijn te huur, alf niet met chauffeur. Net wat u het beste uitkomt.</div>
+                            <div>Verhuur - Onze trucks en bestelbussen zijn te huur, alf niet met chauffeur. Net wat u
+                                het beste uitkomt.</div>
                         </li>
                         <li>
                             <div class="wwd-cle"><img src="assets/images/icon/uitzenden-icon.png" class="uti"></div>
-                            <div>Uitzenden -  U kunt onze flexwerkers voor kortere perioden als uitzendkrachten inhuren</div>
-                        </li>   
+                            <div>Uitzenden - U kunt onze flexwerkers voor kortere perioden als uitzendkrachten inhuren
+                            </div>
+                        </li>
                         <li>
                             <div class="wwd-cle"><img src="assets/images/icon/detachering-icon.png"></div>
-                            <div>Detachering -  Voor flexibel personeel voor een langere periode bieden wij de mogelijkheid tot detachering</div>
-                        </li> 
+                            <div>Detachering - Voor flexibel personeel voor een langere periode bieden wij de
+                                mogelijkheid tot detachering</div>
+                        </li>
                         <li>
                             <div class="wwd-cle"><img src="assets/images/icon/payrolling-icon.png"></div>
-                            <div>Payrolling -  De medewerkers zijn bij u in dienst maar staan bij ons op de loonlijst</div>
-                        </li> 
+                            <div>Payrolling - De medewerkers zijn bij u in dienst maar staan bij ons op de loonlijst
+                            </div>
+                        </li>
                         <li>
                             <div class="wwd-cle"><img src="assets/images/icon/transport-icon.png"></div>
-                            <div>Transport -  Wij kunnen transportopdrachten volledig van u overnemen Kijk voor alle mogelijkheden in ons ordersysteem</div>
-                        </li>                                                                                           
+                            <div>Transport - Wij kunnen transportopdrachten volledig van u overnemen Kijk voor alle
+                                mogelijkheden in ons ordersysteem</div>
+                        </li>
                     </ul>
 
 
@@ -177,62 +202,33 @@
         <div class="row">
             <div class="col-lg-12 jezl-hm-title-g">
                 <div class="jezl-hm-services-title">VERHUUR VERVOERMIDDEL</div>
-                <a href="#">View all  <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0);" routerLink="/services/rent">View all <i class="fa fa-angle-double-right"
+                        aria-hidden="true"></i></a>
             </div>
 
             <div class="col-lg-12 jezl-hm-services-des">
-                <p>Tijdelijk extra vrachtauto’s of bestelwagens nodig, desgewenst met chauffeurs? Jezsel heeft ze voor u. Wij bieden u flexibele capaciteit in transport en logistiek. Bekijk hier ons aanbod.</p>
-            </div>            
-            
+                <p>Tijdelijk extra vrachtauto’s of bestelwagens nodig, desgewenst met chauffeurs? Jezsel heeft ze voor
+                    u. Wij bieden u flexibele capaciteit in transport en logistiek. Bekijk hier ons aanbod.</p>
+            </div>
+
             <div class="col-lg-12">
                 <div class="owl-carousel owl-theme jezl-hm-services-g">
-                    <div class="item">
+                    <div class="item" *ngFor="let product of rentproducts"
+                        routerLink="/service-detail/{{product.route}}">
                         <div class="t-logo"> <img src="assets/images/logo/benz-logo.png"></div>
                         <div class="jezl-hm-truck-image">
-                            <img src="assets/images/services/truck.jpg">
+                            <img [src]="product.path + product.thumbnail">
                         </div>
                         <div class="jezl-t-title">
-                            Volvo FE 4X2 Koel Vries Bakwagen/ Rent
+                            {{product.name}}
                         </div>
                         <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€35 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
+                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>
                         </div>
                     </div>
                     <!-- item end here -->
-
-
-                    <div class="item">
-                        <div class="t-logo"> <img src="assets/images/logo/benz-logo.png"></div>
-                        <div class="jezl-hm-truck-image">
-                            <img src="assets/images/services/truck.jpg">
-                        </div>
-                        <div class="jezl-t-title">
-                            Volvo FE 4X2 Koel Vries Bakwagen/ Rent
-                        </div>
-                        <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€35 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
-                        </div>
-                    </div>
-                    <!-- item end here -->
-                    
-                    
-                    <div class="item">
-                        <div class="t-logo"> <img src="assets/images/logo/benz-logo.png"></div>
-                        <div class="jezl-hm-truck-image">
-                            <img src="assets/images/services/truck.jpg">
-                        </div>
-                        <div class="jezl-t-title">
-                            Volvo FE 4X2 Koel Vries Bakwagen/ Rent
-                        </div>
-                        <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€35 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
-                        </div>
-                    </div>
-                    <!-- item end here -->                    
-                  
+                    <p *ngIf="rentproducts.length==0">No Service found</p>
                 </div>
 
             </div>
@@ -247,59 +243,33 @@
         <div class="row">
             <div class="col-lg-12 jezl-hm-title-g">
                 <div class="jezl-hm-services-title">INHUUR PERSONEEL</div>
-                <a href="#">View all  <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0);" routerLink="/services/staffing">View all <i
+                        class="fa fa-angle-double-right" aria-hidden="true"></i></a>
             </div>
 
             <div class="col-lg-12 jezl-hm-services-des">
-                <p>Naast chauffeurs en heftruckchauffeurs hebben wij ander tijdelijk personeel in transport en logistiek voor u beschikbaar. Voor werkzaamheden als inpakken, ompakken, labelen, sorteren, orderpicken, beladen, kwaliteitscontroles en magazijnbeheer. Bekijk hier ons aanbod.</p>
-            </div>            
-            
+                <p>Naast chauffeurs en heftruckchauffeurs hebben wij ander tijdelijk personeel in transport en logistiek
+                    voor u beschikbaar. Voor werkzaamheden als inpakken, ompakken, labelen, sorteren, orderpicken,
+                    beladen, kwaliteitscontroles en magazijnbeheer. Bekijk hier ons aanbod.</p>
+            </div>
+
             <div class="col-lg-12">
                 <div class="owl-carousel owl-theme jezl-hm-services-g">
-                    <div class="item">
+                    <div class="item" *ngFor="let product of staffingproducts"
+                        routerLink="/service-detail/{{product.route}}">
                         <div class="jezl-hm-truck-image">
-                            <img src="assets/images/staff/staff.png">
+                            <img [src]="product.path + product.thumbnail">
                         </div>
                         <div class="jezl-t-title">
-                            Abdellah Achatibi
+                            {{product.name}}
                         </div>
                         <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€25 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
+                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>
                         </div>
                     </div>
                     <!-- item end here -->
-
-
-                    <div class="item">
-                        <div class="jezl-hm-truck-image">
-                            <img src="assets/images/staff/staff2.png">
-                        </div>
-                        <div class="jezl-t-title">
-                            Richard son
-                        </div>
-                        <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€25 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
-                        </div>
-                    </div>
-                    <!-- item end here -->
-                    
-                    
-                    <div class="item">
-                        <div class="jezl-hm-truck-image">
-                            <img src="assets/images/staff/staff3.png">
-                        </div>
-                        <div class="jezl-t-title">
-                            John Willam 
-                        </div>
-                        <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€25 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
-                        </div>
-                    </div>
-                    <!-- item end here -->                    
-                  
+                    <p *ngIf="staffingproducts.length==0">No Service found</p>
                 </div>
 
             </div>
@@ -314,59 +284,33 @@
         <div class="row">
             <div class="col-lg-12 jezl-hm-title-g">
                 <div class="jezl-hm-services-title">TRANSPORT</div>
-                <a href="#">View all  <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                <a href="javascript:void(0);" routerLink="/services/transport">View all <i
+                        class="fa fa-angle-double-right" aria-hidden="true"></i></a>
             </div>
 
             <div class="col-lg-12 jezl-hm-services-des">
-                <p>Wij beschikken met ons bedrijf Jezsel Transport over een transportvergunning. En kunnen de vervoersopdracht dus ook geheel van u overnemen. Dat scheelt u onder andere de administratieve rompslomp van het bijhouden van rij- en rusttijden. Bekijk hier ons aanbod.</p>
-            </div>            
-            
+                <p>Wij beschikken met ons bedrijf Jezsel Transport over een transportvergunning. En kunnen de
+                    vervoersopdracht dus ook geheel van u overnemen. Dat scheelt u onder andere de administratieve
+                    rompslomp van het bijhouden van rij- en rusttijden. Bekijk hier ons aanbod.</p>
+            </div>
+
             <div class="col-lg-12">
                 <div class="owl-carousel owl-theme jezl-hm-services-g">
-                    <div class="item">
+                    <div class="item" *ngFor="let product of transportproducts"
+                        routerLink="/service-detail/{{product.route}}">
                         <div class="jezl-hm-truck-image">
-                            <img src="assets/images/transport/fedex.png">
+                            <img [src]="product.path + product.thumbnail">
                         </div>
                         <div class="jezl-t-title">
-                            FedEx
+                            {{product.name}}
                         </div>
                         <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€50 / hr</div> 
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
+                            <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
+                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>
                         </div>
                     </div>
                     <!-- item end here -->
-
-
-                    <div class="item">
-                        <div class="jezl-hm-truck-image">
-                            <img src="assets/images/transport/dhl.png">
-                        </div>
-                        <div class="jezl-t-title">
-                            DHL
-                        </div>
-                        <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€50 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
-                        </div>
-                    </div>
-                    <!-- item end here -->
-                    
-                    
-                    <div class="item">
-                        <div class="jezl-hm-truck-image">
-                            <img src="assets/images/transport/truck.png">
-                        </div>
-                        <div class="jezl-t-title">
-                            Truck
-                        </div>
-                        <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€50 / hr</div>
-                             <a href="#" class="jezl-cst-booknow">Book now</a>   
-                        </div>
-                    </div>
-                    <!-- item end here -->                    
-                  
+                    <p *ngIf="transportproducts.length==0">No Service found</p>
                 </div>
 
             </div>
@@ -559,7 +503,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="jezl-videowrapper">
-                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/7lvXbfNBIQg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/7lvXbfNBIQg"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
 
             </div>
@@ -589,14 +536,14 @@
                         <p>Rented a car? always try to ensure top security for the pass for ensuring</p>
                     </div>
                     <!--box end here-->
-                    
+
                     <div class="htso">
                         <img src="assets/images/icon/support-icon.png">
                         <div class="title">24/7 Support</div>
                         <p>Rented a car? always try to ensure top security for the pass for ensuring</p>
                     </div>
                     <!--box end here-->
-                    
+
                     <div class="htso">
                         <img src="assets/images/icon/online-payments-icon.png">
                         <div class="title">Online Payments</div>
@@ -617,129 +564,67 @@
 
 <section class="Categories jezl-faq-sec">
     <div class="container">
-<!-- Start FAQ Area -->
+        <!-- Start FAQ Area -->
 
-<div class="row">
+        <div class="row">
 
-    <div class="col-lg-12 jezl-hm-title-g">
-        <div class="jezl-hm-services-title">FAQ</div>
-    </div>
-    <div class="col-lg-12 col-md-12">
-        <div class="faq-accordion">
-            <ul class="accordion">
-                <li class="accordion-item active">
-                    <a class="accordion-title" href="javascript:void(0)">
-                        <i class="fa fa-plus"></i>
-                        Q: What are my advantages of working with Jezsel ?
-                    </a>
+            <div class="col-lg-12 jezl-hm-title-g">
+                <div class="jezl-hm-services-title">FAQ</div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="faq-accordion">
+                    <ul class="accordion">
+                        <li class="accordion-item active">
+                            <a class="accordion-title" href="javascript:void(0)">
+                                <i class="fa fa-plus"></i>
+                                Q: What are my advantages of working with Jezsel ?
+                            </a>
 
-                    <p class="accordion-content show">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </li>
-                
-                <li class="accordion-item">
-                    <a class="accordion-title" href="javascript:void(0)">
-                        <i class="fa fa-plus"></i>
-                        Q: How does Jezsel get good staff ?
-                    </a>
+                            <p class="accordion-content show">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </li>
 
-                    <p class="accordion-content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </li>
+                        <li class="accordion-item">
+                            <a class="accordion-title" href="javascript:void(0)">
+                                <i class="fa fa-plus"></i>
+                                Q: How does Jezsel get good staff ?
+                            </a>
 
-                <li class="accordion-item">
-                    <a class="accordion-title" href="javascript:void(0)">
-                        <i class="fa fa-plus"></i>
-                        Q: How do I gain insight into your capacity and costs ?
-                    </a>
+                            <p class="accordion-content">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </li>
 
-                    <p class="accordion-content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </li>                
-                
-               
-            </ul>
+                        <li class="accordion-item">
+                            <a class="accordion-title" href="javascript:void(0)">
+                                <i class="fa fa-plus"></i>
+                                Q: How do I gain insight into your capacity and costs ?
+                            </a>
+
+                            <p class="accordion-content">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+
         </div>
-    </div>
 
-    
-</div>
-
-<!-- End FAQ Area -->
+        <!-- End FAQ Area -->
     </div>
 </section>
 
 
-<section class="Categories jezl-faq-sec">
-    <div class="container">
-
-<div class="row">
-
-    <div class="col-lg-12 jezl-hm-title-g">
-        <div class="jezl-hm-services-title">VERHUUR VERVOERMIDDEL</div>
-    </div>
-    <div class="col-lg-12 col-md-12 testimonials">
-        <div class="owl-carousel owl-theme testi">
-            <!-- Single Starts -->
-               <div class="item">
-                <div class="profile">
-                    <img src="images/testimonial.png" alt="">
-                    <div class="information">
-                        
-                        <p>Will Smith</p>
-                        <span>City Name</span>
-                    </div>
-                  </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita velit labore suscipit distinctio, officiis deserunt rem blanditiis ducimus. Voluptate quaerat assumenda qui veniam facilis doloribus maiores impedit ducimus cum accusamus.</p>
-                    <div class="icon">
-                        <img src="images/quote.png">
-                    </div>
-              </div>
-            <!-- Single Ends -->
-              <div class="item">
-                <div class="profile">
-                    <img src="images/testimonial.png" alt="">
-                    <div class="information">
-                        
-                        <p>Will Smith</p>
-                        <span>City Name</span>
-                    </div>
-                  </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita velit labore suscipit distinctio, officiis deserunt rem blanditiis ducimus. Voluptate quaerat assumenda qui veniam facilis doloribus maiores impedit ducimus cum accusamus.</p>
-                    <div class="icon">
-                       <img src="images/quote.png">
-                    </div>
-              </div>
-              <div class="item">
-                <div class="profile">
-                    <img src="https://images.unsplash.com/photo-1521225099409-8e1efc95321d?ixlib=rb-1.2.1&auto=format&fit=crop&h=153&q=80" alt="">
-                    <div class="information">
-                        
-                        <p>Will Smith</p>
-                        <span>City Name</span>
-                    </div>
-                  </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita velit labore suscipit distinctio, officiis deserunt rem blanditiis ducimus. Voluptate quaerat assumenda qui veniam facilis doloribus maiores impedit ducimus cum accusamus.</p>
-                    <div class="icon">
-                        <img src="images/quote.png">
-                    </div>
-              </div>
-          </div>
-
-
-          
-
-        
-    </div>
-
-    
-</div>
-
-
-    </div>
-</section>
 
 <!-- <app-book-now-popup></app-book-now-popup> -->

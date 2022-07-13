@@ -36,17 +36,50 @@ export class HomeComponent implements OnInit {
 
   ngAfterViewInit() {
     this.loadDatePicker();
+    $(function () {
+      $('.accordion').find('.accordion-title').on('click', function (ev: any) {
+        // debugger
+        // Adds Active Class
+        $(ev.target).toggleClass('active');
+        // Expand or Collapse This Panel
+        $(ev.target).next().slideToggle('fast');
+        // Hide The Other Panels
+        $('.accordion-content').not($(ev.target).next()).slideUp('fast');
+        // Removes Active Class From Other Titles
+        $('.accordion-title').not($(ev.target)).removeClass('active');
+      });
+    });
+    $('.testi.owl-carousel').owlCarousel({
+      items: 2,
+      margin: 50,
+      lazyLoad: true,
+      dots: true,
+      autoPlay: true,
+      autoPlayTimeout: 1500,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        600: {
+          items: 2,
+        },
+        1000: {
+          items: 2,
+        }
+      }
+    });
+
   }
 
   loadDatePicker() {
-    setTimeout(()=>{
+    setTimeout(() => {
       $("#datepicker").datepicker({
         dateFormat: "dd-mm-yy",
         minDate: 0,
         duration: "fast"
       }).change((ev: any) => {
         this.formGroup.patchValue({ checkindate: ev.target.value, checkoutdate: ev.target.value });
-        $("#datepicker-out").datepicker( "option", "minDate", ev.target.value);
+        $("#datepicker-out").datepicker("option", "minDate", ev.target.value);
         $("#datepicker-out").val(ev.target.value);
       });
       $("#datepicker-out").datepicker({
@@ -56,7 +89,7 @@ export class HomeComponent implements OnInit {
       }).change((ev: any) => {
         this.formGroup.patchValue({ checkoutdate: ev.target.value });
       });
-    })    
+    })
   }
 
   getProducts() {
@@ -102,37 +135,37 @@ export class HomeComponent implements OnInit {
   search() {
     let checkintimeIndex = this.slots.indexOf(this.formGroup.value.checkintime);
     let checkouttimeIndex = this.slots.indexOf(this.formGroup.value.checkouttime);
-    if((this.formGroup.value.checkindate == this.formGroup.value.checkoutdate)){
+    if ((this.formGroup.value.checkindate == this.formGroup.value.checkoutdate)) {
       let findDifference = checkouttimeIndex - checkintimeIndex;
-      if(findDifference > 3 && this.formGroup.value.type.toLowerCase() == 'rent'){
+      if (findDifference > 3 && this.formGroup.value.type.toLowerCase() == 'rent') {
         this.searchResult();
       }
-      else if(findDifference > 31 && this.formGroup.value.type.toLowerCase() == 'staffing'){
+      else if (findDifference > 31 && this.formGroup.value.type.toLowerCase() == 'staffing') {
         this.searchResult();
       }
-      else if(findDifference > 15 && this.formGroup.value.type.toLowerCase() == 'transport'){
+      else if (findDifference > 15 && this.formGroup.value.type.toLowerCase() == 'transport') {
         this.searchResult();
       }
-      else{
+      else {
         let message = '';
-        if(this.formGroup.value.type.toLowerCase() == 'rent'){
+        if (this.formGroup.value.type.toLowerCase() == 'rent') {
           message = 'Please select minium one hour';
         }
-        else if(this.formGroup.value.type.toLowerCase() == 'staffing'){
+        else if (this.formGroup.value.type.toLowerCase() == 'staffing') {
           message = 'Please select minium eight hours';
         }
-        else if(this.formGroup.value.type.toLowerCase() == 'transport'){
+        else if (this.formGroup.value.type.toLowerCase() == 'transport') {
           message = 'Please select minium four hours';
         }
         this.http.errorMessage(message);
       }
     }
-    else{
+    else {
       this.searchResult();
     }
   }
 
-  searchResult(){
+  searchResult() {
     localStorage.setItem('search', JSON.stringify(this.formGroup.value));
     this.router.navigateByUrl('services/' + this.formGroup.value.type + '?page=home');
   }
@@ -150,12 +183,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  bookNow(product: any) {
+  bookNow(product: any, event: any) {
+    event.stopPropagation()
     this.communication.openProductModal.emit(product)
   }
 
-  changeCheckin(){
-    let obj = {checkouttime: ''};
+  changeCheckin() {
+    let obj = { checkouttime: '' };
     this.formGroup.patchValue(obj);
   }
 
@@ -169,14 +203,14 @@ export class HomeComponent implements OnInit {
   //   return result;
   // }
 
-  checkoutDisabled(slot: any){
+  checkoutDisabled(slot: any) {
     let result = false;
     let checkintimeIndex = this.slots.indexOf(this.formGroup.value.checkintime);
     let checkouttimeIndex = this.slots.indexOf(slot);
-    if((this.formGroup.value.checkindate == this.formGroup.value.checkoutdate) && (checkintimeIndex >= checkouttimeIndex)){
+    if ((this.formGroup.value.checkindate == this.formGroup.value.checkoutdate) && (checkintimeIndex >= checkouttimeIndex)) {
       result = true;
     }
-    if(this.formGroup.value.checkoutdate){
+    if (this.formGroup.value.checkoutdate) {
       let date = new Date();
       let currentHours = date.getHours();
       let currentMinutes = date.getMinutes();
@@ -189,19 +223,19 @@ export class HomeComponent implements OnInit {
       // if((this.formGroup.value.checkoutdate == updatedCurrentDate) &&(currentHours >= slotHours) && (currentMinutes >= slotMinutes)){
       //   result = true;
       // }
-      if((this.formGroup.value.checkoutdate == updatedCurrentDate) &&(currentHours > slotHours)){
+      if ((this.formGroup.value.checkoutdate == updatedCurrentDate) && (currentHours > slotHours)) {
         result = true;
       }
-      else if((this.formGroup.value.checkoutdate == updatedCurrentDate) &&(currentHours == slotHours) && (currentMinutes >= slotMinutes)){
+      else if ((this.formGroup.value.checkoutdate == updatedCurrentDate) && (currentHours == slotHours) && (currentMinutes >= slotMinutes)) {
         result = true;
       }
     }
     return result;
   }
 
-  checkinDisabled(slot: any){
+  checkinDisabled(slot: any) {
     let result = false;
-    if(this.formGroup.value.checkindate){
+    if (this.formGroup.value.checkindate) {
       let date = new Date();
       let currentHours = date.getHours();
       let currentMinutes = date.getMinutes();
@@ -214,14 +248,14 @@ export class HomeComponent implements OnInit {
       // if((this.formGroup.value.checkindate == updatedCurrentDate) &&(currentHours >= slotHours) && (currentMinutes >= slotMinutes)){
       //   result = true;
       // }
-      if((this.formGroup.value.checkindate == updatedCurrentDate) &&(currentHours > slotHours)){
+      if ((this.formGroup.value.checkindate == updatedCurrentDate) && (currentHours > slotHours)) {
         result = true;
       }
-      else if((this.formGroup.value.checkindate == updatedCurrentDate) &&(currentHours == slotHours) && (currentMinutes >= slotMinutes)){
+      else if ((this.formGroup.value.checkindate == updatedCurrentDate) && (currentHours == slotHours) && (currentMinutes >= slotMinutes)) {
         result = true;
       }
     }
-    
+
     return result;
   }
 
