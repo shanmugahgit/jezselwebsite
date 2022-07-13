@@ -183,7 +183,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  bookNow(product: any) {
+  bookNow(product: any, event: any) {
+    event.stopPropagation()
     this.communication.openProductModal.emit(product)
   }
 
