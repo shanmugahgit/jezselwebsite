@@ -67,6 +67,7 @@ This file contains the common styles of this theme.
 @import "../css/jquery.fancybox.min.css";
 @import "../css/responsive.css";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700'); 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
 
 /*
@@ -1437,16 +1438,17 @@ figure {
 
 .tab_container label {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 25px;
     display: block;
     float: left;
     width: 20%;
-    padding: 1em;
+    padding: 5px;
     color: #fff;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
     background: rgba(0, 0, 0, 0.4);
+    font-family: 'Lato', sans-serif;
 }
 
 #tab1:checked~#content1,
@@ -12674,7 +12676,8 @@ a {
 	color: #fff !important;
 	margin-top: 100px;;
 	font-size: 45px;
-	font-weight: bold;
+	font-weight: 700;
+    font-family: 'Lato', sans-serif;  
 	}
 	
 	.jezl-welcome-cnt-sec{
@@ -12682,19 +12685,27 @@ a {
 	}
 	.jezl-hm-ons{ 
 		color: #000;
-		font-size: 30px;
-		font-weight: bold;
+		font-size: 28px;
+		font-weight: 700;
 		font-stretch: normal;
 		font-style: normal;
 		line-height: normal;
 		letter-spacing: normal;
 		border-bottom: 1px solid #9A99A2;
 		display: inline-block;
+        font-family: 'Lato', sans-serif;
 	}
-	.jezl-hm-weltxt{  font-size: 40px; color:var(--jezl-g-red); font-weight: bold; text-transform:uppercase;}
-	
+	.jezl-hm-weltxt{  font-size: 33px; color:var(--jezl-g-red); font-weight: 700; text-transform:uppercase; font-family: 'Lato', sans-serif;}
+	.fnt-fam {font-family: 'Lato', sans-serif !important; font-size: 14px;}
+    .fnt-b100{font-weight: 100 !important; }
+    .fnt-b300{font-weight: 300 !important; }
+    .fnt-b400{font-weight: 400 !important; }
+    .fnt-b700{font-weight: 700 !important; }
+    .fnt-b900{font-weight: 900 !important; }
+
+
 	ul.jezl-hn-wel-ser{ margin: 0; padding: 0; list-style-type: none;}
-	ul.jezl-hn-wel-ser li { display: grid; grid-template-columns: 42px 1fr; grid-gap: 10px; margin-bottom: 10px; align-items: center;}
+	ul.jezl-hn-wel-ser li { font-family: 'Lato', sans-serif; display: grid; grid-template-columns: 30px 1fr; grid-gap: 10px; margin-bottom: 5px; align-items: center; font-weight: 700;}
 	
 	.jezl-wwd-cnt-sec{
 		background-color: #d9d9d9;
@@ -12726,9 +12737,19 @@ a {
 		justify-content: center;
 	}
 	ul.wwd-ser .wwd-cle img{ width: 30px; height: auto;}
-	ul.wwd-ser .wwd-cle img.uti{ width: 25px; height: auto;}
+    ul.wwd-ser .wwd-cle img.uti{ width: 25px; height: auto;}
+    ul.wwd-ser .wwd-cle.uti svg{ width: 25px; height: auto;}
+    ul.wwd-ser .wwd-cle svg{ width: 33px; height: auto; fill: var(--jezl-g-red);;}
+    ul.wwd-ser .wwd-cle:hover svg path {
+        fill: black;
+        transition: all ease 0.3s;
+      }
+
 	
-	.jezl-wwd-cnt-sec ul li{ display: grid; grid-template-columns: 60px 1fr; grid-gap: 10px; margin-bottom: 10px; align-items: center;}
+	.jezl-wwd-cnt-sec ul li{ 
+        display: grid; grid-template-columns: 60px 1fr; grid-gap: 10px; margin-bottom: 10px; 
+        align-items: center; font-weight: 700;
+        font-family: 'Lato', sans-serif;}
 	.jezl-wwd-rt-img{
 		display: flex;
 		align-items: flex-end;}
@@ -12764,7 +12785,7 @@ a {
 	.jezl-htso-sec-st {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 20px;
+		grid-gap: 40px;
 	}
 	
 	.jezl-htso-sec-st .htso{
@@ -12772,7 +12793,7 @@ a {
 		flex-direction: column;
 		background-color: #fff;
 		border-radius: 10px;
-		padding: 35px 20px;
+		padding: 35px 17px;
 		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 		border: solid 1px #9a99a2;
 		align-items: center;
@@ -12791,6 +12812,8 @@ a {
 	.jezl-htso-sec-st .htso p{
 		text-align: justify;
 		color: #9a99a2;
+        font-size: 18px;
+        line-height: 20px;
 	
 	}
 
@@ -12943,10 +12966,14 @@ Home services CSS
         border-bottom: 1px solid #9a99a2;
         display: inline-block;
     }
-    .jezl-hm-services-des{
+        .jezl-hm-services-des{
         margin-bottom: 20px;
+        }
+        
+        .jezl-hm-services-des p{
+           font-weight: 700;
             }
-
+            
 
     .jezl-hm-services-g{ 
         display: grid;
@@ -13058,11 +13085,12 @@ padding: 50px 0px;
 	color: #fff;
 	position: relative;
 	display: block;
-	font-size: 18px;
-	font-weight: 700;
-    background-color: var(--jezl-g-red); 
-	border-radius:10px ;
-  }
+	font-size: 23px;
+	font-weight: 400;
+	background-color: var(--jezl-g-red);
+	border-radius: 10px;
+	font-family: lato;
+}
   
   .faq-accordion .accordion .accordion-title i {
 	position: absolute;
@@ -13086,7 +13114,9 @@ padding: 50px 0px;
 	position: relative;
 	padding: 15px 20px;
 	font-size: 14px;
-	color: #4a6f8a;
+	color: #fff;
+    background-color: #000;
+    border-radius: 10px;
   } 
   
   .faq-accordion .accordion .accordion-content.show {
@@ -13161,14 +13191,16 @@ Footer Area CSS
         margin-bottom: 20px;
     }
     .jezl-subscribe .ft-title{ font-size: 25px;}
-    .jezl-subscribe input{color: #C4C4C4;  background: transparent; border:0px; border-bottom:1px solid #C4C4C4; width: 100%;}
+    .jezl-subscribe input{padding-bottom: 10px;color: #C4C4C4;  background: transparent; border:0px; border-bottom:1px solid #C4C4C4; width: 100%;}
     .jezl-subscribe input::placeholder{ color: #fff;}
     .jezl-flo-text{ color: #C4C4C4;}
     .jezl-subscribe button{ background: transparent;
-        border: 0px;
+        border: 1px solid #C4C4C4;
         position: absolute;
-        top: -12px;
-        right: -5px;}
+        top: -10px;
+        right: 0px;
+    }
+        .jezl-subscribe button:hover{ background-color: #ff0000; }
     .jezl-subscribe-frm-g{ 
         position: relative;
     }
@@ -13184,13 +13216,17 @@ Footer Area CSS
         list-style-type: none;
         color: #fff;
     }
-    ul.jezl-footer-contact li{ margin-bottom: 20px;}
+    ul.jezl-footer-contact li{ margin-bottom: 13px;}
     ul.jezl-footer-contact li img{
         width: 20px;
         height: auto;
         margin-right: 5px;
     }
     ul.jezl-footer-contact li a{ color: #fff;}
+    ul.jezl-footer-contact li ul{ margin: 0; padding: 0; list-style: none;}
+    ul.jezl-footer-contact li ul li { margin-bottom: 0px; padding-left: 10px;}
+
+    ul.jezsel-ftmenu{ display: none;}
     
     .jezl-ftr-social-icons ul{
         margin: 0;
