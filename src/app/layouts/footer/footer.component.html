@@ -1,5 +1,6 @@
 <!-- =======================
 	footer  -->
+  
 <footer class="footer position-relative jezl-footer-tl">
   <div class="container">
   <div class="jezl-footer-g">
@@ -20,15 +21,22 @@
       <ul class="jezl-footer-contact">
 
         <li><a href="#" routerLink="/">Home</a></li>
-        <li><a href="#" routerLink="/services/rent">Rent</a></li>
-        <li><a href="#" routerLink="/services/staffing">Staffing</a></li>
-        <li><a href="#" routerLink="/services/transport">Transport</a></li>
-        <li><a href="#" routerLink="/about-us">About Us</a></li>
+        <li><a href="javascript:void(0);" id="jezsel-ftmenu-show">Services <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+              <ul  class="jezsel-ftmenu">
+                <li><a href="#" routerLink="/rent">Rent</a></li>
+                <li><a href="#" routerLink="/staffing">Staffing</a></li>
+                <li><a href="#" routerLink="/transport">Transport</a></li> 
+              </ul>
+        
+        </li>
+
         <li><a href="#" routerLink="/locations">Location</a></li>
  
       </ul>
     </div>
     <!-- clm end here -->
+
+    
     
     <div class="clm">
       <div class="ft-title">Quick Links:</div>
@@ -47,7 +55,12 @@
       <div class="ft-title">SUBSCRIBE:</div>
          <div class="jezl-subscribe-frm-g">
             <input type="text" placeholder="YOUR MAIL">
-            <button><img src="assets/images/icon/arrow-left.png"></button>
+            <button>
+              <svg  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.802246 9.96282C0.802246 9.33193 1.32849 8.8205 1.97765 8.8205H18.4334C19.0825 8.8205 19.6088 9.33193 19.6088 9.96282C19.6088 10.5937 19.0825 11.1051 18.4334 11.1051H1.97765C1.32849 11.1051 0.802246 10.5937 0.802246 9.96282Z" fill="#C4C4C4"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0367 1.1588C11.4957 1.6049 11.4957 2.32818 11.0367 2.77429L3.63993 9.96282L11.0367 17.1514C11.4957 17.5975 11.4957 18.3207 11.0367 18.7668C10.5776 19.213 9.8334 19.213 9.37438 18.7668L1.14652 10.7706C0.68749 10.3245 0.68749 9.60118 1.14652 9.15508L9.37438 1.1588C9.8334 0.712692 10.5776 0.712692 11.0367 1.1588Z" fill="#C4C4C4"/>
+              </svg>
+              </button>
             <p class="jezl-flo-text">Follow our newsletter to stay updated about agency.</p>
           </div> 
           <div class="jezl-ftr-social-icons">
@@ -60,6 +73,8 @@
 
           </ul>
         </div> 
+
+
 
     </div>
     <!-- clm end here -->     

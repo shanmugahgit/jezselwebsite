@@ -188,3 +188,10 @@ $(function() {
 		$('.accordion-title').not($(this)).removeClass('active');		
 	});
 });
+
+// footer sub menu
+$(document).ready(function() {
+	$('#jezsel-ftmenu-show').click(function() {
+		$('.jezsel-ftmenu').toggle("slide");
+	});
+});
