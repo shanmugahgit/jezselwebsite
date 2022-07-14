@@ -1722,6 +1722,7 @@ footer .widget {
 .copyright-text {
     width: 100%;
     text-align: center;
+    font-size: 13px;
 }
 
 .footer-copyright {
@@ -13176,6 +13177,7 @@ Footer Area CSS
         background: transparent;
         border-top: 1px solid #C4C4C4;
         color: #fff;
+        
     }
     
     .jezl-footer-g{
