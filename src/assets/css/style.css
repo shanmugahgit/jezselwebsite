@@ -12921,8 +12921,8 @@ Home Booking CSS
 		
 		#jezl-hm-search .btn-primary:disabled {
 			background-color: var(--jezl-g-red);
-			border: none;
-            border-bottom-right-radius: 10px;
+			border: 0px;
+            border-bottom-right-radius: 10px; 
 			
 		}
 		
