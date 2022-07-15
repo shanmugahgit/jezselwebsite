@@ -19,7 +19,7 @@ export class FooterComponent implements OnInit {
 
       $(document).ready(function() {
         $('#jezsel-ftmenu-show').click(function() {
-          $('.jezsel-ftmenu').toggle("slide");
+          $('.jezsel-ftmenu').toggle("fadein");
         });
       });
 

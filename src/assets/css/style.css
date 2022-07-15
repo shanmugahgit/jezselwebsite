@@ -12957,6 +12957,26 @@ Home services CSS
 		padding: 50px 0px;
 	}  
 
+    /*
+    .jezl-sec-ban-overlay{
+        clear: both;
+    }
+
+
+    .jezl-sec-ban-overlay::before{
+        content:"";
+        display:block;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        bottom: 0;
+        right: 0;
+        width:100%;
+        background-color: rgba(0, 0, 0, 0.2)
+        }
+        */
+
     .jezl-hm-title-g{ display: flex; justify-content: space-between; margin-bottom: 20px;}
     .jezl-hm-title-g a{ font-size: 14px;  color:var(--jezl-g-red);}
     .jezl-hm-title-g .jezl-hm-services-title { 
@@ -13399,12 +13419,12 @@ margin-bottom: 10px;
 
 
 /*================================================
-  Profiel Page CSS
+  Profile Page CSS
 =================================================*/  
 .jezsel-profile-section{ border: 1px solid var(--jezl-g-red); margin-bottom: 20px; border-radius: 10px; padding: 20px;}
 .jezsel-profile-section h3{ font-size: 20px; font-weight: bold;}
 .jezsel-profile-section .form-group input, .jezsel-couponcode-text .form-group input, .jezsel-couponcode-text .form-group select, .jezsel-profile-section .form-group select{ border: 1px solid #aeaeae; border-radius: 4px; }
-.jezsel-profile-lt-nav{background: #FFE3E3 !important; margin-bottom: 30px;}
+.jezsel-profile-lt-nav{ background: #FFE3E3 !important; margin-bottom: 30px;}
 .jezsel-profile-section table th{ background-color: #e7e7e7 !important;}
 .jezsel-profile-section .table-bordered th, .jezsel-profile-section .table-bordered td{ border: 1px solid #bfbfbf;}
 
