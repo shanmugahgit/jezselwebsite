@@ -18,55 +18,58 @@
 	Form -->
 <section class="pt80 pb80 eleform">
     <div class="container">      
-        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left">
+        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left  jezsel-profile-section">
             <form action="#" autocomplete="off">
                 <div class="pb-left">
                     <div id="moreFilters" class="collapse show">
                         <div class="filter-block">
-                            <h2 class="mb-3">Summary</h2>
+                            <h1 class="mb-3"><strong>Summary</strong></h1>
                             <hr>
                             <div class="summary" *ngFor="let product of dataLists;let i =index;">
-                                <table>
+                                <table style="width:100%;">
                                     <tr>
                                         <td>
                                             <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
                                         </td>
-                                        <td class="pl-2">
+                                        <td class="pl-2 text-right font-weight-bold">
                                             <h4><span>&#8364;</span>{{product.priceperhr}}</h4>
                                         </td>
                                     </tr>
                                     <tr *ngFor="let x of product['Extras']">
                                         <td *ngIf="x.checked">{{x.description}}</td>
-                                        <td class="pl-2" *ngIf="x.checked"><span>&#8364;</span>{{x.price}}</td>
+                                        <td class="pl-2 " *ngIf="x.checked"><span>&#8364;</span>{{x.price}}</td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h4>Advance Payment</h4>
+                                            <h4 class="font-weight-bold">Advance Payment</h4>
                                         </td>
-                                        <td class="pl-2">
+                                        <td class="pl-2 text-right font-weight-bold">
                                             <h4><span>&#8364;</span>{{product.advancePayment}}</h4>
                                         </td>
                                     </tr>
                                 </table>
                                 <hr>
                             </div>
-                            <h4 *ngIf="couponPrice">Discount: <span class="float-right"> <span>&#8364;</span>{{couponPrice}}</span>
+
+                            <h4 *ngIf="couponPrice" class="font-weight-bold">Discount: <span class="float-right "> <span>&#8364;</span>{{couponPrice}}</span>
                                 <hr>
                             </h4>
-                            <h5>Total: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                             
+                            <h5 class="float-right font-weight-bold">Total: <span class=""> <span>&#8364;</span>{{total}}</span>
                             </h5>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
         <div class="row mt-3">
-            <div class="col-lg-4">
+            <div class="col-lg-4 jezsel-couponcode-text">
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="Coupon Code" [(ngModel)]="coupon">
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4"> 
                 <div class="form-group">
                     <button class="btn btn-primary" (click)="applyCoupon()">Apply</button>
                 </div>
@@ -74,7 +77,7 @@
         </div>  
         <form class="mt-4" [formGroup]="formGroup" (ngSubmit)="orderNow()">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 jezsel-couponcode-text">
                     <div class="form-group">
                         <select class="form-control" formControlName="type">
                             <option value="">Type</option>
@@ -100,8 +103,10 @@
                     </div>
                 </div>
             </div>
+
+            <div class="jezsel-profile-section">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                     <h3>Vesigingsadres</h3>
                         <div class="form-group mt-4">
                             <input class="form-control" type="text" placeholder="Straat" formControlName="vesigingstraat">
@@ -208,6 +213,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+            
         </form>
     </div>
 </section>

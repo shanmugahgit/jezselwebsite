@@ -366,6 +366,7 @@ Header 1 Area CSS
 .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #ed1c24;
+    border-radius: 0px;
 }
 
 .nav-fill .nav-item {
@@ -1155,8 +1156,8 @@ header.navbar-sticky-on .navbar-brand .navbar-brand-item {
 
 .nav.flex-column .nav-link {
     padding-left: 0;
-    padding-top: 0.30rem;
-    padding-bottom: 0.30rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .dropdown-item {
@@ -13397,6 +13398,36 @@ margin-bottom: 10px;
 .jezl-ser-popup-rtclm{ align-self: center;} 
 
 
+/*================================================
+  Profiel Page CSS
+=================================================*/  
+.jezsel-profile-section{ border: 1px solid var(--jezl-g-red); margin-bottom: 20px; border-radius: 10px; padding: 20px;}
+.jezsel-profile-section h3{ font-size: 20px; font-weight: bold;}
+.jezsel-profile-section .form-group input, .jezsel-couponcode-text .form-group input, .jezsel-couponcode-text .form-group select, .jezsel-profile-section .form-group select{ border: 1px solid #aeaeae; border-radius: 4px; }
+.jezsel-profile-lt-nav{background: #FFE3E3 !important; margin-bottom: 30px;}
+.jezsel-profile-section table th{ background-color: #e7e7e7 !important;}
+.jezsel-profile-section .table-bordered th, .jezsel-profile-section .table-bordered td{ border: 1px solid #bfbfbf;}
+
+/*================================================
+  Payment successfull and failure  Page CSS
+=================================================*/  
+.jezsel-payment-successfully, .jezsel-payment-failure {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.jezsel-payment-successfully i{ font-size: 100px; color: #66cc00; margin-bottom: 10px;}
+.jezsel-payment-successfully h2{ color: #66cc00; font-weight: bold; font-size: 25px;}
+
+.jezsel-payment-failure i{ font-size: 100px; color: var(--jezl-g-red); margin-bottom: 10px;}
+.jezsel-payment-failure h2{ color:var(--jezl-g-red); font-weight: bold; font-size: 25px;}
+
+/*================================================
+  Booking Page CSS
+=================================================*/  
+
+.jezsel-profile-section .summary  table td { padding: 10px 0px;}
 
 /*================================================
   Responsive CSS
