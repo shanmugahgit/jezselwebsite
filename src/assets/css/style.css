@@ -12979,9 +12979,9 @@ Home services CSS
             
 
     .jezl-hm-services-g{ 
-        display: grid;
+        /*display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap:20px;
+        grid-gap:20px;*/
 	}   
     .jezl-hm-services-g .item, .jezl-hm-services-gclm .item{
         border: solid 1px #9a99a2;

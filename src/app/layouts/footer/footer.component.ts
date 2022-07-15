@@ -15,6 +15,19 @@ export class FooterComponent implements OnInit {
   ngAfterViewInit() {
     setTimeout(()=>{
 
+
+
+      $(document).ready(function() {
+        $('#jezsel-ftmenu-show').click(function() {
+          $('.jezsel-ftmenu').toggle("slide");
+        });
+      });
+
+
+
+      
+
+
     }, 200)
   }
 
