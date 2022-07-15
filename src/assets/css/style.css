@@ -367,6 +367,7 @@ Header 1 Area CSS
     color: #fff;
     background-color: #ed1c24;
     border-radius: 0px;
+   
 }
 
 .nav-fill .nav-item {
@@ -12868,7 +12869,7 @@ Home Booking CSS
 			margin: 0 auto;
 			padding-top: 0px;
 			position: relative;
-			max-width: 900px;
+			max-width: 940px;
 		   
 		}
 	
@@ -12899,16 +12900,29 @@ Home Booking CSS
         
         .tab_container [id^="tab"]:checked + label:last-of-type , .tab_container label:last-of-type   {
             border-top-right-radius: 10px !important;   
+            border-right: 0px;
         }   
                
-       
-		#jezl-hm-search .form-control::placeholder{ font-size: 10px;    color:#000; 
+       #jezl-hm-search .col-lg-3.jezl-location-cw{
+
+            flex: 0 0 28%;
+            max-width: 28%;
+       }
+
+
+       #jezl-hm-search {
+        display: grid;
+        grid-template-columns: 1.7fr 0.9fr 1fr 0.9fr 1fr 0.6fr;
+      
+    }
+
+		#jezl-hm-search .form-control::placeholder{ font-size: 12px;    color:#000; 
 			font-weight: bold;}
 		
 		#jezl-hm-search select {
-			padding: 14px 15px 12px 12px; 
+			padding: 14px 5px 12px 12px; 
 			color: #7a8797;
-			font-size: 10px;
+			font-size: 12px;
 			padding-left: 28px;
 			color:#000;
 			font-weight: bold;
@@ -12925,10 +12939,19 @@ Home Booking CSS
 			background-color: var(--jezl-g-red);
 			border: 0px;
             border-bottom-right-radius: 10px; 
+            border-top-right-radius: 0px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
 			
 		}
 		
-		#jezl-hm-search .btn-grad{ background-color:var(--jezl-g-red); height: 65px; border-bottom-right-radius: 10px;}
+		#jezl-hm-search .btn-grad{ 
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-top-right-radius: 0px; 
+            background-color:var(--jezl-g-red); 
+            height: 65px; 
+            border-bottom-right-radius: 10px;}
 		
 		#tab1:checked ~ #content1, #tab2:checked ~ #content1, #tab3:checked ~ #content1, #tab4:checked ~ #content1, #tab5:checked ~ #content1 {
 			display: block;
@@ -13427,6 +13450,11 @@ margin-bottom: 10px;
 .jezsel-profile-lt-nav{ background: #FFE3E3 !important; margin-bottom: 30px;}
 .jezsel-profile-section table th{ background-color: #e7e7e7 !important;}
 .jezsel-profile-section .table-bordered th, .jezsel-profile-section .table-bordered td{ border: 1px solid #bfbfbf;}
+.jezsel-profile-wallet-swith{ display: inline-flex !important; background-color: #939393 !important; border-radius: 8px !important;}
+.jezsel-profile-wallet-swith a{ color: #fff;}
+.jezsel-profile-wallet-swith a.nav-link{ padding: 10px 20px !important;}
+.jezsel-profile-wallet-swith a.nav-link.active{ border-radius: 8px !important;}
+
 
 /*================================================
   Payment successfull and failure  Page CSS
@@ -13443,6 +13471,8 @@ margin-bottom: 10px;
 .jezsel-payment-failure i{ font-size: 100px; color: var(--jezl-g-red); margin-bottom: 10px;}
 .jezsel-payment-failure h2{ color:var(--jezl-g-red); font-weight: bold; font-size: 25px;}
 
+
+
 /*================================================
   Booking Page CSS
 =================================================*/  
@@ -13452,9 +13482,6 @@ margin-bottom: 10px;
 /*================================================
   Responsive CSS
 =================================================*/  
-
-
-
 @media screen and (max-width: 991px) {
 
     .jezl-htso-sec-st {

@@ -302,8 +302,8 @@
                         <div class="section mb-5">
                           
                                 <h3>Wallet - {{currentWallet}} (Interest - {{currentInterest}})</h3>
-                                <div class="nav nav-pills mt-2" id="v-pills-tab" role="tablist"
-                                    aria-orientation="horizontal">
+                                <div class="nav nav-pills mt-2 jezsel-profile-wallet-swith" id="v-pills-tab" role="tablist"
+                                    aria-orientation="horizontal" >
                                     <a class="nav-link active pl-4" id="v-pills-withdraw-tab" data-toggle="pill"
                                         href="#v-pills-withdraw" role="tab" aria-controls="v-pills-withdraw"
                                         aria-selected="true" (click)="showWithdraw=true;showDeposit=false;">Withdraw</a>
@@ -362,7 +362,7 @@
                                 <div class="tab-pane fade" id="v-pills-deposit" role="tabpanel"
                                     aria-labelledby="v-pills-deposit-tab" *ngIf="showDeposit">
                                     <div class="section mb-5">
-                                        <div class="container">
+                                       
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <!-- <h5>Interest - {{availableInterest}}</h5> -->
@@ -417,7 +417,7 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div>
+                                      
                                     </div>
                                 </div>
                         

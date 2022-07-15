@@ -26,7 +26,7 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                         <section id="content1" class="tab-content">
                             <form [formGroup]="formGroup" (ngSubmit)="search()">
                                 <div class="row"  id="jezl-hm-search">
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group"> <span><img src="assets/images/icon/location.png"></span>
                                             <!-- <input type="hidden" formControlName="locationid"> -->
                                             <input class="form-control" type="text" placeholder="City, Point of Interest or U.S. Zip Code" (focus)="showLocationData()" (keypress)="showLocationData()" formControlName="location">
@@ -35,12 +35,12 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker" autocomplete="off" placeholder="Check-in">
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
                                             <!-- <input class="form-control" type="text" id="timepicker" autocomplete="off" placeholder="Check-in"> -->
@@ -50,13 +50,13 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                                         </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker-out" autocomplete="off" placeholder="Check-out">
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
                                             <select class="form-control" placeholder="check-out Time" formControlName="checkouttime">
@@ -67,7 +67,7 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group">
                                             <button class="btn btn-primary btn-lg btn-grad" type="submit"
                                             [disabled]="formGroup.invalid"><img src="assets/images/icon/search.png"></button>

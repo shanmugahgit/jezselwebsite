@@ -42,7 +42,7 @@
                         <section id="content1" class="tab-content">
                             <form [formGroup]="formGroup" (ngSubmit)="search()">
                                 <div class="row" id="jezl-hm-search">
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group" (clickOutside)="onClickedOutside($event)">
                                             <span><img src="assets/images/icon/location.png"></span>
                                             <!-- <input type="hidden" formControlName="locationid"> -->
@@ -56,26 +56,26 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group"> <span><img
                                                     src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker" autocomplete="off"
                                                 placeholder="Check-in">
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
                                             <!-- <input class="form-control" type="text" id="timepicker" autocomplete="off" placeholder="Check-in"> -->
                                             <select class="form-control" placeholder="check-in Time"
                                                 formControlName="checkintime" (change)="changeCheckin()">
-                                                <option value="">check-in Time</option>
+                                                <option value="">Check-in Time</option>
                                                 <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)"
                                                     value="{{x}}">{{x}}</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group"> <span><img
                                                     src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker-out"
@@ -83,12 +83,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
                                             <select class="form-control" placeholder="check-out Time"
                                                 formControlName="checkouttime">
-                                                <option value="">check-out Time</option>
+                                                <option value="">Check-out Time</option>
                                                 <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)"
                                                     value="{{x}}">{{x}}</option>
                                             </select>
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 padding8">
+                                    <div class="padding8">
                                         <div class="form-group">
                                             <button class="btn btn-primary btn-lg btn-grad" type="submit"
                                                 [disabled]="formGroup.invalid"><img

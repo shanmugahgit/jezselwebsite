@@ -120,7 +120,7 @@ input[type=text], input[type=email], input[type=password], input[type=number], i
 
 .booking-search input[type=text], .booking-search input[type=email], .booking-search input[type=password], .booking-search input[type=number], .booking-search input[type=search], .booking-search textarea, .booking-search select {
 	border: 1px solid #ededed;
-	padding: 12px 15px 12px 32px;
+	padding: 12px 0px 12px 32px;
 	font-size: 14px;
 	color: #222222;
 	font-style: bold;
