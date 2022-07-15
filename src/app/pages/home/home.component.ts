@@ -40,22 +40,74 @@ export class HomeComponent implements OnInit {
       $('.accordion').find('.accordion-title').on('click', function (ev: any) {
         // debugger
         // Adds Active Class
-        $(ev.target).toggleClass('active');
+        let target = ev.target;
+        if(ev.target.className.indexOf('fa')>-1){
+          target = ev.target.parentElement;
+        }
+        $(target).toggleClass('active');
         // Expand or Collapse This Panel
-        $(ev.target).next().slideToggle('fast');
+        $(target).next().slideToggle('fast');
         // Hide The Other Panels
-        $('.accordion-content').not($(ev.target).next()).slideUp('fast');
+        $('.accordion-content').not($(target).next()).slideUp('fast');
         // Removes Active Class From Other Titles
-        $('.accordion-title').not($(ev.target)).removeClass('active');
+        $('.accordion-title').not($(target)).removeClass('active');
       });
     });
 
 
   }
 
-  loadCarousel() {
+  loadRentCarousel(){
     setTimeout(() => {
-      $('.testi.owl-carousel').owlCarousel({
+      $('.rent.owl-carousel').owlCarousel({
+        items: 2,
+        margin: 50,
+        lazyLoad: true,
+        dots: true,
+        autoPlay: true,
+        autoPlayTimeout: 1500,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 2,
+          },
+          1000: {
+            items: 3,
+          }
+        }
+      });
+    });
+  }
+
+  loadStaffingCarousel(){
+    setTimeout(() => {
+      $('.staffing.owl-carousel').owlCarousel({
+        items: 2,
+        margin: 50,
+        lazyLoad: true,
+        dots: true,
+        autoPlay: true,
+        autoPlayTimeout: 1500,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          600: {
+            items: 2,
+          },
+          1000: {
+            items: 3,
+          }
+        }
+      });
+    });
+  }
+
+  loadTransportCarousel(){
+    setTimeout(() => {
+      $('.transport.owl-carousel').owlCarousel({
         items: 2,
         margin: 50,
         lazyLoad: true,
@@ -102,7 +154,7 @@ export class HomeComponent implements OnInit {
     this.http.post('products', { limit: 3, type: 'Rent' }).subscribe(
       (response: any) => {
         this.rentproducts = response && response.data;
-        this.loadCarousel();
+        this.loadRentCarousel();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -110,7 +162,7 @@ export class HomeComponent implements OnInit {
     this.http.post('products', { limit: 3, type: 'Staffing' }).subscribe(
       (response: any) => {
         this.staffingproducts = response && response.data;
-        this.loadCarousel();
+        this.loadStaffingCarousel();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -118,7 +170,7 @@ export class HomeComponent implements OnInit {
     this.http.post('products', { limit: 3, type: 'Transport' }).subscribe(
       (response: any) => {
         this.transportproducts = response && response.data;
-        this.loadCarousel();
+        this.loadTransportCarousel();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { KeyValue } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -42,6 +42,9 @@ export class ServicesComponent implements OnInit {
     checkintime: new FormControl('', Validators.required),
     checkouttime: new FormControl('', Validators.required),
   })
+
+  @ViewChild('leftnavbar') leftnavbar: any;
+  @ViewChild('productImg') productImg: any;
 
   constructor(private route: ActivatedRoute, private http: HttpRequestService, private router: Router, private storage: StorageService, private communication: CommunicationService) { }
 
@@ -113,7 +116,16 @@ export class ServicesComponent implements OnInit {
       (response: any) => {
         this.config.totalItems = response.count || 0;
         this.products = response && response.data;
-        this.calulateTotalAmount();
+        // this.http.post('products', body).subscribe(
+        //   (response: any) => {
+        //     // this.config.totalItems = response.count || 0;
+        //     this.products = this.products.concat(response.data);
+        //     this.calulateTotalAmount();
+        //   }, (error: any) => {
+        //     this.http.exceptionHandling(error);
+        //   }
+        // )
+        // this.calulateTotalAmount();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -332,7 +344,16 @@ export class ServicesComponent implements OnInit {
     });
   }
 
-  bookNow(product: any) {
+  bookNow(product: any, event: any) {
+    event.stopPropagation()
+    // let leftnavbarHeight = this.leftnavbar.nativeElement.offsetHeight;
+    // let productImgHeight = this.productImg.nativeElement.offsetHeight;
+    // let commonHeight = 39;
+    // let marginBottom = 25;
+    // let productCardHeight = productImgHeight + marginBottom;
+    // let rightBar: any = (leftnavbarHeight - commonHeight) / productCardHeight;
+    // let limit = parseInt(rightBar) * 2;
+    // debugger;
     if (localStorage.getItem('search')) {
       let parmas:any =  {
         product_id: product.id,
