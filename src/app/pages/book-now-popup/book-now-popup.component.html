@@ -9,8 +9,8 @@
         <div class="modal-body mb-2">
             <section id="content1" class="tab-content">
                 <form [formGroup]="formGroup" (ngSubmit)="search()"> 
-                    <div class="row"  id="jezl-hm-search">
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row jezl-pop-up-search-gap-pad"  id="jezl-hm-search">
+                        <div class="">
                             <div class="form-group" (clickOutside)="onClickedOutside($event)"> 
                                 <label>Location</label>
                                 <span><img src="assets/images/icon/location.png"></span>                           
@@ -19,10 +19,10 @@
                                 <!-- <ul class="drop" *ngIf="showSelectLocation">
                                     <li *ngFor="let loc of locations | filterArray:formGroup.value.location"
                                         (click)="selectedLocation(loc)"><a>{{loc.name}}</a></li>
-                                </ul> -->
+                                </ul> --> 
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                        <div class="">
                             <div class="form-group"> 
                                 <label>Checkin Date</label>
                                 <span><img src="assets/images/icon/calendar.png"></span>
@@ -30,17 +30,17 @@
                                     placeholder="Check-in" data-provide='datepicker' data-date-container='#myModalId'>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                        <div class="">
                             <div class="form-group">
                                 <label>Checkin Time</label>
                                 <span><img src="assets/images/icon/time.png"></span>
                                 <select class="form-control" placeholder="check-in Time" formControlName="checkintime" (change)="changeCheckin()">
-                                    <option value="">check-in Time</option>
+                                    <option value="">Check-in Time</option>
                                     <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)" value="{{x}}">{{x}}</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                        <div class="">
                             <div class="form-group"> 
                                 <label>Checkout Date</label>
                                 <span><img src="assets/images/icon/calendar.png"></span>
@@ -48,7 +48,7 @@
                                     placeholder="Check-out" data-provide='datepicker' data-date-container='#myModalId'>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                        <div class="">
                             <div class="form-group">
                                 <label>Checkout Time</label>
                                 <span><img src="assets/images/icon/time.png"></span>
@@ -61,7 +61,7 @@
                             </div>
                         </div>  
 
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                        <div class="">
                             <div class="form-group jezl-popup-f-btn">
                                 <button class="btn btn-primary btn-lg mt-1-35" type="submit"
                                     [disabled]="formGroup.invalid">Find Price</button>

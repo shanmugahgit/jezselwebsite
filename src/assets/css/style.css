@@ -12913,8 +12913,10 @@ Home Booking CSS
        #jezl-hm-search {
         display: grid;
         grid-template-columns: 1.7fr 0.9fr 1fr 0.9fr 1fr 0.65fr;
-      
-    }
+        }
+
+ 
+
 
 		#jezl-hm-search .form-control::placeholder{ font-size: 12px;    color:#000; 
 			font-weight: bold;}
@@ -13340,7 +13342,7 @@ Footer Area CSS
 =================================================*/  
 .jezsel-ser-dpp-data-g{
 display: grid;
-grid-template-columns: repeat(3,1fr);
+grid-template-columns: 2fr 1fr;
 margin-top: 50px;
 grid-gap:20px;
 }
@@ -13500,6 +13502,7 @@ margin-bottom: 10px;
         display: grid;
         grid-template-columns: 1fr;
         padding: 0px 25px 25px 25px;
+       
     }
 
     #tab1:checked ~ #content1, #tab2:checked ~ #content1, #tab3:checked ~ #content1, #tab4:checked ~ #content1, #tab5:checked ~ #content1 {
@@ -13511,6 +13514,9 @@ margin-bottom: 10px;
     #jezl-hm-search .btn-primary:disabled, #jezl-hm-search .btn-grad {
         border-bottom-right-radius: 0px;
 
+    }
+    .feature-box {
+        top: 0px;
     }
 
 }

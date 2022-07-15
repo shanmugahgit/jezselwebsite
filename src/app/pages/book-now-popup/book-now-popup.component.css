@@ -7,7 +7,7 @@
 .tab-content .form-group span{
     line-height: 40px;
 }
-.form-group.jezl-popup-f-btn button{ border-radius: 10px;}
+
 .mt-1-35{
     margin-top: 1.35rem !important;
 }
@@ -16,5 +16,10 @@
     overflow-x: hidden;
     overflow-y: scroll;
 }
-option:disabled { background-color: #f3f3f3; }
+option:disabled { background-color: #f3f3f3;  }
+
+
+#jezl-hm-search.jezl-pop-up-search-gap-pad{ grid-gap: 10px; padding: 0px 10px;}
+#jezl-hm-search.jezl-pop-up-search-gap-pad .btn-primary:disabled{ border-radius: 0px;}
+.form-group.jezl-popup-f-btn button{ border-radius: 0px;}
 
