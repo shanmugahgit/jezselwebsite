@@ -5644,7 +5644,7 @@ h5.mb-2 {
 .feature-box {
     padding: 0 0 20px 0;
     position: relative;
-    overflow: hidden;
+   /* overflow: hidden;*/
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
@@ -12889,10 +12889,16 @@ Home Booking CSS
 			width: 23px;
 			height: auto;
 		}
+        .tab_container [id^="tab"] + label {
+            border-bottom: 5px solid #d9d9d9;
+
+
+        }
 		 .tab_container [id^="tab"]:checked + label {
 			box-shadow: none;
             background-color: #d9d9d9;
             width: 33.4%;
+            border-bottom: 5px solid var(--jezl-g-red);
 		}
         .tab_container [id^="tab"]:checked + label:first-of-type, .tab_container label:first-of-type  {
             border-top-left-radius: 10px !important;   
@@ -12981,11 +12987,15 @@ Home services CSS
     .jezl-hm-services-sec{ 
 		padding: 50px 0px;
 	}  
+    .jezl-sec-ch-height{
+        height: 900px;
+    }
 
     /*
     .jezl-sec-ban-overlay{
         clear: both;
     }
+
 
 
     .jezl-sec-ban-overlay::before{
@@ -13002,9 +13012,15 @@ Home services CSS
         }
         */
 
+        .drop {
+            position:absolute !important;
+            width: 250px;
+            margin-left:10px;
+            z-index:99999999;
+        }
     .jezl-hm-title-g{ display: flex; justify-content: space-between; margin-bottom: 20px;}
     .jezl-hm-title-g a{ font-size: 14px;  color:var(--jezl-g-red);}
-    .jezl-hm-title-g .jezl-hm-services-title { 
+    .jezl-hm-title-g .jezl-hm-services-title {   
         color: #000;
         font-size: 30px;
         font-weight: bold;
@@ -13517,6 +13533,13 @@ margin-bottom: 10px;
     }
     .feature-box {
         top: 0px;
+    }
+
+    .drop {
+        position:relative !important;
+        width:100%;
+        margin-left:0px;
+        z-index:99999999 ;
     }
 
 }
