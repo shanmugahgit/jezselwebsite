@@ -123,7 +123,83 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                 </div>
                 <div class="row jezl-hm-services-gclm">
 
-                    <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products | paginate: config">
+                    <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products|slice:0:getSlice | paginate: config">
+                        <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
+                            <div class="jezl-hm-truck-image">
+                                <img [src]="product.path + product.thumbnail">
+                            </div>
+                            <div class="jezl-t-title">
+                                {{product.name}} 
+                            </div>
+                            <div class="jezl-cst-bnbtn">
+                                <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
+                                 <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>   
+                            </div>
+                        </div>
+                        <!-- item end here -->
+                    </div>
+                    <!--Clmn end here -->            
+
+
+
+
+                    <!-- <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products | paginate: config">
+                        <div class="listroBox">
+                            <a routerLink="/service-detail/{{product.route}}">
+                                <figure><img [src]="product.path + product.thumbnail" class="img-fluid" alt="">
+                                    <div class="read_more"><span>Read More</span></div>
+                                </figure>
+                            </a>
+                            <a routerLink="/service-detail/{{product.route}}">
+                                <div class="listroBoxmain">
+                                    <h3><a>{{product.name}}</a></h3>
+                                    <p [innerHtml]="product.shortdescription" class="limit-3"></p>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <p class="card-text text-muted"><span class="h4 text-primary"><span>&#8364;</span>{{product.priceperhr}}</span> / hr</p>
+                                </li>
+                                <li>
+                                    <div class="R_retings">
+                                        <button class="btn btn-primary" (click)="bookNow(product)">Book Now</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+
+
+
+                </div>
+                <!-- <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)">
+                </pagination-controls> -->
+               <!-- <div class="paginationCommon blogPagination categoryPagination">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-left"
+                                            aria-hidden="true"></i></span> </a>
+                            </li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+
+                            <li>
+                                <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-right"
+                                            aria-hidden="true"></i></span> </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>  -->
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="row jezl-hm-services-gclm">
+
+                    <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products|slice:getSlice | paginate: config">
                         <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
                             <div class="jezl-hm-truck-image">
                                 <img [src]="product.path + product.thumbnail">

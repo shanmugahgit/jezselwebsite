@@ -592,46 +592,15 @@
             <div class="col-lg-12 col-md-12">
                 <div class="faq-accordion">
                     <ul class="accordion">
-                        <li class="accordion-item active">
-                            <a class="accordion-title" href="javascript:void(0)">
+                        <li class="accordion-item" *ngFor="let faq of faqLists | slice:0:3" (click)="onClickedAccordion(faq.id)">
+                            <a class="accordion-title" href="javascript:void(0)" [ngClass]="{'active':selectedAccordion==faq.id}">
                                 <i class="fa fa-plus"></i>
-                                Q: What are my advantages of working with Jezsel ?
+                                Q: {{faq.title}}
                             </a>
 
-                            <p class="accordion-content show">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book.
+                            <p class="accordion-content" [ngClass]="{'show':selectedAccordion==faq.id}" [innerHtml]="faq.content">
                             </p>
                         </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class="fa fa-plus"></i>
-                                Q: How does Jezsel get good staff ?
-                            </a>
-
-                            <p class="accordion-content">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book.
-                            </p>
-                        </li>
-
-                        <li class="accordion-item">
-                            <a class="accordion-title" href="javascript:void(0)">
-                                <i class="fa fa-plus"></i>
-                                Q: How do I gain insight into your capacity and costs ?
-                            </a>
-
-                            <p class="accordion-content">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book.
-                            </p>
-                        </li>
-
-
                     </ul>
                 </div>
             </div>
