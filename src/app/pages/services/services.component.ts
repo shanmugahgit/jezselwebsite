@@ -71,6 +71,8 @@ export class ServicesComponent implements OnInit {
     this.loadDatePicker();
     this.route.params.subscribe(params => {
       this.title = params['service']
+      let obj = {type: this.title};
+      this.formGroup.patchValue(obj);
       this.loadFilters(this.title);
       this.getProducts();
     })
