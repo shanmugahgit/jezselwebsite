@@ -13497,6 +13497,43 @@ margin-bottom: 10px;
 
 .jezsel-profile-section .summary  table td { padding: 10px 0px;}
 
+
+/*================================================
+  Owl carosel CSS
+=================================================*/  
+
+
+.btns{
+    display: table;
+    margin: 0px auto;
+    }
+    .customNextBtn, .customPreviousBtn {
+        float: right;
+        background: transparent;
+        color: #fff;
+        padding: 7px;
+        margin-left: 15px;
+        cursor: pointer;
+        /* width: 10px; */
+        /* height: 10px; 
+            border-radius: 50px;
+        */
+        
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        font-size: 25px;
+        color: #000;
+        cursor:pointer;
+        justify-content: center;
+        align-items: center;
+        display:flex;
+        background-color:var(--jezl-g-red);
+        color:#fff;
+    }
+    .customNextBtn:hover, .customPreviousBtn:hover{ background-color:#000; color:#fff;}
+
+
 /*================================================
   Responsive CSS
 =================================================*/  

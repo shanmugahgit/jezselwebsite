@@ -61,77 +61,159 @@ export class HomeComponent implements OnInit {
 
   }
 
-  loadRentCarousel(){
-    setTimeout(() => {
-      $('.rent.owl-carousel').owlCarousel({
-        items: 2,
-        margin: 50,
-        lazyLoad: true,
-        dots: true,
-        autoPlay: true,
-        autoPlayTimeout: 1500,
-        responsive: {
+          loadRentCarousel(){
+          setTimeout(() => {
+          $(document).ready(function() {
+          var owl = $('.rent.owl-carousel');
+          owl.owlCarousel({
+          items: 4,
+          //loop: true,
+          margin: 10,
+          dots: false,
+          responsiveClass: true, 
+          autoplay: true,
+          autoplayTimeout: 4000,
+          autoplayHoverPause: true,
+          responsive: {
           0: {
-            items: 1,
+          items: 1,
+          //nav: true
           },
-          600: {
-            items: 2,
+          800: {
+          items: 3,
+          //nav: false
           },
-          1000: {
-            items: 3,
+          1300: {
+          items: 3,
+          //nav: true,
+          loop: false,
+          },
+          1600: {
+          items:2,
+          //nav: true,
+          loop: false,
+          margin: 20
           }
-        }
-      });
+          }
+
+
+          });
+
+          // Custom Button
+          $('.customNextBtn').click(function() {
+          owl.trigger('next.owl.carousel');
+          });
+          $('.customPreviousBtn').click(function() {
+          owl.trigger('prev.owl.carousel');
+          });
+
+          });
+          });
+          }
+
+loadStaffingCarousel(){
+setTimeout(() => {
+$(document).ready(function() {
+var owl = $('.staffing.owl-carousel');
+owl.owlCarousel({
+items: 4,
+//loop: true,
+margin: 10,
+dots: false,
+responsiveClass: true, 
+autoplay: true,
+autoplayTimeout: 4000,
+autoplayHoverPause: true,
+
+responsive: {
+0: {
+items: 1,
+//nav: true
+},
+800: {
+items: 2,
+//nav: false
+},
+1300: {
+items: 3,
+//nav: true,
+loop: false,
+},
+1600: {
+items: 4,
+//nav: true,
+loop: false,
+margin: 20
+}
+}
+
+
+});
+
+// Custom Button
+$('.customNextBtn').click(function() {
+owl.trigger('next.owl.carousel');
+});
+$('.customPreviousBtn').click(function() {
+owl.trigger('prev.owl.carousel');
+});
+
+});
+
+
+
     });
   }
 
-  loadStaffingCarousel(){
+    loadTransportCarousel(){
     setTimeout(() => {
-      $('.staffing.owl-carousel').owlCarousel({
-        items: 2,
-        margin: 50,
-        lazyLoad: true,
-        dots: true,
-        autoPlay: true,
-        autoPlayTimeout: 1500,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 2,
-          },
-          1000: {
-            items: 3,
-          }
-        }
-      });
-    });
-  }
+    $(document).ready(function() {
+    var owl = $('.transport.owl-carousel');
+    owl.owlCarousel({
+    items: 4,
+   // loop: true,
+    margin: 10,
+    dots: false,
+    responsiveClass: true, 
+    autoplay: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
+    responsive: {
+    0: {
+    items: 1,
+    //nav: true
+    },
+    800: {
+    items: 2,
+    //nav: false
+    },
+    1300: {
+    items: 3,
+    //nav: true,
+    loop: false,
+    },
+    1600: {
+    items: 4,
+    //nav: true,
+    loop: false,
+    margin: 20
+    }
+    }
 
-  loadTransportCarousel(){
-    setTimeout(() => {
-      $('.transport.owl-carousel').owlCarousel({
-        items: 2,
-        margin: 50,
-        lazyLoad: true,
-        dots: true,
-        autoPlay: true,
-        autoPlayTimeout: 1500,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 2,
-          },
-          1000: {
-            items: 3,
-          }
-        }
-      });
+
     });
-  }
+
+    // Custom Button
+    $('.customNextBtn').click(function() {
+    owl.trigger('next.owl.carousel');
+    });
+    $('.customPreviousBtn').click(function() {
+    owl.trigger('prev.owl.carousel');
+    });
+
+    });
+    });
+    }
 
   loadDatePicker() {
     setTimeout(() => {
