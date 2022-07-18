@@ -71,6 +71,8 @@ export class ServicesComponent implements OnInit {
     this.loadDatePicker();
     this.route.params.subscribe(params => {
       this.title = params['service']
+      let obj = {type: this.title};
+      this.formGroup.patchValue(obj);
       this.loadFilters(this.title);
       this.getProducts();
     })
@@ -130,16 +132,16 @@ export class ServicesComponent implements OnInit {
       (response: any) => {
         this.config.totalItems = response.count || 0;
         this.products = response && response.data;
-        this.http.post('products', body).subscribe(
-          (response: any) => {
-            this.config.totalItems+= response.count || 0;
-            this.products = this.products.concat(response.data);
-            this.calulateTotalAmount();
-          }, (error: any) => {
-            this.http.exceptionHandling(error);
-          }
-        )
-        // this.calulateTotalAmount();
+        // this.http.post('products', body).subscribe(
+        //   (response: any) => {
+        //     this.config.totalItems+= response.count || 0;
+        //     this.products = this.products.concat(response.data);
+        //     this.calulateTotalAmount();
+        //   }, (error: any) => {
+        //     this.http.exceptionHandling(error);
+        //   }
+        // )
+        this.calulateTotalAmount();
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
