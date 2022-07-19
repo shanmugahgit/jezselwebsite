@@ -118,8 +118,10 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="resultBar barSpaceAdjust">
+                <div class="resultBar barSpaceAdjust jezl-ser-c-pagination">
                     <h2>We found <span>{{config.totalItems}}</span> Results for you</h2>
+                    <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)">
+                    </pagination-controls>
                 </div>
                 <div class="row jezl-hm-services-gclm">
 
@@ -249,8 +251,7 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
 
 
                 </div>
-                <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)">
-                </pagination-controls>
+               
                <!-- <div class="paginationCommon blogPagination categoryPagination">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">

@@ -10789,7 +10789,7 @@ img {
 }
 
 .paginationCommon.categoryPagination {
-    margin-top: 35px;
+    /*argin-top: 35px;*/
 }
 
 .paginationCommon.blogPagination nav {
@@ -13044,6 +13044,7 @@ Home services CSS
         /*display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap:20px;*/
+        position: relative;
 	}   
     .jezl-hm-services-g .item, .jezl-hm-services-gclm .item{
         border: solid 1px #9a99a2;
@@ -13063,10 +13064,59 @@ Home services CSS
         height: auto;
     }
 
+    .jezl-hm-services-g .item .jezl-hm-truck-image, .jezl-hm-services-gclm .item .jezl-hm-truck-image{
+        height: 200px;
+        overflow: hidden;
+        cursor: pointer;
 
-.jezl-hm-services-g .item .jezl-hm-truck-image img, .jezl-hm-services-gclm .item .jezl-hm-truck-image img{ border-top-left-radius: 10px; border-top-right-radius: 10px;	height: 200px;
-	width: 100%;
-	object-fit: cover;}
+
+    }
+.jezl-hm-services-g .item .jezl-hm-truck-image img, .jezl-hm-services-gclm .item .jezl-hm-truck-image img{ 
+border-top-left-radius: 10px; 
+overflow: hidden; 
+width: 100%; 
+border-top-right-radius: 10px;	
+height: 200px;
+width: 100%;
+object-fit: cover;
+
+}
+
+
+.jezl-hm-services-g .item:hover .readmore{ visibility: visible;  opacity: 1;}
+     .jezl-hm-services-g .item .readmore {
+        position: absolute;
+        top: 30%;
+        left: 0;
+        margin-top: -12px;
+        -webkit-transform: translateY(10px);
+        -moz-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -o-transform: translateY(10px);
+        transform: translateY(10px);
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        width: 100%;
+        -webkit-transition: all .6s;
+        transition: all .6s;
+        z-index: 5;
+    }
+    
+    .jezl-hm-services-g .item .readmore span {
+        background-color: #ed1c24;
+        background-color: #ed1c24;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        color: #fff;
+        font-size: 14px;
+        padding: 8px 25px;
+        text-transform: uppercase;
+    }
+    
 	
 .jezl-hm-services-g .item .jezl-t-title, .jezl-hm-services-gclm .item .jezl-t-title{
     width: 100%;
@@ -13104,13 +13154,19 @@ Home services CSS
     font-size: 14px;
 }
 
-
-
 .jezl-faq-sec{ 
 padding: 50px 0px;
 }  
 
-
+.jezl-ser-c-pagination{
+    display: flex;
+    justify-content: space-between;
+}
+.jezl-ser-c-pagination .ngx-pagination .current {
+    background: var(--jezl-g-red);
+	color:#fff ;
+	cursor: default;
+}
 
 /*================================================
     FAQ Area CSS
@@ -13358,7 +13414,7 @@ Footer Area CSS
 =================================================*/  
 .jezsel-ser-dpp-data-g{
 display: grid;
-grid-template-columns: 2fr 1fr;
+grid-template-columns: 1fr;
 margin-top: 50px;
 grid-gap:20px;
 }
@@ -13368,23 +13424,23 @@ grid-gap:20px;
     padding: 20px;
     background-color: #FFEEEE;}
  .jezsel-ser-dpp-data-title {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: var(--jezl-g-red);
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--jezl-g-red);
  }
  .jezsel-ser-dpp ul{
-margin: 0;
-padding: 0;
-list-style-type: none;
-margin-bottom: 10px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 10px;
 }
 .jezsel-ser-dpp ul li{
-display: grid;
-grid-template-columns: 1fr 0.9fr;
-align-items: center;
-font-size: 12px;
-margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 10px;
 }
 .jezsel-ser-dpp ul.extra-d li { grid-template-columns: 1fr 20px ;}
 
