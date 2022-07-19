@@ -8136,8 +8136,8 @@ only screen and (max-width: 767px) {
 }
 
 .section-padding {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .section-padding--sm {
@@ -13555,6 +13555,18 @@ margin-bottom: 10px;
 
 
 /*================================================
+  Certificate Page CSS
+=================================================*/  
+
+.jezel-certificate-logo-g{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-gap: 25px;
+margin-top: 20px;
+}
+.jezel-certificate-logo-g img{ border: 1px solid #666666;}
+
+/*================================================
   Owl carosel CSS
 =================================================*/  
 
@@ -13672,5 +13684,11 @@ margin-bottom: 10px;
     grid-template-columns: repeat(1, 1fr); 
 
 }
+
+.jezel-certificate-logo-g{
+    
+    grid-template-columns: 1fr 1fr;
+    grid-gap:10px;
+    }
 
 }
