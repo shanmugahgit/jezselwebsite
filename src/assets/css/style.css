@@ -13563,7 +13563,7 @@ margin-bottom: 10px;
     display: table;
     margin: 0px auto;
     }
-    .customNextBtn, .customPreviousBtn {
+    .customNextBtn, .customPreviousBtn, .customNextBtn2, .customPreviousBtn2, .customNextBtn3, .customPreviousBtn3 {
         float: right;
         background: transparent;
         color: #fff;
@@ -13587,7 +13587,7 @@ margin-bottom: 10px;
         background-color:var(--jezl-g-red);
         color:#fff;
     }
-    .customNextBtn:hover, .customPreviousBtn:hover{ background-color:#000; color:#fff;}
+    .customNextBtn:hover, .customPreviousBtn:hover, .customNextBtn2:hover, .customPreviousBtn2:hover, .customNextBtn3:hover, .customPreviousBtn3:hover{ background-color:#000; color:#fff;}
 
 
 /*================================================
