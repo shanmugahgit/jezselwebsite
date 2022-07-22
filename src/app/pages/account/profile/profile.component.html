@@ -31,10 +31,10 @@
                         href="#v-pills-my-orders" role="tab" aria-controls="v-pills-my-orders" aria-selected="true">My
                         Orders</a>
                     <a class="nav-link pl-4" id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address"
-                        role="tab" aria-controls="v-pills-address" aria-selected="false">Address</a>
-                    <a class="nav-link pl-4" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password"
+                        role="tab" aria-controls="v-pills-address" aria-selected="false">Profiel & instellingen</a>
+                     <!--<a class="nav-link pl-4" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password"
                         role="tab" aria-controls="v-pills-password" aria-selected="false">Change Password</a>
-                    <!-- <a class="nav-link pl-4" id="v-pills-deposit-tab" data-toggle="pill" href="#v-pills-deposit"
+                    <a class="nav-link pl-4" id="v-pills-deposit-tab" data-toggle="pill" href="#v-pills-deposit"
                         role="tab" aria-controls="v-pills-deposit" aria-selected="false">Deposit</a>
                     <a class="nav-link pl-4" id="v-pills-withdraw-tab" data-toggle="pill" href="#v-pills-withdraw"
                         role="tab" aria-controls="v-pills-withdraw" aria-selected="false"
@@ -101,6 +101,105 @@
 
                     <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
                         aria-labelledby="v-pills-address-tab">
+                        <div class="jezsel-profile-section shadow">
+                            <h3 class="mb-3">Profile</h3>
+                            <div class="jezel-profile-details-g">
+                                <table>
+                                    <tr>
+                                      <td valign="top">Dhr</td>
+                                      <td valign="top">&nbsp;</td>
+                                      <td valign="top">&nbsp;</td>
+                                    </tr>
+                                  <tbody>
+                                  <tr>
+                                      <td valign="top">Voornaam</td> <td valign="top">:</td> <td valign="top">Selvan</td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">Achternaam</td>
+                                    <td valign="top">:</td>
+                                    <td valign="top">Karthikesu</td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">Tussenvoegsel</td>
+                                    <td valign="top">:</td>
+                                    <td valign="top">xyzzzz</td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">Address Type</td>
+                                    <td valign="top">:</td>
+                                    <td valign="top">Customer</td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">Vesigingsadres</td>
+                                    <td valign="top">:</td>
+                                    <td valign="top">Spinveld 35<br>
+                                      4815HR Breda</td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">Factuuradres</td>
+                                    <td valign="top">:</td>
+                                    <td valign="top">Spinveld 35<br>
+                                      4815HR Breda</td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">Telefoonnummer</td> <td valign="top">:</td> <td valign="top">0611584090</td>
+                                </tr>                                  
+                                  </tbody>
+                                  </table>
+
+                                  <div class="form-group">
+                                    <button type="submit" class="btn btn-primary ">Aanpassen</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- profile end here -->
+
+                        <div class="jezsel-profile-section shadow">
+                            <h3 class="mb-3">E-mailadres</h3>
+                            <div class="jezel-profile-details-g">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td valign="top">E-mailadres</td>
+                                            <td valign="top">:</td>
+                                            <td valign="top">selvan@live.nl</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                                    </div>                                    
+                            </div>
+                        </div>
+                        <!-- email id change end here -->   
+                        
+                        
+
+                        <div class="jezsel-profile-section shadow">
+                            <h3 class="mb-3">Wachtwoord</h3>
+                            <div class="jezel-profile-details-g">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td valign="top">Wachtwoord</td>
+                                            <td valign="top">:</td>
+                                            <td valign="top">************</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                                    </div>                                    
+                            </div>                            
+
+                        </div>
+                        <!-- Password end here -->                         
+
+
+
+
                         <div class="jezsel-profile-section shadow">
                         <h3>Address</h3>
                         <form class="mt-3" [formGroup]="formGroup" (ngSubmit)="updateAddress()">

@@ -12828,6 +12828,7 @@ a {
     position: fixed !important;
     background-color: #fff !important;
     width: 100%;
+    top: 0px;
     }
 
 .jezel-cart-lgin-i{
@@ -13515,6 +13516,49 @@ margin-bottom: 10px;
 
 
 /*================================================
+  Inner Page Banner CSS
+=================================================*/  
+.jezel-inner-page-banner-area {
+	background-color: #ff0000;
+	position: relative;
+    margin-top: 95px;
+    width: 100%;
+    height: auto;
+}
+.jezel-inner-page-banner-area img {
+	width: 100%;
+	position: relative;
+	height: auto;
+}
+
+.jezel-inner-page-banner-area h1 {
+	color: #fff;
+	margin-bottom: 0;
+	font-size: 40px;
+	font-weight: 400;
+	z-index: 5;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 90px;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.jezel-inner-page-banner-area::before {
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: " ";
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+/*================================================
   Profile Page CSS
 =================================================*/  
 .jezel-pro-login-tl {
@@ -13558,6 +13602,10 @@ margin-bottom: 10px;
 .jezel-profile-balance-interest-g ul { list-style-type: none; margin: 0; padding: 0;}
 .jezel-profile-balance-interest-g ul li { display:flex; justify-content: space-between;}
 .jezel-profile-balance-interest-g ul li:last-child{ padding-top: 20px; font-size: 18px;}
+.jezel-profile-details-g{}
+.jezel-profile-details-g table{ margin-bottom: 20px; width: 100%;}
+.jezel-profile-details-g table tr td:first-child{ font-weight: bold;   width: 17%; padding-bottom: 10px;}
+
 
 
 /*================================================
