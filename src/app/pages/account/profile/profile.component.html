@@ -16,7 +16,17 @@
     <div class="container">
         <div class="row ">
             <div class="col-3 ">
-                <div class="nav flex-column nav-pills jezsel-profile-lt-nav" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                
+
+                <div class="nav flex-column nav-pills jezsel-profile-lt-nav shadow" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="jezel-pro-login-tl">
+                    <div class="jezel-pro-login-name">Selvan Karthikesu</div>
+                    <div class="jezel-pro-login-emailid">selvan@live.nl</div>
+                    <div class="jezel-pro-logout"><a href="#">Uitloggen</a></div>
+                </div>    
+                <!-- Login nel end here -->    
+
                     <a class="nav-link active pl-4" id="v-pills-my-orders-tab" data-toggle="pill"
                         href="#v-pills-my-orders" role="tab" aria-controls="v-pills-my-orders" aria-selected="true">My
                         Orders</a>
@@ -37,11 +47,15 @@
                         *ngIf="!team_id||(team_id&&teamowner)">Employees</a>
                 </div>
             </div>
-            <div class="col-9 jezsel-profile-section">
+            <div class="col-9">
+
+               
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-my-orders" role="tabpanel"
+
+             
+                    <div class="tab-pane fade show active " id="v-pills-my-orders" role="tabpanel"
                         aria-labelledby="v-pills-my-orders-tab">
-                        <div class="section mb-5">
+                        <div class="jezsel-profile-section shadow">
                             
                                 <h3>My Orders</h3>
                                 <!-- <h5>Wallet - {{currentWallet}}</h5> -->
@@ -79,9 +93,15 @@
                                 </div>
                            
                         </div>
+                        <!-- profile section end here -->
                     </div>
+                    <!-- my orders end here -->
+
+
+
                     <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
                         aria-labelledby="v-pills-address-tab">
+                        <div class="jezsel-profile-section shadow">
                         <h3>Address</h3>
                         <form class="mt-3" [formGroup]="formGroup" (ngSubmit)="updateAddress()">
                             <div class="row">
@@ -211,10 +231,14 @@
                                 </div>
                             </div>
                         </form>
+                        </div>
+                        <!-- profile section end here -->
                     </div>
+                    <!-- address end here -->
+
                     <div class="tab-pane fade" id="v-pills-password" role="tabpanel"
                         aria-labelledby="v-pills-password-tab">
-                        <section class="eleform">
+                        <div class="eleform jezsel-profile-section shadow">
                             
                                 <h3>Change Password</h3>
                                 <form class="mt-3" [formGroup]="passwordformGroup" (ngSubmit)="save()">
@@ -247,8 +271,10 @@
                                     </div>
                                 </form>
                             
-                        </section>
+                            </div>
+                            <!-- profile section end here -->
                     </div>
+                    <!-- Password end here -->
 
                     <!-- <div class="tab-pane fade" id="v-pills-withdraw" role="tabpanel"
                         aria-labelledby="v-pills-withdraw-tab">
@@ -299,9 +325,28 @@
                         </div>
                     </div> -->
                     <div class="tab-pane fade" id="v-pills-wallet" role="tabpanel" aria-labelledby="v-pills-wallet-tab">
-                        <div class="section mb-5">
+                        
+                        <div class="section mb-5 jezsel-profile-section shadow">
+                            <h3>Wallet</h3>
+                            <div class="jezel-profile-balance-interest-g">
+                                <ul>
+                                    <li><div>Balance</div> <div class="jezel-bi-amount">€ 0,00</div></li>
+                                    <li><div>Interest</div> <div class="jezel-bi-amount">€ 0,00</div></li>
+                                    <li><div><strong>Total</strong></div> <div class="jezel-bi-amount"><strong>€ 0,00</strong></div></li>
+                                </ul>
+
+                            </div>
+                            <!-- wallet balance end here -->
+                        </div>
+                        <!-- end here -->
+
+
+ 
+                        
+
+                        <div class="section mb-5 jezsel-profile-section shadow">
                           
-                                <h3>Wallet - {{currentWallet}} (Interest - {{currentInterest}})</h3>
+                                <h3 class="pb-5">Balance - {{currentWallet}} (Interest - {{currentInterest}})</h3>
                                 <div class="nav nav-pills mt-2 jezsel-profile-wallet-swith" id="v-pills-tab" role="tablist"
                                     aria-orientation="horizontal" >
                                     <a class="nav-link active pl-4" id="v-pills-withdraw-tab" data-toggle="pill"
@@ -422,10 +467,53 @@
                                 </div>
                         
                         </div>
+                        <!-- profile section end here -->
+
+                        <div class="section mb-5 jezsel-profile-section shadow">
+                            <h3 class="mb-3">Transacties</h3>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Requested On</th>
+                                        <th>Updated On</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of withdrawdataLists;let i= index;">
+                                        <td>{{i+1}}</td>
+                                        <td><span>&#8364;</span>{{data.amount}}</td>
+                                        <td>
+                                            <span *ngIf="data.status == 1"> Accepted </span>
+                                            <span *ngIf="data.status == 3"> In Progress </span>
+                                            <span *ngIf="data.status == 2"> Rejected </span>
+                                        </td>
+                                        <td>{{data.createdAt|date:'mediumDate'}}</td>
+                                        <td>{{data.updatedAt|date:'mediumDate'}}</td>
+                                    </tr>
+                                    <tr *ngIf="withdrawdataLists.length==0">
+                                        <td colspan="5" class="text-center">No Records found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        <!-- end here -->
+                        
+
+
                     </div>
+                    <!-- wallet end here -->
+
+                    
+
+
                     <div class="tab-pane fade" id="v-pills-employees" role="tabpanel"
                         aria-labelledby="v-pills-employees-tab">
-                        <div class="section mb-5" *ngIf="showList">
+                        <div class="section mb-5 jezsel-profile-section shadow" *ngIf="showList">
                            
                               
                                 <div class="row">
@@ -483,7 +571,7 @@
                                 </div>
                           
                         </div>
-                        <div class="section login-area mb-5" *ngIf="!showList">
+                        <div class="section login-area" *ngIf="!showList">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -537,6 +625,11 @@
                             </div>
                         </div>
                     </div>
+                    <!-- employees end here -->
+
+
+
+
                 </div>
             </div>
         </div>
