@@ -123,10 +123,11 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                     <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)">
                     </pagination-controls>
                 </div>
-                <div class="row jezl-hm-services-gclm">
+                <div class="row jezl-hm-services-gclm jezl-hm-services-g">
 
                     <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products|slice:0:getSlice | paginate: config">
                         <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
+                            <div class="readmore"><span>Readmore</span></div>
                             <div class="jezl-hm-truck-image">
                                 <img [src]="product.path + product.thumbnail">
                             </div>
@@ -199,10 +200,11 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
         </div>
     
             
-                <div class="row jezl-hm-services-gclm mt-5">
+                <div class="row jezl-hm-services-gclm jezl-hm-services-g mt-5">
 
                     <div class="col-lg-4 col-sm-6 col-xs-12" *ngFor="let product of products|slice:getSlice | paginate: config">
                         <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
+                            <div class="readmore"><span>Readmore</span></div>
                             <div class="jezl-hm-truck-image">
                                 <img [src]="product.path + product.thumbnail">
                             </div>

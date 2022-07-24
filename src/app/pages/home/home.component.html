@@ -234,6 +234,7 @@
                     <div class="item" *ngFor="let product of rentproducts"
                         routerLink="/service-detail/{{product.route}}">
                         <div class="t-logo"> <img src="assets/images/logo/benz-logo.png"></div>
+                        <div class="readmore"><span>Readmore</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
                         </div>
@@ -251,8 +252,8 @@
                     <p *ngIf="rentproducts.length==0" class="jezsel-no-sf-text">No Service found</p>
                 </div>
                 <div class="btns">
-                    <div class="customNextBtn"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                    <div class="customPreviousBtn"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                    <div class="customNextBtn customNextBtnRent"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                    <div class="customPreviousBtn customPreviousBtnRent"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                 </div>
                 <!-- owl carosel arrow end here -->
 
@@ -282,6 +283,7 @@
                 <div class="staffing owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of staffingproducts"
                         routerLink="/service-detail/{{product.route}}">
+                        <div class="readmore"><span>Readmore</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
                         </div>
@@ -297,8 +299,8 @@
                     <p *ngIf="staffingproducts.length==0">No Service found</p>
                 </div>
                 <div class="btns">
-                    <div class="customNextBtn"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                    <div class="customPreviousBtn"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                    <div class="customNextBtn customNextBtnStaffing"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                    <div class="customPreviousBtn customPreviousBtnStaffing"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                 </div>
                 <!-- owl carosel arrow end here -->
 
@@ -328,6 +330,7 @@
                 <div class="transport owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of transportproducts"
                         routerLink="/service-detail/{{product.route}}">
+                        <div class="readmore"><span>Readmore</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
                         </div>
@@ -343,8 +346,8 @@
                     <p *ngIf="transportproducts.length==0">No Service found</p>
                 </div>
                 <div class="btns">
-                    <div class="customNextBtn"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                    <div class="customPreviousBtn"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                    <div class="customNextBtn customNextBtnTransport"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                    <div class="customPreviousBtn customPreviousBtnTransport"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                 </div>
                 <!-- owl carosel arrow end here -->
             </div>

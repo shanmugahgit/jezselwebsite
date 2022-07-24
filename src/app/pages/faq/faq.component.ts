@@ -9,6 +9,7 @@ import { HttpRequestService } from 'src/app/services/http-request/http-request.s
 export class FaqComponent implements OnInit {
 
   dataLists: any = [''];
+  selectedAccordion: any;
   constructor(private http: HttpRequestService) { }
 
   ngOnInit(): void {
@@ -19,8 +20,15 @@ export class FaqComponent implements OnInit {
     this.http.get('faqs').subscribe(
       (response: any)=>{
         this.dataLists = response;
+        if(this.dataLists.length>0){
+          this.selectedAccordion = this.dataLists[0].id;
+        }
       }
     )
+  }
+
+  onClickedAccordion(id: any) {
+    this.selectedAccordion = id;
   }
 
 }

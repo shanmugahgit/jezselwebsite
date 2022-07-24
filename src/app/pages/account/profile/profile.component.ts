@@ -24,8 +24,10 @@ export class ProfileComponent implements OnInit {
   choice: string = '';
   showList: boolean = true;
   teamsLists: boolean = true;
-  showDeposit: boolean = false;
-  showWithdraw: boolean = true;
+  showDeposit: boolean = true;
+  showWithdraw: boolean = false;
+  showDeposit1: boolean = true;
+  showWithdraw1: boolean = false;
   myFormGroup: any;
   @ViewChild('template') template: any;
   selectedProduct: any;
@@ -64,12 +66,24 @@ export class ProfileComponent implements OnInit {
   // interestUsed: any = 0;
   // availableInterest: any = 0;
   extrasLists: any = [];
+  showPasswordField : boolean = false;
+  showAddressField : boolean = false;
   constructor(private storage: StorageService, private http: HttpRequestService, private router: Router, private modalService: BsModalService) {
     this.userDetails = this.storage.getUserDetails();
     if (this.userDetails) {
       this.loadUserData();
     }
     this.loadExtras();
+  }
+
+  logout() {
+    this.storage.clearUser();
+    this.router.navigate(['/login']);
+    this.userDetails = {};
+  }
+
+  getTotal(){
+    return this.currentWallet + this.currentInterest;
   }
 
   ngOnInit(): void {
@@ -290,7 +304,8 @@ export class ProfileComponent implements OnInit {
     this.http.post('reset/changepassword', params).subscribe(
       (response: any) => {
         this.http.successMessage('Updated');
-        this.formGroup.reset();
+        this.passwordformGroup.reset();
+        this.showPasswordField = false;
       },
       (error: any) => {
         this.http.exceptionHandling(error);
@@ -299,16 +314,22 @@ export class ProfileComponent implements OnInit {
   }
 
   updateAddress() {
-    this.formGroup.value['id'] = this.userDetails.id;
-    this.formGroup.value['username'] = this.userDetails.firstname;
-    this.http.post('user/update', this.formGroup.value).subscribe(
-      (response: any) => {
-        this.http.successMessage("Updated Successfully");
-      },
-      (error: any) => {
-        this.http.exceptionHandling(error);
-      }
-    )
+    if(!this.showAddressField){
+      this.showAddressField = true;
+    }
+    else{
+      this.formGroup.value['id'] = this.userDetails.id;
+      this.formGroup.value['username'] = this.userDetails.firstname;
+      this.http.post('user/update', this.formGroup.value).subscribe(
+        (response: any) => {
+          this.http.successMessage("Updated Successfully");
+          this.showAddressField = false;
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }    
   }
 
   submitChoice() {
@@ -457,6 +478,10 @@ export class ProfileComponent implements OnInit {
       result = true;
     }
     return result;
+  }
+
+  editPassword(){
+    this.showPasswordField = true;
   }
 
 }

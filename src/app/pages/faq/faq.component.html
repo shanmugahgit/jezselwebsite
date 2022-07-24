@@ -11,27 +11,34 @@
     </div>
 </div>
 <!-- ======================= Banner innerpage -->
-<section class="faq-area">
+<section class="Categories jezl-faq-sec">
     <div class="container">
+        <!-- Start FAQ Area -->
+
         <div class="row">
-            <div class="col-md-12">
-                <div class="faq-box">
-                    <div class="card" *ngFor="let data of dataLists">
-                        <div class="card-header">
-                            <a href="" class="d-flex justify-content-between" data-toggle="collapse"
-                                data-target="#faq1">
-                                <span>Q. {{data.title}}</span>
-                                <i class="la la-plus"></i>
+
+            <div class="col-lg-12 jezl-hm-title-g">
+                <div class="jezl-hm-services-title">FAQ</div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="faq-accordion">
+                    <ul class="accordion">
+                        <li class="accordion-item" *ngFor="let faq of dataLists" (click)="onClickedAccordion(faq.id)">
+                            <a class="accordion-title" href="javascript:void(0)" [ngClass]="{'active':selectedAccordion==faq.id}">
+                                <i class="fa fa-plus"></i>
+                                Q: {{faq.title}}
                             </a>
-                        </div>
-                        <div id="faq1" class="collapse show" data-parent="#accordion">
-                            <div class="card-body">
-                                <p [innerHtml]="data.content"></p>
-                            </div>
-                        </div>
-                    </div>
+
+                            <p class="accordion-content" [ngClass]="{'show':selectedAccordion==faq.id}" [innerHtml]="faq.content">
+                            </p>
+                        </li>
+                    </ul>
                 </div>
             </div>
+
+
         </div>
+
+        <!-- End FAQ Area -->
     </div>
 </section>

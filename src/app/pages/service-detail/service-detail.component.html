@@ -37,7 +37,7 @@
                 <div class="jezsel-ser-dpp-data-g">
 
                   <div class="jezsel-ser-dpp">
-
+                    <p [innerHtml]="serviceDetails.description"></p>
 
 
                 </div>
@@ -304,11 +304,62 @@
       <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="" class="blist text-sm ml-2"> See
           all Services<i class="fas fa-angle-double-right ml-2"></i></a></div>
     </div>
-    <div class="row">
+    <div class="row jezl-hm-services-gclm jezl-hm-services-g mt-5">
+
+      <div class="col-lg-4 col-sm-6 col-xs-12" *ngFor="let product of similarProducts">
+          <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
+            <div class="readmore"><span>Readmore</span></div>
+              <div class="jezl-hm-truck-image">
+                  <img [src]="product.path + product.thumbnail">
+              </div>
+              <div class="jezl-t-title">
+                  {{product.name}} 
+              </div>
+              <div class="jezl-cst-bnbtn">
+                  <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
+                   <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product)">Book now</a>   
+              </div>
+          </div>
+          <!-- item end here -->
+      </div>
+      <!--Clmn end here -->            
+
+
+
+
+      <!-- <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products | paginate: config">
+          <div class="listroBox">
+              <a routerLink="/service-detail/{{product.route}}">
+                  <figure><img [src]="product.path + product.thumbnail" class="img-fluid" alt="">
+                      <div class="read_more"><span>Read More</span></div>
+                  </figure>
+              </a>
+              <a routerLink="/service-detail/{{product.route}}">
+                  <div class="listroBoxmain">
+                      <h3><a>{{product.name}}</a></h3>
+                      <p [innerHtml]="product.shortdescription" class="limit-3"></p>
+                  </div>
+              </a>
+              <ul>
+                  <li>
+                      <p class="card-text text-muted"><span class="h4 text-primary"><span>&#8364;</span>{{product.priceperhr}}</span> / hr</p>
+                  </li>
+                  <li>
+                      <div class="R_retings">
+                          <button class="btn btn-primary" (click)="bookNow(product)">Book Now</button>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div> -->
+
+
+
+
+  </div>
+    <!-- <div class="row">
       <div class="swiper-container guides-slider-popular">
-        <!-- Additional required wrapper-->
         <div class="swiper-wrapper">
-          <!-- Slides-->
           <div class="col-lg-4 col-md-6 col-sm-12 swiper-slide" *ngFor="let product of similarProducts">
             <div class="listroBox">
               <a routerLink="/service-detail/{{product.route}}">
@@ -338,7 +389,7 @@
         </div>
         <div class="swiper-pagination d-md-none"> </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 <!-- <app-book-now-popup></app-book-now-popup> -->

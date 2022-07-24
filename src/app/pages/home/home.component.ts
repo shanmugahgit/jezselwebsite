@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
         // debugger
         // Adds Active Class
         let target = ev.target;
-        if(ev.target.className.indexOf('fa')>-1){
+        if (ev.target.className.indexOf('fa') > -1) {
           target = ev.target.parentElement;
         }
         $(target).toggleClass('active');
@@ -61,159 +61,159 @@ export class HomeComponent implements OnInit {
 
   }
 
-          loadRentCarousel(){
-          setTimeout(() => {
-          $(document).ready(function() {
-          var owl = $('.rent.owl-carousel');
-          owl.owlCarousel({
+  loadRentCarousel() {
+    setTimeout(() => {
+      $(document).ready(function () {
+        var owl = $('.rent.owl-carousel');
+        owl.owlCarousel({
           items: 4,
           //loop: true,
           margin: 10,
           dots: false,
-          responsiveClass: true, 
+          responsiveClass: true,
           autoplay: true,
           autoplayTimeout: 4000,
           autoplayHoverPause: true,
           responsive: {
-          0: {
-          items: 1,
-          //nav: true
-          },
-          800: {
-          items: 3,
-          //nav: false
-          },
-          1300: {
-          items: 3,
-          //nav: true,
-          loop: false,
-          },
-          1600: {
-          items:2,
-          //nav: true,
-          loop: false,
-          margin: 20
+            0: {
+              items: 1,
+              //nav: true
+            },
+            800: {
+              items: 3,
+              //nav: false
+            },
+            1300: {
+              items: 3,
+              //nav: true,
+              loop: false,
+            },
+            1600: {
+              items: 2,
+              //nav: true,
+              loop: false,
+              margin: 20
+            }
           }
-          }
 
 
-          });
+        });
 
-          // Custom Button
-          $('.customNextBtn').click(function() {
+        // Custom Button
+        $('.customNextBtnRent').click(function () {
           owl.trigger('next.owl.carousel');
-          });
-          $('.customPreviousBtn').click(function() {
+        });
+        $('.customPreviousBtnRent').click(function () {
           owl.trigger('prev.owl.carousel');
-          });
+        });
 
-          });
-          });
+      });
+    });
+  }
+
+  loadStaffingCarousel() {
+    setTimeout(() => {
+      $(document).ready(function () {
+        var owl = $('.staffing.owl-carousel');
+        owl.owlCarousel({
+          items: 4,
+          //loop: true,
+          margin: 10,
+          dots: false,
+          responsiveClass: true,
+          autoplay: true,
+          autoplayTimeout: 4000,
+          autoplayHoverPause: true,
+
+          responsive: {
+            0: {
+              items: 1,
+              //nav: true
+            },
+            800: {
+              items: 2,
+              //nav: false
+            },
+            1300: {
+              items: 3,
+              //nav: true,
+              loop: false,
+            },
+            1600: {
+              items: 4,
+              //nav: true,
+              loop: false,
+              margin: 20
+            }
           }
 
-loadStaffingCarousel(){
-setTimeout(() => {
-$(document).ready(function() {
-var owl = $('.staffing.owl-carousel');
-owl.owlCarousel({
-items: 4,
-//loop: true,
-margin: 10,
-dots: false,
-responsiveClass: true, 
-autoplay: true,
-autoplayTimeout: 4000,
-autoplayHoverPause: true,
 
-responsive: {
-0: {
-items: 1,
-//nav: true
-},
-800: {
-items: 2,
-//nav: false
-},
-1300: {
-items: 3,
-//nav: true,
-loop: false,
-},
-1600: {
-items: 4,
-//nav: true,
-loop: false,
-margin: 20
-}
-}
+        });
 
+        // Custom Button
+        $('.customNextBtnStaffing').click(function () {
+          owl.trigger('next.owl.carousel');
+        });
+        $('.customPreviousBtnStaffing').click(function () {
+          owl.trigger('prev.owl.carousel');
+        });
 
-});
-
-// Custom Button
-$('.customNextBtn').click(function() {
-owl.trigger('next.owl.carousel');
-});
-$('.customPreviousBtn').click(function() {
-owl.trigger('prev.owl.carousel');
-});
-
-});
+      });
 
 
 
     });
   }
 
-    loadTransportCarousel(){
+  loadTransportCarousel() {
     setTimeout(() => {
-    $(document).ready(function() {
-    var owl = $('.transport.owl-carousel');
-    owl.owlCarousel({
-    items: 4,
-   // loop: true,
-    margin: 10,
-    dots: false,
-    responsiveClass: true, 
-    autoplay: true,
-    autoplayTimeout: 4000,
-    autoplayHoverPause: true,
-    responsive: {
-    0: {
-    items: 1,
-    //nav: true
-    },
-    800: {
-    items: 2,
-    //nav: false
-    },
-    1300: {
-    items: 3,
-    //nav: true,
-    loop: false,
-    },
-    1600: {
-    items: 4,
-    //nav: true,
-    loop: false,
-    margin: 20
-    }
-    }
+      $(document).ready(function () {
+        var owl = $('.transport.owl-carousel');
+        owl.owlCarousel({
+          items: 4,
+          // loop: true,
+          margin: 10,
+          dots: false,
+          responsiveClass: true,
+          autoplay: true,
+          autoplayTimeout: 4000,
+          autoplayHoverPause: true,
+          responsive: {
+            0: {
+              items: 1,
+              //nav: true
+            },
+            800: {
+              items: 2,
+              //nav: false
+            },
+            1300: {
+              items: 3,
+              //nav: true,
+              loop: false,
+            },
+            1600: {
+              items: 4,
+              //nav: true,
+              loop: false,
+              margin: 20
+            }
+          }
 
 
-    });
+        });
 
-    // Custom Button
-    $('.customNextBtn').click(function() {
-    owl.trigger('next.owl.carousel');
-    });
-    $('.customPreviousBtn').click(function() {
-    owl.trigger('prev.owl.carousel');
-    });
+        // Custom Button
+        $('.customNextBtnTransport').click(function () {
+          owl.trigger('next.owl.carousel');
+        });
+        $('.customPreviousBtnTransport').click(function () {
+          owl.trigger('prev.owl.carousel');
+        });
 
+      });
     });
-    });
-    }
+  }
 
   loadDatePicker() {
     setTimeout(() => {
@@ -237,7 +237,7 @@ owl.trigger('prev.owl.carousel');
   }
 
   getProducts() {
-    this.http.post('products', { limit: 3, type: 'Rent' }).subscribe(
+    this.http.post('products', { limit: 6, type: 'Rent' }).subscribe(
       (response: any) => {
         this.rentproducts = response && response.data;
         this.loadRentCarousel();
@@ -245,7 +245,7 @@ owl.trigger('prev.owl.carousel');
         this.http.exceptionHandling(error);
       }
     )
-    this.http.post('products', { limit: 3, type: 'Staffing' }).subscribe(
+    this.http.post('products', { limit: 6, type: 'Staffing' }).subscribe(
       (response: any) => {
         this.staffingproducts = response && response.data;
         this.loadStaffingCarousel();
@@ -253,7 +253,7 @@ owl.trigger('prev.owl.carousel');
         this.http.exceptionHandling(error);
       }
     )
-    this.http.post('products', { limit: 3, type: 'Transport' }).subscribe(
+    this.http.post('products', { limit: 6, type: 'Transport' }).subscribe(
       (response: any) => {
         this.transportproducts = response && response.data;
         this.loadTransportCarousel();
@@ -274,9 +274,9 @@ owl.trigger('prev.owl.carousel');
 
   getFaq() {
     this.http.get('faqs').subscribe(
-      (response: any)=>{
+      (response: any) => {
         this.faqLists = response;
-        if(this.faqLists.length>0){
+        if (this.faqLists.length > 0) {
           this.selectedAccordion = this.faqLists[0].id;
         }
       }
