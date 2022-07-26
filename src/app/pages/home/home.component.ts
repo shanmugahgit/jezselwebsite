@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
               loop: false,
             },
             1600: {
-              items: 2,
+              items: 3,
               //nav: true,
               loop: false,
               margin: 20
@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit {
               //nav: true
             },
             800: {
-              items: 2,
+              items: 3,
               //nav: false
             },
             1300: {
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
               loop: false,
             },
             1600: {
-              items: 4,
+              items: 3,
               //nav: true,
               loop: false,
               margin: 20
@@ -184,7 +184,7 @@ export class HomeComponent implements OnInit {
               //nav: true
             },
             800: {
-              items: 2,
+              items: 3,
               //nav: false
             },
             1300: {
@@ -193,7 +193,7 @@ export class HomeComponent implements OnInit {
               loop: false,
             },
             1600: {
-              items: 4,
+              items: 3,
               //nav: true,
               loop: false,
               margin: 20

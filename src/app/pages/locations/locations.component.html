@@ -1,5 +1,5 @@
 <!-- =======================
-	Banner innerpage -->
+	Banner innerpage
 <div class="innerpage-banner left bg-overlay-dark-7 py-7 drop-slider"
     style="background:url(assets/images/about.jpg) repeat; background-size:cover;">
     <div class="container">
@@ -9,13 +9,21 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="jezel-inner-page-banner-area">
+    <h1>Locations</h1>
+    <img src="assets/images/about.jpg"> 
 </div>
+
+
 <!-- =======================Banner innerpage -->
 <div class="section section-padding">
     <div class="container">
+     <div class="jezsel-locatio-section shadow">
         <div class="row">
             <div class="col-lg-6 col-12 align-self-center">
-                <div class="about-content">
+                <div class="about-content text-center ">
                     <div class="desc" [innerHtml]="content">
                     </div>
                     
@@ -26,7 +34,7 @@
             <div class="col-lg-6">
                 <div class="portfolio-card isotope-item digital" *ngFor="let iframe of iframes">
                     <div class="portfolio-card-body">
-                        <iframe width="100%" height="450" allowfullscreen="" loading="lazy" style="border: 0;" [src]="iframe | safe"></iframe>
+                        <iframe width="100%" height="200" allowfullscreen="" loading="lazy" style="border: 0;" [src]="iframe | safe"></iframe>
                     </div>
                 </div>
 
@@ -34,5 +42,7 @@
 
 
         </div>
+        <!-- row end here -->
+    </div>   
     </div>
 </div>

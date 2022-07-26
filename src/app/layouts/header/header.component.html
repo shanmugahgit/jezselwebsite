@@ -71,7 +71,7 @@
                             <a class="nav-link" routerLink="/cart">
                                 <img src="assets/images/icon/cart.png" class="cart-icon" alt="Cart">
                             </a> 
-                            <div class="dropdown" *ngIf="userDetails.firstname"> <a class="dropdown-toggle" href="#" role="button" id="dropdownAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user mr-2"></i>{{userDetails.firstname}} </a>
+                            <div class="dropdown " *ngIf="userDetails.firstname"> <a class="dropdown-toggle" href="#" role="button" id="dropdownAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img  src="assets/images/icon/login.png" alt="Cart" class="login-icon">{{userDetails.firstname}} </a>
                                 <div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdownAccount"> 
                                     <a class="dropdown-item" (click)="navigateProfile()">My Profile</a> 
                                     <a class="dropdown-item" (click)="logout()">Logout</a> </div>
