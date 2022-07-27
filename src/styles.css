@@ -33,7 +33,7 @@
 }
 
 .drop li:hover a {
-    color: #ffffff !important;
+    color: #ffffff !important; 
 }
 
 .wrap-drop.active .drop {

@@ -173,7 +173,54 @@ $('.testi.owl-carousel').owlCarousel({
 	  }
 	}
   });
+
+
+  // Home page advertisement carousel
+$('.hm-advertisement-owc.owl-carousel').owlCarousel({
+	items:1,
+	margin:50,
+	lazyLoad: true,
+	dots:true,
+	autoPlay: true,
+	autoPlayTimeout:1500,
+	responsive:{
+	  0:{
+		items:1,
+	  },
+	  600:{
+		items:1,
+	  },
+	  1000:{
+		items:1, 
+	  }
+	}
+  }); 
   
+
+// Service Detailed page  Carousel
+$('.service-detailed-owc.owl-carousel').owlCarousel({
+	items: 2,
+	margin:50,
+	lazyLoad: true,
+	dots:true,
+	autoPlay: true,
+	autoPlayTimeout:1500,
+	responsive:{
+	  0:{
+		items:1,
+	  },
+	  600:{
+		items:2,
+	  },
+	  1000:{
+		items:3,
+	  }
+	}
+  });
+  
+
+
+
 
 // FAQ Accordion
 $(function() {

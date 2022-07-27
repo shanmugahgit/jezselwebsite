@@ -13715,6 +13715,8 @@
         max-width: 960px;  
         width: 100%;
         }
+        .faq-accordion .accordion .accordion-title{ font-size: 18px;}
+        .faq-accordion .accordion .accordion-content{font-size: 12px;}
         }
 
         @media screen and (max-width: 991px) {
@@ -13764,6 +13766,15 @@
         width: 100%;
         padding-left: 0px;
         }
+        .listingDetails h1 {
+                font-size: 20px;
+        }
+
+        .jezl-hm-services-g .item .jezl-t-title{
+                font-size: 13px; 
+
+        }
+        
 
         }
 
@@ -13810,5 +13821,10 @@
         grid-template-columns: 1fr 1fr;
         grid-gap:10px;
         }
+
+        }
+
+        @media screen and (max-width: 460px) {
+       
 
         }
