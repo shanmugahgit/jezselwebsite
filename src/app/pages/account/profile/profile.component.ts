@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getTotal(){
-    return this.currentWallet + this.currentInterest;
+    return parseFloat(this.currentWallet + this.currentInterest).toFixed(2);
   }
 
   ngOnInit(): void {
@@ -296,21 +296,29 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    let params = {
-      email: this.userDetails.email,
-      id: this.userDetails.id,
-      password: this.passwordformGroup.value.password
+    if(!this.passwordformGroup.value.password){
+      this.http.errorMessage("Please enter the password");
     }
-    this.http.post('reset/changepassword', params).subscribe(
-      (response: any) => {
-        this.http.successMessage('Updated');
-        this.passwordformGroup.reset();
-        this.showPasswordField = false;
-      },
-      (error: any) => {
-        this.http.exceptionHandling(error);
+    else if((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.passwordformGroup.value.password)) && (/^[A-Z]/.test(this.passwordformGroup.value.password))){
+      let params = {
+        email: this.userDetails.email,
+        id: this.userDetails.id,
+        password: this.passwordformGroup.value.password
       }
-    )
+      this.http.post('reset/changepassword', params).subscribe(
+        (response: any) => {
+          this.http.successMessage('Updated');
+          this.passwordformGroup.reset();
+          this.showPasswordField = false;
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }
+    else{
+      this.http.errorMessage("Please enter the valid password");
+    }    
   }
 
   updateAddress() {

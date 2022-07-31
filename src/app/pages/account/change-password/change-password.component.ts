@@ -27,20 +27,28 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   save() {
-    let params = { 
-      email: this.userDetails.email,
-      id: this.userDetails.id,
-      password: this.formGroup.value.password
-     }
-    this.http.post('reset/changepassword', params).subscribe(
-      (response: any) => {
-        this.http.successMessage('Updated');
-        this.formGroup.reset();
-      },
-      (error: any) => {
-        this.http.exceptionHandling(error);
+    if (!this.formGroup.value.password) {
+      this.http.errorMessage("Please enter the password");
+    }
+    else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.formGroup.value.password)) && (/^[A-Z]/.test(this.formGroup.value.password))) {
+      let params = {
+        email: this.userDetails.email,
+        id: this.userDetails.id,
+        password: this.formGroup.value.password
       }
-    )
+      this.http.post('reset/changepassword', params).subscribe(
+        (response: any) => {
+          this.http.successMessage('Updated');
+          this.formGroup.reset();
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }
+    else {
+      this.http.errorMessage("Please enter the valid password");
+    }
   }
 
 }

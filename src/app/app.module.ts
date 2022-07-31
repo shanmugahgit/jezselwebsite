@@ -36,6 +36,7 @@ import { ProfileComponent } from './pages/account/profile/profile.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { GarantiesComponent } from './pages/garanties/garanties.component';
 import { SetpasswordComponent } from './pages/setpassword/setpassword.component';
+import { AcceptNumberOnlyDirective } from './directives/accept-number-only.directive';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SetpasswordComponent } from './pages/setpassword/setpassword.component'
     ProfileComponent,
     PaymentComponent,
     GarantiesComponent,
-    SetpasswordComponent
+    SetpasswordComponent,
+    AcceptNumberOnlyDirective
   ],
   imports: [
     BrowserModule,

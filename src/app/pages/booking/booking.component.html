@@ -189,6 +189,31 @@
                             formControlName="telefoonnr">
                     </div>
                 </div>
+            </div>
+            <h3 class="mt-4" *ngIf="isEnableDriver()">Driver Details</h3>
+            <div class="row mt-4" *ngIf="isEnableDriver()">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="First Name" formControlName="driverFirstName">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Email" formControlName="driverEmail">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" placeholder="Address" formControlName="driverAddress"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Last Name" formControlName="driverLastName">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Phone Number"
+                            formControlName="driverPhone">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
                 <div class="col-md-12" *ngIf="currentBalance">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="flexCheckDefault2" formControlName="useBalance">

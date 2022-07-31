@@ -36,6 +36,11 @@ export class BookingComponent implements OnInit {
     telefoonnr: new FormControl('', Validators.required),
     useBalance: new FormControl(true),
     termsAndConditions: new FormControl('', Validators.required),
+    driverFirstName: new FormControl(''),
+    driverLastName: new FormControl(''),
+    driverEmail: new FormControl(''),
+    driverPhone: new FormControl(''),
+    driverAddress: new FormControl(''),
   });
   dataLists: any = [];
   total: any = 0;
@@ -454,6 +459,18 @@ export class BookingComponent implements OnInit {
     else {
       this.http.errorMessage("Please enter the coupon code");
     }
+  }
+
+  isEnableDriver(){
+    let result = false;
+    if(this.dataLists && Array.isArray(this.dataLists) && this.dataLists.length>0){
+      let isRent = this.dataLists.find((element: any)=>(element.type=='Rent'));
+      if(isRent){
+        result = true;
+      }
+    }
+    
+    return result;
   }
 
 }

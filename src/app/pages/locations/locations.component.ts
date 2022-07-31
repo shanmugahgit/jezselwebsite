@@ -10,6 +10,7 @@ export class LocationsComponent implements OnInit {
 
   content: any = '';
   iframes: any = [];
+  dataLists: any = [];
   constructor(private http: HttpRequestService) { }
 
   ngOnInit(): void {
@@ -20,10 +21,7 @@ export class LocationsComponent implements OnInit {
     this.http.get('location').subscribe(
       (response: any)=>{
         if(response){
-          this.content = response.content;
-          if(response.iframes){
-            this.iframes = response.iframes.split(',');
-          }          
+          this.dataLists = response;        
         }
       }
     )

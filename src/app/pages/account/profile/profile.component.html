@@ -184,7 +184,7 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td valign="top">Wachtwoord</td>
+                                            <td valign="top">Wachtwoord <i class="fa fa-info-circle red-tooltip" *ngIf="showPasswordField"  data-toggle="tooltip" title="A password should be alphanumeric. First letter of the password should be capital. Password must contain a special character (@, $, !, &, etc).Password length must be greater than 8 characters."  data-original-title="Tooltip on bottom"></i></td>
                                             <td valign="top">:</td>
                                             <td valign="top" *ngIf="!showPasswordField">************</td>
                                             <td valign="top" *ngIf="showPasswordField">
@@ -517,12 +517,12 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" type="" placeholder="Enter Amount"
-                                                            [(ngModel)]="amount" name="amount">
+                                                        <input class="form-control" type="text" placeholder="Enter Amount"
+                                                            [(ngModel)]="amount" name="amount" appAcceptNumberOnly>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button class="btn btn-primary" (click)="submitChoice()">Make
+                                                    <button class="btn btn-primary" *ngIf="amount>0" (click)="submitChoice()">Make
                                                         Deposit</button>
                                                 </div>
                                             </div>

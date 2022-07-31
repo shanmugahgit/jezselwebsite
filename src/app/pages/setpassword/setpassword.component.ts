@@ -23,28 +23,37 @@ export class SetpasswordComponent implements OnInit {
   }
 
   save() {
-    if(!this.myFormGroup.value.password || !this.myFormGroup.value.confirmpassword) {
+    if (!this.myFormGroup.value.password || !this.myFormGroup.value.confirmpassword) {
       this.http.errorMessage("Required password and confirm password");
     }
     else if (this.myFormGroup.value.password != this.myFormGroup.value.confirmpassword) {
       this.http.errorMessage("Password and confirm password mismatch");
     } else {
-      this.myFormGroup.value['id'] = this.userDetails.id;
-      this.myFormGroup.value['reset_password'] = 1;
-      this.myFormGroup.value['newpassword'] = this.myFormGroup.value.password;
-      this.http.post('user/update', this.myFormGroup.value).subscribe(
-        (response: any) => {
-          this.http.successMessage("Password reset Successfully");
-          this.storage.clearUser();
-          setTimeout(()=>{
-            this.router.navigateByUrl('/login');
-            location.reload();
-          },200);
-        },
-        (error: any) => {
-          this.http.exceptionHandling(error);
-        }
-      )
+
+      if (!this.myFormGroup.value.password) {
+        this.http.errorMessage("Please enter the password");
+      }
+      else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.myFormGroup.value.password)) && (/^[A-Z]/.test(this.myFormGroup.value.password))) {
+        this.myFormGroup.value['id'] = this.userDetails.id;
+        this.myFormGroup.value['reset_password'] = 1;
+        this.myFormGroup.value['newpassword'] = this.myFormGroup.value.password;
+        this.http.post('user/update', this.myFormGroup.value).subscribe(
+          (response: any) => {
+            this.http.successMessage("Password reset Successfully");
+            this.storage.clearUser();
+            setTimeout(() => {
+              this.router.navigateByUrl('/login');
+              location.reload();
+            }, 200);
+          },
+          (error: any) => {
+            this.http.exceptionHandling(error);
+          }
+        )
+      }
+      else {
+        this.http.errorMessage("Please enter the valid password");
+      }
     }
   }
 

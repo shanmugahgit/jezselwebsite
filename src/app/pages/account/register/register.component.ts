@@ -12,8 +12,8 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 export class RegisterComponent implements OnInit {
 
   myFormGroup: any;
-  constructor(private http: HttpRequestService, private router: Router, private storage: StorageService) { 
-    if(this.storage.getToken()){
+  constructor(private http: HttpRequestService, private router: Router, private storage: StorageService) {
+    if (this.storage.getToken()) {
       this.router.navigate(['/home']);
     }
   }
@@ -30,17 +30,24 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  register(){
-    this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
-      (response: any)=>{
-        this.http.successMessage("Registered Successfully");
-        this.myFormGroup.reset();
-        this.router.navigate(['/login']);
-      },
-      (error: any)=>{
-        this.http.exceptionHandling(error);
-      }
-    )
+  register() {
+    if (!this.myFormGroup.value.password) {
+      this.http.errorMessage("Please enter the password");
+    }
+    else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.myFormGroup.value.password)) && (/^[A-Z]/.test(this.myFormGroup.value.password))) {
+      this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
+        (response: any) => {
+          this.http.successMessage("Registered Successfully");
+          this.myFormGroup.reset();
+          this.router.navigate(['/login']);
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }
+    else {
+      this.http.errorMessage("Please enter the valid password");
+    }
   }
-
 }
