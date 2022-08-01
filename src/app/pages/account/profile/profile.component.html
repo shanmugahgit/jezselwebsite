@@ -70,8 +70,8 @@
                             <h3>My Orders</h3>
                             <!-- <h5>Wallet - {{currentWallet}}</h5> -->
                             <div class="row mt-3">
-                                <div class="col-lg-12 col-12 align-self-center">
-                                    <table class="table table-bordered">
+                                <div class="col-lg-12 col-12 align-self-center table-responsive ">
+                                    <table class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -634,9 +634,9 @@
                                 <div class="section mb-5">
                                     <div class="container">
                                         <div class="row mt-3">
-                                            <div class="col-lg-12 col-12 align-self-center">
+                                            <div class="col-lg-12 col-12 align-self-center table-responsive">
                                             </div>
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered ">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -664,7 +664,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                             <div class="tab-pane fade show active" id="v-pills-deposit1" role="tabpanel"
@@ -684,8 +684,8 @@
                                                         (click)="submitChoice()">{{choice}}</button>
                                                 </div>
                                             </div>
-
-                                            <table class="table table-bordered">
+                                            <div class="table-responsive">
+                                            <table class="table table-bordered ">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -711,6 +711,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -758,7 +759,8 @@
                                                 (click)="submitChoice()">{{choice}}</button>
                                         </div>
                                     </div>
-                                    <table class="table table-bordered">
+                                    <div class="table-responsive">
+                                    <table class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -786,6 +788,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
                                 </div>
                             </div>
 
@@ -865,9 +868,9 @@
                 <span aria-hidden="true" class="visually-hidden">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-            <div class="container profile-popup-content">
-                <table class="table table-bordered">
+        <div class="modal-body jezsel-profile-myord-pp">
+            <div class="container profile-popup-content table-responsive">
+                <table class="table table-bordered ">
                     <thead>
                         <tr>
                             <th>#</th>

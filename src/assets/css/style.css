@@ -13571,6 +13571,8 @@
         height: 100%;
         z-index: 1;
         }
+
+        
         /*================================================
         Profile Page CSS
         =================================================*/  
@@ -13594,11 +13596,13 @@
         margin-bottom: 30px;
         border: 1px solid #ccc;
         border-radius: 10px;
-        }.jezsel-profile-section table th{ background-color: #e7e7e7 !important;}
-        .jezsel-profile-section .table-bordered th, .jezsel-profile-section .table-bordered td{ border: 1px solid #bfbfbf;}
+        }
+        .jezsel-profile-section table{ text-align: center;}
+        .jezsel-profile-section table th, .jezsel-profile-myord-pp table th{ background-color: #e7e7e7 !important;}
+        .jezsel-profile-section .table-bordered th,  .jezsel-profile-section .table-bordered td, .jezsel-profile-myord-pp .table-bordered td{ border: 1px solid #bfbfbf;}
         .jezsel-profile-wallet-swith {
         display: grid;
-        border-radius: 8px !important;
+        border-radius: 8px !important; 
         width: 100%;
         margin-bottom: 20px;
         grid-template-columns: 1fr 1fr;
@@ -13704,8 +13708,7 @@
         color:#fff;
         }
         .customNextBtn:hover, .customPreviousBtn:hover, .customNextBtn2:hover, .customPreviousBtn2:hover, .customNextBtn3:hover, .customPreviousBtn3:hover{ background-color:#000; color:#fff;}
-
-
+    
         /*================================================
         Responsive CSS
         =================================================*/  
