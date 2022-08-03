@@ -20,8 +20,8 @@
 <!-- =======================Banner innerpage -->
 <div class="section section-padding">
     <div class="container">
-     <div class="jezsel-locatio-section shadow">
-        <div class="row" *ngFor="let data of dataLists">
+     <div class="jezsel-locatio-section shadow" *ngFor="let data of dataLists">
+        <div class="row">
             <div class="col-lg-6 col-12 align-self-center">
                 <div class="about-content text-center ">
                     <div class="desc" [innerHtml]="data.content">
