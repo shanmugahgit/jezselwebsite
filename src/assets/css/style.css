@@ -13823,8 +13823,6 @@
         }
         
 
-
-
         @media screen and (max-width: 600px) {
         .jezl-hm-ban-text h1 {
         margin-top: 145px !important;
@@ -13861,9 +13859,7 @@
         }
 
         .jezel-inner-page-banner-area h1{
-
                 font-size: 25px;
-
         }
         .jezl-hm-weltxt {
                 font-size: 25px;
@@ -13880,7 +13876,6 @@
                 grid-template-columns: 1fr;
                 padding-bottom: 30px;
                 text-align: center;
-
         }
 
         ul.wwd-ser .wwd-cle {
@@ -13889,11 +13884,9 @@
 
         }
 
-        @media screen and (max-width: 360px) {
+        @media screen and (max-width: 360px) { 
                 .jezel-inner-page-banner-area h1{
-
                         font-size: 20px;
-        
-                }
+                } 
 
         }
