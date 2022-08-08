@@ -213,7 +213,9 @@
                     </div>
                     <div class="upload-btn-wrapper">
                         <button class="btn-upload">Upload Driving License</button>
-                        <input type="file" name="myfile" />
+                        <input type="file" name="myfile"  #thumbnail
+                        (change)="onThumbnailChange(thumbnail.files)">
+                        <div *ngIf="driverLicense" class="text-success">File Uploaded</div>
                       </div>
                 </div>
             </div>

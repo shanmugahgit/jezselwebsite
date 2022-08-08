@@ -56,6 +56,7 @@ export class BookingComponent implements OnInit {
   teamId: any = null;
   couponPrice: any = 0;
   couponId: any = null;
+  driverLicense: any;
   constructor(private storage: StorageService, private http: HttpRequestService, private router: Router, private modalService: BsModalService) {
     this.dataLists = this.storage.getProducts() ? this.storage.getProducts() : [];
     this.userDetails = this.storage.getUserDetails();
@@ -63,27 +64,27 @@ export class BookingComponent implements OnInit {
       this.loadUserData();
     }
     this.loadTermsData();
-    
+
     let checkoutDates: any = [];
     this.dataLists.forEach((element: any) => {
-      if(element.search){
+      if (element.search) {
         var date = element.search.checkoutdate.split("-").reverse().join("-");
         checkoutDates.push(new Date(date))
-        if(element.cancelData && element.cancelData.days){
+        if (element.cancelData && element.cancelData.days) {
           var date2 = element.search.checkindate.split("-").reverse().join("-");
           element.maxcanceldate = this.addDays(element.cancelData.days, date2);
           element.cancelationfee = element.cancelData.price
         }
       }
     });
-    if(checkoutDates.length>0){
-      var latest = new Date(Math.max.apply(null,checkoutDates));
+    if (checkoutDates.length > 0) {
+      var latest = new Date(Math.max.apply(null, checkoutDates));
       this.maxcheckoutdate = ((latest.getDate() > 9) ? latest.getDate() : ('0' + latest.getDate())) + '-' + ((latest.getMonth() > 8) ? (latest.getMonth() + 1) : ('0' + (latest.getMonth() + 1))) + '-' + latest.getFullYear()
-      
-    }    
+
+    }
     let times: any = [];
     this.dataLists.forEach((element: any) => {
-      if(element.search.checkoutdate == this.maxcheckoutdate){
+      if (element.search.checkoutdate == this.maxcheckoutdate) {
         times.push(element.search.checkouttime);
       }
     })
@@ -95,8 +96,8 @@ export class BookingComponent implements OnInit {
   }
 
   addDays(days: any, oldDate: any) {
-    let date: any = new Date(oldDate); 
-    date.setDate(date.getDate() - days); 
+    let date: any = new Date(oldDate);
+    date.setDate(date.getDate() - days);
     return ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + date.getFullYear();
   }
 
@@ -111,16 +112,16 @@ export class BookingComponent implements OnInit {
         }
         this.teamId = response['team_id'];
         this.formGroup.patchValue(response);
-        this.http.post('order/my-wallet', {team_id: this.teamId ? this.teamId : ''}).subscribe(
+        this.http.post('order/my-wallet', { team_id: this.teamId ? this.teamId : '' }).subscribe(
           (response: any) => {
-            if(response.wallet){
+            if (response.wallet) {
               this.currentBalance = response.wallet;
             }
           }
         )
       }
     )
-    
+
   }
 
   // loadOrderData() {
@@ -199,12 +200,12 @@ export class BookingComponent implements OnInit {
         // interestUsed += (this.currentBalance - this.currentWallet);
       }
     }
-    else{
+    else {
       // wallet+=this.total;
       // interestUsed = this.interestUsed;
       amountPaid = this.total;
     }
-    return {amountPaid: parseFloat(parseFloat(amountPaid).toFixed(2)), amountUsed: parseFloat(parseFloat(amountUsed).toFixed(2))};
+    return { amountPaid: parseFloat(parseFloat(amountPaid).toFixed(2)), amountUsed: parseFloat(parseFloat(amountUsed).toFixed(2)) };
     // return { wallet: parseFloat(parseFloat(wallet).toFixed(2)), interestUsed: parseFloat(parseFloat(interestUsed).toFixed(2)), amountPaid: parseFloat(parseFloat(amountPaid).toFixed(2)) };
   }
 
@@ -237,6 +238,7 @@ export class BookingComponent implements OnInit {
             this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
             this.http.post('order/make-order', this.formGroup.value).subscribe(
               (order: any) => {
+                this.uploadLicense(order.id);
                 let pName: any = null;
                 order.Orderhistories.forEach((elm: any) => {
                   if (!elm.extra_id) {
@@ -306,6 +308,7 @@ export class BookingComponent implements OnInit {
         this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
         this.http.post('order/make-order', this.formGroup.value).subscribe(
           (order: any) => {
+            this.uploadLicense(order.id);
             let pName: any = null;
             order.Orderhistories.forEach((elm: any) => {
               if (!elm.extra_id) {
@@ -384,6 +387,7 @@ export class BookingComponent implements OnInit {
         this.formGroup.value['coupon_id'] = this.couponId;
         this.http.post('order/make-order', this.formGroup.value).subscribe(
           (response: any) => {
+            this.uploadLicense(response.id);
             // this.http.successMessage("Order Successfully.");
             response.factuuremail = this.formGroup.value.factuuremail;
             this.http.post('send-payment-link', response).subscribe(
@@ -440,14 +444,14 @@ export class BookingComponent implements OnInit {
     this.couponPrice = 0;
     this.couponId = null;
     if (this.coupon) {
-      this.http.post('check-coupon-used', {code: this.coupon}).subscribe(
+      this.http.post('check-coupon-used', { code: this.coupon }).subscribe(
         (response: any) => {
           console.log(response)
-          if(response && response.price){
+          if (response && response.price) {
             this.couponPrice = response.price;
-            if(response.coupon_id){
+            if (response.coupon_id) {
               this.couponId = response.coupon_id;
-            }            
+            }
             this.total = parseFloat(this.total) - this.couponPrice;
           }
         },
@@ -461,16 +465,35 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  isEnableDriver(){
+  isEnableDriver() {
     let result = false;
-    if(this.dataLists && Array.isArray(this.dataLists) && this.dataLists.length>0){
-      let isRent = this.dataLists.find((element: any)=>(element.type=='Rent'));
-      if(isRent){
+    if (this.dataLists && Array.isArray(this.dataLists) && this.dataLists.length > 0) {
+      let isRent = this.dataLists.find((element: any) => (element.type == 'Rent'));
+      if (isRent) {
         result = true;
       }
     }
-    
+
     return result;
+  }
+
+  onThumbnailChange(file: any) {
+    this.driverLicense = file[0];
+  }
+
+  uploadLicense(orderId: any) {
+    if (this.driverLicense && orderId) {
+      let _form = new FormData();
+      _form.append('id', orderId);
+      _form.append('image', this.driverLicense);
+      this.http.post('order/updateDriverLicense', _form).subscribe(
+        (response: any) => {
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }
   }
 
 }

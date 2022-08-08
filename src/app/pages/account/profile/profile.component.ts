@@ -66,8 +66,8 @@ export class ProfileComponent implements OnInit {
   // interestUsed: any = 0;
   // availableInterest: any = 0;
   extrasLists: any = [];
-  showPasswordField : boolean = false;
-  showAddressField : boolean = false;
+  showPasswordField: boolean = false;
+  showAddressField: boolean = false;
   constructor(private storage: StorageService, private http: HttpRequestService, private router: Router, private modalService: BsModalService) {
     this.userDetails = this.storage.getUserDetails();
     if (this.userDetails) {
@@ -82,7 +82,7 @@ export class ProfileComponent implements OnInit {
     this.userDetails = {};
   }
 
-  getTotal(){
+  getTotal() {
     return parseFloat(this.currentWallet + this.currentInterest).toFixed(2);
   }
 
@@ -233,7 +233,7 @@ export class ProfileComponent implements OnInit {
   viewDetails(data: any) {
     // this.selectedProduct = data;
     let histories: any = []
-    data.Orderhistories.sort(function(a: any, b: any) {
+    data.Orderhistories.sort(function (a: any, b: any) {
       var keyA = new Date(a.extra_id),
         keyB = new Date(b.extra_id);
       // Compare the 2 dates
@@ -296,10 +296,10 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    if(!this.passwordformGroup.value.password){
+    if (!this.passwordformGroup.value.password) {
       this.http.errorMessage("Please enter the password");
     }
-    else if((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.passwordformGroup.value.password)) && (/^[A-Z]/.test(this.passwordformGroup.value.password))){
+    else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.passwordformGroup.value.password)) && (/^[A-Z]/.test(this.passwordformGroup.value.password))) {
       let params = {
         email: this.userDetails.email,
         id: this.userDetails.id,
@@ -316,16 +316,16 @@ export class ProfileComponent implements OnInit {
         }
       )
     }
-    else{
+    else {
       this.http.errorMessage("Please enter the valid password");
-    }    
+    }
   }
 
   updateAddress() {
-    if(!this.showAddressField){
+    if (!this.showAddressField) {
       this.showAddressField = true;
     }
-    else{
+    else {
       this.formGroup.value['id'] = this.userDetails.id;
       this.formGroup.value['username'] = this.userDetails.firstname;
       this.http.post('user/update', this.formGroup.value).subscribe(
@@ -337,7 +337,7 @@ export class ProfileComponent implements OnInit {
           this.http.exceptionHandling(error);
         }
       )
-    }    
+    }
   }
 
   submitChoice() {
@@ -488,8 +488,24 @@ export class ProfileComponent implements OnInit {
     return result;
   }
 
-  editPassword(){
+  editPassword() {
     this.showPasswordField = true;
+  }
+
+  sendPaymentLink(data: any) {
+    let params = {
+      id: data.id,
+      paymentLinkstatus: 2,
+    }
+    this.http.post('/order/update-status', params).subscribe(
+      (body: any) => {
+        this.http.post('send-payment-link', data).subscribe(
+          (body: any) => {
+            this.http.successMessage("Payment link Sent to the Email!");
+            location.reload();
+          })
+      })
+
   }
 
 }

@@ -89,7 +89,8 @@
                                                 <td>
                                                     <span *ngIf="data.status == 1"> Success</span>
                                                     <span *ngIf="data.status == 2"> Failure</span>
-                                                    <span *ngIf="data.status == 3"> In Progress</span>
+                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus!=2"> In Progress <button class="btn btn-primary ml-2" (click)="sendPaymentLink(data)">Pay now</button></span>
+                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus==2"> In Progress(Payment Link sent to the email)</span>
                                                 </td>
                                                 <td><button class="btn btn-primary" (click)="viewDetails(data)">View
                                                         Details</button></td>
