@@ -28,14 +28,15 @@ export class ServiceDetailComponent implements OnInit {
 
   loadCarousel() {
     setTimeout(() => {
-      // Service Detailed page  Carousel
-      $('.service-detailed-owc.owl-carousel').owlCarousel({
-        items: 2,
+      $('.service-detailed-owc.owl-carousel').owlCarousel({ 
+        items: 1,
         margin: 50,
         lazyLoad: true,
-        dots: true,
+        dots: false,
+        nav: true,
         autoPlay: true,
         autoPlayTimeout: 1500,
+        navText : ["<i class='zmdi zmdi-chevron-left'></i>","<i class='zmdi zmdi-chevron-right'></i>"], 
         responsive: {
           0: {
             items: 1,
@@ -48,8 +49,10 @@ export class ServiceDetailComponent implements OnInit {
           }
         }
       });
-    }, 2000)
+    })
+
   }
+  
 
   loadData(route: any) {
     this.http.get('product/' + route).subscribe(

@@ -7447,7 +7447,7 @@
         border-radius: 6px;
         border-top: 3px solid #ed1c24;
         padding: 45px 50px;
-        margin-top: 50px;    
+        margin-top: 50px;
         }
 
         .login-area .login-box .login-top {
@@ -13711,6 +13711,91 @@
         .customNextBtn:hover, .customPreviousBtn:hover, .customNextBtn2:hover, .customPreviousBtn2:hover, .customNextBtn3:hover, .customPreviousBtn3:hover{ background-color:#000; color:#fff;}
     
         /*================================================
+        Home page Advertisement CSS
+        =================================================*/  
+        .hm-advertisement-owc{ position: relative;}
+        .hm-advertisement-owc .owl-prev {
+                position: absolute;
+                z-index: 99999;
+                font-size: 50px !important;
+                top: 0;
+                left: 10px;
+                bottom: 0;
+        }
+
+
+        .hm-advertisement-owc .owl-next {
+                position: absolute;
+                z-index: 99999;
+                font-size: 50px !important;
+                top: 0;
+                right: 10px;
+                bottom: 0;
+        }
+        .hm-advertisement-owc .owl-prev i, .hm-advertisement-owc .owl-next i{ 
+                color: var(--jezl-g-red);
+                background: rgba(255, 255, 255, 1);
+                border-radius: 50px;
+                transition: 0.3s;
+                width: 54px;
+                height: 54px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        }
+
+
+        .hm-advertisement-owc.owl-theme .owl-nav [class*="owl-"]:hover {
+                background-color: transparent;
+        }
+
+
+        /*================================================
+        Service Description Page CSS
+        =================================================*/  
+
+        .service-detailed-owc{ margin-top: 80px;}
+        .service-detailed-owc{ position: relative;}
+        .service-detailed-owc .owl-prev {
+                position: absolute;
+                z-index: 99999;
+                font-size: 50px !important;
+                top: 0;
+                left: 10px;
+                bottom: 0;
+        }
+
+
+        .service-detailed-owc .owl-next {
+                position: absolute;
+                z-index: 99999;
+                font-size: 50px !important;
+                top: 0;
+                right: 10px;
+                bottom: 0;
+        }
+        .service-detailed-owc .owl-prev i, .service-detailed-owc .owl-next i{ 
+                color: var(--jezl-g-red);
+                background: rgba(255, 255, 255, 1);
+                border-radius: 50px;
+                transition: 0.3s;
+                width: 54px;
+                height: 54px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        }
+
+
+        .service-detailed-owc.owl-theme .owl-nav [class*="owl-"]:hover {
+                background-color: transparent;
+        }
+
+
+
+
+        
+        /*================================================
         Responsive CSS
         =================================================*/  
 
@@ -13742,8 +13827,9 @@
         display: grid;
         grid-template-columns: 1fr;
         padding: 0px 25px 25px 25px;
-
         }
+
+
 
         #tab1:checked ~ #content1, #tab2:checked ~ #content1, #tab3:checked ~ #content1, #tab4:checked ~ #content1, #tab5:checked ~ #content1 {
         padding: 0px;
@@ -13803,6 +13889,11 @@
                 text-align: center;
         }
         .jezl-ser-c-pagination h2{ margin-bottom: 20px;}
+        #jezl-hm-search.row {
+                margin-right:0px;
+                margin-left: 0px;     
+
+        }
 
         }
 
@@ -13829,6 +13920,13 @@
         .jezl-hm-title-g a {
             
                 text-align: right;
+        }
+
+        .hm-advertisement-owc .owl-prev i, .hm-advertisement-owc .owl-next i, .service-detailed-owc .owl-prev i, .service-detailed-owc .owl-next i  {
+  
+                width: 30px;
+                height: 30px;
+                font-size: 14px; 
         }
 
         }

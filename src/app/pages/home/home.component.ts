@@ -62,13 +62,15 @@ export class HomeComponent implements OnInit {
 
   loadAdvertismentCarousel() {
     setTimeout(() => {
-      $('.hm-advertisement-owc.owl-carousel').owlCarousel({
+      $('.hm-advertisement-owc.owl-carousel').owlCarousel({  
         items: 1,
         margin: 50,
         lazyLoad: true,
-        dots: true,
+        dots: false,
+        nav: true,
         autoPlay: true,
         autoPlayTimeout: 1500,
+        navText : ["<i class='zmdi zmdi-chevron-left'></i>","<i class='zmdi zmdi-chevron-right'></i>"], 
         responsive: {
           0: {
             items: 1,
@@ -84,6 +86,9 @@ export class HomeComponent implements OnInit {
     })
 
   }
+  
+
+  
 
   loadRentCarousel() {
     setTimeout(() => {
