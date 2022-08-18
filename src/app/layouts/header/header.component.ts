@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { HttpRequestService } from 'src/app/services/http-request/http-request.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
-
+declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -23,6 +23,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData()
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        $(".navbar-collapse").removeClass("show");
+      }
+    });
   }
 
   loadData() {

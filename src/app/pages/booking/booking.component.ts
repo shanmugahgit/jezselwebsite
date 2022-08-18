@@ -232,7 +232,7 @@ export class BookingComponent implements OnInit {
             this.formGroup.value.products = this.dataLists;
             this.formGroup.value['amountpaid'] = amountPaid;
             this.formGroup.value['fromwallet'] = amountUsed;
-            this.formGroup.value.status = 1;
+            // this.formGroup.value.status = 1;
             this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
             this.formGroup.value['coupon_id'] = this.couponId;
             this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
@@ -302,7 +302,7 @@ export class BookingComponent implements OnInit {
         this.formGroup.value.products = this.dataLists;
         this.formGroup.value['amountpaid'] = amountPaid;
         this.formGroup.value['fromwallet'] = amountUsed
-        this.formGroup.value.status = 1;
+        // this.formGroup.value.status = 1;
         this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
         this.formGroup.value['coupon_id'] = this.couponId;
         this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';

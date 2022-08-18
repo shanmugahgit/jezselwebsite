@@ -126,7 +126,60 @@ export class ServicesComponent implements OnInit {
     body.offset = this.offset;
     body.limit = this.limit;
     body.type = this.title;
-    body.filter = this.selectedFilter && this.selectedFilter.join();
+    // body.filter = this.selectedFilter;
+    let vehicle = [];
+    let fuel = [];
+    let transmission = [];
+    let parkingspace = [];
+    let storagespace = [];
+    let beroep = [];
+    let leeftijd = [];
+    let ervaring = [];
+    let nationality = [];
+    let voertuig = [];
+    for(let i = 0;i < this.selectedFilter.length;i++){
+      if(this.selectedFilter[i].category == 'Vehicles'){
+        vehicle.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Fuel'){
+        fuel.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Transmission'){
+        transmission.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Parking space'){
+        parkingspace.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Storage space'){
+        storagespace.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Beroep'){
+        beroep.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Leeftijd'){
+        leeftijd.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Ervaring'){
+        ervaring.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Nationality'){
+        nationality.push(this.selectedFilter[i].id);
+      }
+      if(this.selectedFilter[i].category == 'Voertuig'){
+        voertuig.push(this.selectedFilter[i].id);
+      }
+    }
+    body.vehicle = vehicle.join();
+    body.fuel = fuel.join();
+    body.transmission = transmission.join();
+    body.parkingspace = parkingspace.join();
+    body.storagespace = storagespace.join();
+    body.beroep = beroep.join();
+    body.leeftijd = leeftijd.join();
+    body.ervaring = ervaring.join();
+    body.nationality = nationality.join();
+    body.voertuig = voertuig.join();
+    // body.filter = this.selectedFilter && this.selectedFilter.join();
     body.search = this.formGroup.value;
     this.http.post('products', body).subscribe(
       (response: any) => {
@@ -281,8 +334,8 @@ export class ServicesComponent implements OnInit {
     this.selectedFilter = [];
     this.filtersRaw.filter((x: any) => {
       if (x.checked)
-        this.selectedFilter.push(x.id);
-      // this.selectedFilter.push({category:x.category,id:x.id});
+        // this.selectedFilter.push(x.id);
+      this.selectedFilter.push({category:x.category,id:x.id});
     });
     this.offset = 0;
     this.getProducts();

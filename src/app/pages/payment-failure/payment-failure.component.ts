@@ -18,7 +18,7 @@ export class PaymentFailureComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.input.staus = 2;
+    this.input.status = 2;
     this.http.post('order/update-status', this.input).subscribe(
       (response: any) => {
         this.http.successMessage("Order Updated Successfully.");

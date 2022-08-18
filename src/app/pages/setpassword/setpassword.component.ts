@@ -52,7 +52,7 @@ export class SetpasswordComponent implements OnInit {
         )
       }
       else {
-        this.http.errorMessage("Please enter the valid password");
+        this.http.errorMessage("A password should be alphanumeric. First letter of the password should be capital. Password must contain a special character (@, $, !, &, etc). Password length must be greater than 8 characters.");
       }
     }
   }
