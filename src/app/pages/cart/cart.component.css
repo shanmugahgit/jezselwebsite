@@ -12,7 +12,7 @@
     border-radius: 0;
     left: 0px;
     top: 0px;
-    /*padding: 10px;*/
+    /*padding: 10px;*/ 
 }
 
 .title-sin_map .TravelGo-js-booking {
@@ -73,7 +73,7 @@
 .summary table td{ font-size: 12px;}
 .jezsel-cart-txt-right{ text-align: right; font-weight: bold; white-space: no-wrap;}
 .jezsel-cart-text-b{font-weight: bold;}
-h4.jezsel-cart-advance-payment{ margin-top: 20px; margin-bottom: 0px !important;}
+ h4.jezsel-cart-advance-payment{ margin-top: 20px; margin-bottom: 0px !important;}
 .jezsel-cart-pr-btn{ background-color: #05ac1c;}
 .jezsel-cart-pr-btn:hover{ background-color: #037313;}
 .jezselcart-rtb {    background: #FFE3E3 !important;}
@@ -84,9 +84,20 @@ a.jezsel-cart-service-trash{
     color: #ff0000;
 }
 .jezsel-cart-lfdtd{
-display: grid;
-grid-template-columns: 1.5fr 1fr 1fr;
-align-items: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    align-items: center;
 }
 .jezsel-cart-lfdtd img{ width: 15px; height: auto;}  
 
+@media screen and (max-width: 480px) {
+
+    .jezsel-cart-lfdtd{
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        text-align: center;
+        row-gap: 25px;
+    }
+
+}
