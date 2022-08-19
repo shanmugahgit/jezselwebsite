@@ -13710,6 +13710,8 @@
         }
         .customNextBtn:hover, .customPreviousBtn:hover, .customNextBtn2:hover, .customPreviousBtn2:hover, .customNextBtn3:hover, .customPreviousBtn3:hover{ background-color:#000; color:#fff;}
     
+
+
         /*================================================
         Home page Advertisement CSS
         =================================================*/  
@@ -13733,8 +13735,9 @@
                 bottom: 0;
         }
         .hm-advertisement-owc .owl-prev i, .hm-advertisement-owc .owl-next i{ 
-                color: var(--jezl-g-red);
-                background: rgba(255, 255, 255, 1);
+               /* color: var(--jezl-g-red);*/
+               color: #fff;
+                /*background: rgba(255, 255, 255, 1);*/
                 border-radius: 50px;
                 transition: 0.3s;
                 width: 54px;
@@ -13751,7 +13754,7 @@
 
 
         /*================================================
-        Service Description Page CSS
+          Service Description Page CSS
         =================================================*/  
 
         .service-detailed-owc{ margin-top: 80px;}
@@ -13775,8 +13778,9 @@
                 bottom: 0;
         }
         .service-detailed-owc .owl-prev i, .service-detailed-owc .owl-next i{ 
-                color: var(--jezl-g-red);
-                background: rgba(255, 255, 255, 1);
+               /* color: var(--jezl-g-red);*/
+               color: #fff;
+                /*background: rgba(255, 255, 255, 1);*/
                 border-radius: 50px;
                 transition: 0.3s;
                 width: 54px;
