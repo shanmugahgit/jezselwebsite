@@ -7,44 +7,44 @@
                     <form class="login-form" [formGroup]="myFormGroup" (ngSubmit)="register()">
                         <div class="row">
                             <div class="col-md-6 email">
-                                <label>First Name</label>
+                                <label>Voornaam</label>
                                 <input type="text" name="firstname" formControlName="firstname"
-                                    placeholder="Enter your First Name">
+                                    placeholder="Enter your Voornaam">
                             </div>
                             <div class="col-md-6 password">
-                                <label>Insertion</label>
+                                <label>Tussenvoegsel</label>
                                 <input type="text" name="insertion" formControlName="insertion"
-                                    placeholder="Enter Insertion">
+                                    placeholder="Enter Tussenvoegsel">
                             </div>
                             <div class="col-md-6 password">
-                                <label>Last Name</label>
+                                <label>Achternaam</label>
                                 <input type="text" name="lastname" formControlName="lastname"
-                                    placeholder="Enter Last Name">
+                                    placeholder="Enter Achternaam">
                             </div>
                             <div class="col-md-6 password">
-                                <label>Email</label>
-                                <input type="text" name="email" formControlName="email" placeholder="Enter Email">
+                                <label>E-mail</label>
+                                <input type="text" name="email" formControlName="email" placeholder="Enter E-mail">
                             </div>
                             <div class="col-md-6 password">
-                                <label>Phone Number</label>
+                                <label>Telefoonnummer</label>
                                 <input type="text" name="phone" formControlName="phone"
-                                    placeholder="Enter Phone Number">
+                                    placeholder="Enter Telefoonnummer">
                             </div>
                             <div class="col-md-6 password">
-                                <label>Password <i class="fa fa-info-circle" title="
+                                <label>Wachtwoord <i class="fa fa-info-circle" title="
                                     A password should be alphanumeric.
 First letter of the password should be capital.
 Password must contain a special character (@, $, !, &, etc).
 Password length must be greater than 8 characters."></i></label>
                                 <input type="password" name="password" formControlName="password"
-                                    placeholder="Enter Password">
+                                    placeholder="Enter Wachtwoord">
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="flexCheckDefault"
                                         formControlName="newsletter">
                                     <label class="form-check-label" for="flexCheckDefault">
-                                        Yes, I would also like to sign up for the newsletter
+                                        Ja, ik wil me ook inschrijven voor de nieuwsbrief
                                     </label>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@ Password length must be greater than 8 characters."></i></label>
                                 <button type="submit" name="button">Register</button>
                             </div>
                             <div class="login-btm text-center">
-                                <p>Having Account? <a class="text-primary" routerLink="/login">Login</a></p>
+                                <p>Bent u al een klant? <a class="text-primary" routerLink="/login">Inloggen</a></p>
                             </div>
                         </div>
                     </form>

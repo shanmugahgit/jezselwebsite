@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row all-text-white">
             <div class="col-md-12 align-self-center">
-                <h1 class="innerpage-title">Payment Status</h1>
+                <h1 class="innerpage-title">Status van betaling</h1>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12 align-self-center mt-lg-0 mt-3">
-                <h6 class="mb-3">Summary</h6>
+                <h6 class="mb-3">Overzicht </h6>
                 <hr>
                 <div class="summary" *ngFor="let product of order.Orderhistories;let i =index;">
                     <table>
@@ -32,7 +32,7 @@
                         </tr>
                         <tr *ngIf="!product.extra_id">
                             <td>
-                                <h4>Advance Payment</h4>
+                                <h4>Borg</h4>
                             </td>
                             <td>
                                 <h4><span>&#8364;</span>{{product.advancepaid}}</h4>
@@ -41,10 +41,10 @@
                     </table>
                     <hr>
                 </div>
-                <h5>Total: <span class="float-right"> <span>&#8364;</span>{{order.total}}</span>
+                <h5>Totaal: <span class="float-right"> <span>&#8364;</span>{{order.total}}</span>
                 </h5>
                 <br><br>
-                <button class="btn btn-primary btn-lg btn-grad" (click)="payNow()">Pay Now</button>
+                <button class="btn btn-primary btn-lg btn-grad" (click)="payNow()">Betalen</button>
             </div>
         </div>
     </div>

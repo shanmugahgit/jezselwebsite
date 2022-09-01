@@ -51,7 +51,7 @@ export class HttpRequestService {
       this.toastr.error(error.error);
     }
     else{
-      this.toastr.error("Request Failed");
+      this.toastr.error("Verzoek mislukt");
     }
   }
 

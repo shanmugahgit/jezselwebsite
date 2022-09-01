@@ -27,13 +27,13 @@ export class ForgetPasswordComponent implements OnInit {
   forgetPassword(){
     this.http.post('reset/password', this.myFormGroup.value).subscribe(
       (response: any)=>{
-        this.http.successMessage("Password Sent to Email Successfully");
+        this.http.successMessage("Wachtwoord succesvol verzonden naar uw e-mail");
         this.myFormGroup.reset();
         this.router.navigate(['/login']);
       },
       (error: any)=>{
         if(error == 'User not found'){
-          this.http.errorMessage("Email does't exists");
+          this.http.errorMessage("Het e-mailadres bestaat niet");
         }
         else{
           this.http.exceptionHandling(error);

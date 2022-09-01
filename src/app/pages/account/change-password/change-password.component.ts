@@ -28,7 +28,7 @@ export class ChangePasswordComponent implements OnInit {
 
   save() {
     if (!this.formGroup.value.password) {
-      this.http.errorMessage("Please enter the password");
+      this.http.errorMessage("Vul a.u.b. uw wachtwoord in");
     }
     else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.formGroup.value.password)) && (/^[A-Z]/.test(this.formGroup.value.password))) {
       let params = {
@@ -38,7 +38,7 @@ export class ChangePasswordComponent implements OnInit {
       }
       this.http.post('reset/changepassword', params).subscribe(
         (response: any) => {
-          this.http.successMessage('Updated');
+          this.http.successMessage('Bijgewerkt');
           this.formGroup.reset();
         },
         (error: any) => {
@@ -47,7 +47,7 @@ export class ChangePasswordComponent implements OnInit {
       )
     }
     else {
-      this.http.errorMessage("A password should be alphanumeric. First letter of the password should be capital. Password must contain a special character (@, $, !, &, etc). Password length must be greater than 8 characters.");
+      this.http.errorMessage("Een wachtwoord moet alfanumeriek zijn. De eerste letter van het wachtwoord moet een hoofdletter zijn. Het wachtwoord moet een speciaal teken bevatten (@, $, !, &, enz.). Het wachtwoord moet langer zijn dan 8 tekens.");
     }
   }
 

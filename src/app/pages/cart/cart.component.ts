@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   cancelRentingData: any = [
     {
       id: 1,
-      label: "Can cancel the order before the 48 hours of the pick up date/time. Must visible a button on the ordering page",
+      label: "U kunt uw bestelling tot 48 uur voor het ophaaldatum/tijd annuleren. Een knop is zichtbaar op de boeking pagina.",
       hours: 48,
       price: "0.00",
       days: 2,
@@ -23,7 +23,7 @@ export class CartComponent implements OnInit {
     },
     {
       id: 2,
-      label: "Can cancel the order before the 24 hours of the pick up date/time. Must visible a button on the ordering page",
+      label: "U kunt uw bestelling tot 24 uur voor het ophaaldatum/tijd annuleren. Een knop is zichtbaar op de boeking pagina.",
       hours: 24,
       price: "10",
       days: 1,
@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
   cancelStaffingData: any = [
     {
       id: 1,
-      label: "Cancel not possible",
+      label: "Annuleren is niet mogelijk",
       hours: 0,
       price: "0.00",
       days: 0,
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
     },
     {
       id: 2,
-      label: "Can cancel the order before the 48 hours of the pick up date/time. Must visible a button on the ordering page",
+      label: "U kunt uw bestelling tot 48 uur voor het ophaaldatum/tijd annuleren. Een knop is zichtbaar op de boeking pagina.",
       hours: 48,
       price: "25.00",
       days: 2,
@@ -49,7 +49,7 @@ export class CartComponent implements OnInit {
     },
     {
       id: 3,
-      label: "Can cancel the order before the 24 hours of the pick up date/time. Must visible a button on the ordering page",
+      label: "U kunt uw bestelling tot 24 uur voor het ophaaldatum/tijd annuleren. Een knop is zichtbaar op de boeking pagina.",
       hours: 24,
       price: "50.00",
       days: 1,
@@ -59,7 +59,7 @@ export class CartComponent implements OnInit {
   cancelTransportData: any = [
     {
       id: 1,
-      label: "Cancel not possible",
+      label: "Annuleren is niet mogelijk",
       hours: 0,
       price: "0",
       days: 0,
@@ -67,7 +67,7 @@ export class CartComponent implements OnInit {
     },
     {
       id: 2,
-      label: "Can cancel the order before the 48 hours of the pick up date/time. Must visible a button on the ordering page",
+      label: "U kunt uw bestelling tot 48 uur voor het ophaaldatum/tijd annuleren. Een knop is zichtbaar op de boeking pagina.",
       hours: 48,
       price: "100.00",
       days: 2,
@@ -75,7 +75,7 @@ export class CartComponent implements OnInit {
     },
     {
       id: 3,
-      label: "Can cancel the order before the 24 hours of the pick up date/time. Must visible a button on the ordering page",
+      label: "U kunt uw bestelling tot 24 uur voor het ophaaldatum/tijd annuleren. Een knop is zichtbaar op de boeking pagina.",
       hours: 24,
       price: "250.00",
       days: 1,

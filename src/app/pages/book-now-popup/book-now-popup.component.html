@@ -12,9 +12,9 @@
                     <div class="row jezl-pop-up-search-gap-pad"  id="jezl-hm-search">
                         <div class="">
                             <div class="form-group" (clickOutside)="onClickedOutside($event)"> 
-                                <label>Location</label>
+                                <label>Locaties</label>
                                 <span><img src="assets/images/icon/location.png"></span>                           
-                                <input class="form-control" type="text" readonly placeholder="City, Point of Interest or U.S. Zip Code" formControlName="location">
+                                <input class="form-control" type="text" readonly placeholder="Stad" formControlName="location">
                                 <!-- <input class="form-control" type="text" readonly placeholder="City, Point of Interest or U.S. Zip Code" (focus)="showLocationData()" (keypress)="showLocationData()" formControlName="location"> -->
                                 <!-- <ul class="drop" *ngIf="showSelectLocation">
                                     <li *ngFor="let loc of locations | filterArray:formGroup.value.location"
@@ -24,37 +24,37 @@
                         </div>
                         <div class="">
                             <div class="form-group"> 
-                                <label>Checkin Date</label>
+                                <label>Aanvang</label>
                                 <span><img src="assets/images/icon/calendar.png"></span>
                                 <input class="form-control" type="text" id="popupcheckindate" autocomplete="off"
-                                    placeholder="Check-in" data-provide='datepicker' data-date-container='#myModalId'>
+                                    placeholder="Aanvang" data-provide='datepicker' data-date-container='#myModalId'>
                             </div>
                         </div>
                         <div class="">
                             <div class="form-group">
-                                <label>Checkin Time</label>
+                                <label>Aanvangstijd</label>
                                 <span><img src="assets/images/icon/time.png"></span>
-                                <select class="form-control" placeholder="check-in Time" formControlName="checkintime" (change)="changeCheckin()">
-                                    <option value="">Check-in Time</option>
+                                <select class="form-control" placeholder="Aanvangstijd" formControlName="checkintime" (change)="changeCheckin()">
+                                    <option value="">Aanvangstijd</option>
                                     <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)" value="{{x}}">{{x}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="">
                             <div class="form-group"> 
-                                <label>Checkout Date</label>
+                                <label>Einddatum</label>
                                 <span><img src="assets/images/icon/calendar.png"></span>
                                 <input class="form-control" type="text" id="popuocheckoutdate" autocomplete="off"
-                                    placeholder="Check-out" data-provide='datepicker' data-date-container='#myModalId'>
+                                    placeholder="Einddatum" data-provide='datepicker' data-date-container='#myModalId'>
                             </div>
                         </div>
                         <div class="">
                             <div class="form-group">
-                                <label>Checkout Time</label>
+                                <label>Eindtijd</label>
                                 <span><img src="assets/images/icon/time.png"></span>
-                                <select class="form-control" placeholder="check-out Time"
+                                <select class="form-control" placeholder="Eindtijd"
                                     formControlName="checkouttime">
-                                    <option value="">check-out Time</option>
+                                    <option value="">Eindtijd</option>
                                     <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)" value="{{x}}">{{x}}</option>
                                 </select>
 
@@ -64,7 +64,7 @@
                         <div class="">
                             <div class="form-group jezl-popup-f-btn">
                                 <button class="btn btn-primary btn-lg mt-1-35" type="submit"
-                                    [disabled]="formGroup.invalid">Find Price</button>
+                                    [disabled]="formGroup.invalid">Zie prijs</button>
                             </div>
                         </div>
                     </div>
@@ -115,8 +115,8 @@
 
                         <div class="jezl-ser-popup-rtclm">
                             
-                            <div class="jezl-pop-upt-rat-hr">€{{selectedProduct.priceperhr}} <span class="text-muted">/ hr</span></div>
-                            <button class="btn btn-primary" (click)="bookNow(selectedProduct)">Book Now</button>
+                            <div class="jezl-pop-upt-rat-hr">€{{selectedProduct.priceperhr}} <span class="text-muted"> / uur</span></div>
+                            <button class="btn btn-primary" (click)="bookNow(selectedProduct)">Boek nu</button>
                             
 
                         </div>
@@ -149,7 +149,7 @@
                                         <p [innerHtml]="selectedProduct.shortdescription"></p>
                                     </div>
                                 </a>
-                                <h2 class="pb-5 text-center text-danger">{{selectedProduct.name}} has been already booked in this slot. Please select different slot.</h2>
+                                <h2 class="pb-5 text-center text-danger">Het {{selectedProduct.name}} is al geboekt in deze periode. Gelieve een andere periode te kiezen.</h2>
                             </div>
                         </div>
 

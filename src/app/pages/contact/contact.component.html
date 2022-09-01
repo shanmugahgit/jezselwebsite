@@ -24,43 +24,43 @@
             <div class="col-lg-6 col-md-12">
                 <div class="get-in-touch">
                     <div class="sec-title">
-                        <h3>Get In Touch</h3>
+                        <h3>Kom in contact</h3>
                     </div>
                     <div class="contact-form">
                         <form id="ajax-contact" [formGroup]="myFormGroup" (ngSubmit)="save()">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Name</label>
+                                    <label>Naam</label>
                                     <p>
-                                        <input type="text" name="name" placeholder="Enter your name" formControlName="name">
+                                        <input type="text" name="name" placeholder="Enter your Naam" formControlName="name">
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Email</label>
+                                    <label>E-mail</label>
                                     <p>
-                                        <input type="text" name="email" placeholder="Your email address" formControlName="email">
+                                        <input type="text" name="email" placeholder="Your E-mail" formControlName="email">
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Phone</label>
+                                    <label>Telefoon</label>
                                     <p>
-                                        <input type="text" name="phone" placeholder="Your Phone Number" formControlName="phone">
+                                        <input type="text" name="phone" placeholder="Your Telefoon" formControlName="phone">
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Subject</label>
+                                    <label>Onderwerp</label>
                                     <p>
-                                        <input type="text" name="subject" placeholder="Your Subject" formControlName="subject">
+                                        <input type="text" name="subject" placeholder="Your Onderwerp" formControlName="subject">
                                     </p>
                                 </div>
                                 <div class="col-md-12">
-                                    <label>Message</label>
+                                    <label>Bericht</label>
                                     <p>
-                                        <textarea name="message" placeholder="Your message" formControlName="message"></textarea>
+                                        <textarea name="message" placeholder="Your Bericht" formControlName="message"></textarea>
                                     </p>
                                 </div>
                                 <div class="col-md-12">
-                                    <button type="submit">Submit Message</button>
+                                    <button type="submit">Verzend bericht</button>
                                 </div>
                             </div>
                             <div id="form-messages"></div>
@@ -75,7 +75,7 @@
                             <i class="fas fa-mobile-alt"></i>
                         </div>
                         <div class="details">
-                            <h5>Call us</h5>
+                            <h5>Bel ons</h5>
                             <p>{{contactDetails.phone}}</p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <i class="far fa-envelope"></i>
                         </div>
                         <div class="details">
-                            <h5>Mail us</h5>
+                            <h5>Mail ons</h5>
                             <p>{{contactDetails.email}}</p>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <i class="fas fa-street-view"></i>
                         </div>
                         <div class="details">
-                            <h5>Find us</h5>
+                            <h5>Vind ons</h5>
                             <p>{{contactDetails.address}}</p>
                         </div>
                     </div>

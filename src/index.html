@@ -10,7 +10,9 @@
     <!-- Bootstrap CSS -->
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" />
     <!-- <link href="assets/css/bootstrap-datepicker.css" type="text/css" rel="stylesheet" /> -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+        rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/material-design-iconic-font.min.css">
     <!-- Favicon -->
     <!-- Favicon and Touch Icons -->
@@ -19,11 +21,48 @@
     <link href="assets/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
     <link href="assets/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
     <link href="assets/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+    <style>
+        .skiptranslate{
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
     <app-root></app-root>
+    <!-- <div id="google_translate_element" style="display: none"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                // layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: true,
+                includedLanguages: 'nl',
+            }, 'google_translate_element');
+            setTimeout(() => {
+                changeLangToNL();
+            }, 10);
+        }
 
+        function changeLangToNL() {
+            let ele = document.querySelector("#google_translate_element select");
+            if (ele) {
+                if(ele[0].label == 'Dutch'){
+                    ele.selectedIndex = 0;
+                }
+                else if(ele[1].label == 'Dutch'){
+                    ele.selectedIndex = 1;
+                }
+                else if(ele[2].label == 'Dutch'){
+                    ele.selectedIndex = 2;
+                }                
+                ele.dispatchEvent(new Event("change"));
+            }
+
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
 
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/popper.min.js" type="text/javascript"></script>
@@ -37,7 +76,8 @@
     <!-- <script src="assets/js/bootstrap-datepicker.min.js" type="text/javascript"></script> -->
     <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 </body>
 
 </html>

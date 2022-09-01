@@ -32,13 +32,13 @@
                     <div class="tab_container">
 
                         <input id="tab1" type="radio" name="tabs" checked (click)="selectSection('rent')">
-                        <label for="tab1"><img src="assets/images/icon/verhuur-icon.png"><span>Rent</span></label>
+                        <label for="tab1"><img src="assets/images/icon/verhuur-icon.png"><span>Verhuur</span></label>
                         <input id="tab2" type="radio" name="tabs" (click)="selectSection('staffing')">
                         <label for="tab2"><img src="assets/images/icon/uitzenden-icon.png"
-                                class="staffing"><span>Staffing</span></label>
+                                class="staffing"><span>Uitzend</span></label>
                         <input id="tab3" type="radio" name="tabs" (click)="selectSection('transport')">
                         <label for="tab3"><img
-                                src="assets/images/icon/transport-icon.png"><span>Transporting</span></label>
+                                src="assets/images/icon/transport-icon.png"><span>Transport</span></label>
                         <section id="content1" class="tab-content">
                             <form [formGroup]="formGroup" (ngSubmit)="search()">
                                 <div class="row" id="jezl-hm-search">
@@ -47,7 +47,7 @@
                                             <span><img src="assets/images/icon/location.png"></span>
                                             <!-- <input type="hidden" formControlName="locationid"> -->
                                             <input class="form-control" type="text"
-                                                placeholder="City, Point of Interest or U.S. Zip Code"
+                                                placeholder="Stad"
                                                 (focus)="showLocationData()" (keypress)="showLocationData()"
                                                 formControlName="location">
                                             <ul class="drop" *ngIf="showSelectLocation">
@@ -60,16 +60,16 @@
                                         <div class="form-group"> <span><img
                                                     src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker" autocomplete="off"
-                                                placeholder="Check-in">
+                                                placeholder="Aanvang">
                                         </div>
                                     </div>
                                     <div class="padding8"> 
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
                                             <!-- <input class="form-control" type="text" id="timepicker" autocomplete="off" placeholder="Check-in"> -->
-                                            <select class="form-control" placeholder="check-in Time"
+                                            <select class="form-control" placeholder="Aanvangstijd"
                                                 formControlName="checkintime" (change)="changeCheckin()">
-                                                <option value="">Check-in Time</option>
+                                                <option value="">Aanvangstijd</option>
                                                 <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)"
                                                     value="{{x}}">{{x}}</option>
                                             </select>
@@ -79,16 +79,16 @@
                                         <div class="form-group"> <span><img
                                                     src="assets/images/icon/calendar.png"></span>
                                             <input class="form-control" type="text" id="datepicker-out"
-                                                autocomplete="off" placeholder="Check-out">
+                                                autocomplete="off" placeholder="Einddatum">
                                         </div>
                                     </div>
 
                                     <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
-                                            <select class="form-control" placeholder="check-out Time"
+                                            <select class="form-control" placeholder="Eindtijd"
                                                 formControlName="checkouttime">
-                                                <option value="">Check-out Time</option>
+                                                <option value="">Eindtijd</option>
                                                 <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)"
                                                     value="{{x}}">{{x}}</option>
                                             </select>
@@ -122,12 +122,8 @@
             </div>
             <div class="col-lg-7">
                 <div class="jezl-hm-ons">Over Ons</div>
-                <div class="jezl-hm-weltxt">Welcome to Jezsel</div>
-                <p class="mb-3 fnt-fam fnt-b700">Jezsel is a service company in transport and logistics. We provide you with people
-                    (drivers and logistics staff) and mobility (trucks and delivery vans) on a temporary basis. You can
-                    schedule the capacity you need yourself via our unique and fully transparent order system.
-                    Availability and costs are immediately clear. This way you can plan (far) ahead, which also makes
-                    hiring with us cheaper.</p>
+                <div class="jezl-hm-weltxt">WELKOM BIJ JEZSEL</div>
+                <p class="mb-3 fnt-fam fnt-b700">Jezsel is een dienstverlenend bedrijf in transport en logistiek. Wij leveren u op tijdelijke basis mensen (chauffeurs en logistiek personeel) en mobiliteit (vrachtauto’s en bestelbussen). De capaciteit die u nodig heeft kunt u zelf inplannen via ons unieke en volledig transparante ordersysteem. Daarbij zijn beschikbaarheid en kosten meteen duidelijk. Zo kunt u (ver) vooruit plannen, wat het inhuren bij ons ook nog eens goedkoper maakt.</p>
 
                 <ul class="jezl-hn-wel-ser">
 
@@ -234,7 +230,7 @@
                     <div class="item" *ngFor="let product of rentproducts"
                         routerLink="/service-detail/{{product.route}}">
                         <div class="t-logo"> <img src="assets/images/logo/benz-logo.png"></div>
-                        <div class="readmore"><span>Readmore</span></div>
+                        <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
                         </div>
@@ -242,8 +238,8 @@
                             {{product.name}}
                         </div>
                         <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
-                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>
+                            <div class="t-rat-hr">€{{product.priceperhr}} / uur</div>
+                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Boek nu</a>
                         </div>
                     </div>
                     <!-- item end here -->
@@ -283,7 +279,7 @@
                 <div class="staffing owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of staffingproducts"
                         routerLink="/service-detail/{{product.route}}">
-                        <div class="readmore"><span>Readmore</span></div>
+                        <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
                         </div>
@@ -291,8 +287,8 @@
                             {{product.name}}
                         </div>
                         <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
-                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>
+                            <div class="t-rat-hr">€{{product.priceperhr}} / uur</div>
+                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Boek nu</a>
                         </div>
                     </div>
                     <!-- item end here -->
@@ -330,7 +326,7 @@
                 <div class="transport owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of transportproducts"
                         routerLink="/service-detail/{{product.route}}">
-                        <div class="readmore"><span>Readmore</span></div>
+                        <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
                         </div>
@@ -338,8 +334,8 @@
                             {{product.name}}
                         </div>
                         <div class="jezl-cst-bnbtn">
-                            <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
-                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>
+                            <div class="t-rat-hr">€{{product.priceperhr}} / uur</div>
+                            <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Boek nu</a>
                         </div>
                     </div>
                     <!-- item end here -->
@@ -572,29 +568,29 @@
 
                     <div class="htso">
                         <img src="assets/images/icon/highly-secured-icon.png">
-                        <div class="title">Highly Secured</div>
-                        <p>Rented a car? always try to ensure top security for the pass for ensuring</p>
+                        <div class="title">Niet aftanken</div>
+                        <p>U hoeft bij het terugbrengen van het voertuig het voertuig niet af te tanken. Dit scheelt u weer tijd.</p>
                     </div>
                     <!--box end here-->
 
                     <div class="htso">
                         <img src="assets/images/icon/trusted-agents-icon.png">
-                        <div class="title">Trusted Agents</div>
-                        <p>Rented a car? always try to ensure top security for the pass for ensuring</p>
+                        <div class="title">Rente over uw borg</div>
+                        <p>Alleen bij Jezsel.nl krijgt u 5% rente over uw borg. Met één klik kunt u uw borg met opgebouwde rente overboeken op uw rekening wanneer u wilt.</p>
                     </div>
                     <!--box end here-->
 
                     <div class="htso">
                         <img src="assets/images/icon/support-icon.png">
-                        <div class="title">24/7 Support</div>
-                        <p>Rented a car? always try to ensure top security for the pass for ensuring</p>
+                        <div class="title">24/7 beschikbaar</div>
+                        <p>Al onze diensten zijn 24 uur en 7 dagen per week beschikbaar voor onze klanten.</p>
                     </div>
                     <!--box end here-->
 
                     <div class="htso">
                         <img src="assets/images/icon/online-payments-icon.png">
-                        <div class="title">Online Payments</div>
-                        <p>Rented a car? always try to ensure top security for the pass for ensuring</p>
+                        <div class="title">Online betalingen</div>
+                        <p>Bij Jezsel.nl kunt u veilig en snel onze diensten boeken doordat u al uw betalingen online kunt verrichten.</p>
                     </div>
                     <!--box end here-->
 

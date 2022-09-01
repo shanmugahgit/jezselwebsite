@@ -297,7 +297,7 @@ export class ProfileComponent implements OnInit {
 
   save() {
     if (!this.passwordformGroup.value.password) {
-      this.http.errorMessage("Please enter the password");
+      this.http.errorMessage("Vul a.u.b. uw wachtwoord in");
     }
     else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.passwordformGroup.value.password)) && (/^[A-Z]/.test(this.passwordformGroup.value.password))) {
       let params = {
@@ -307,7 +307,7 @@ export class ProfileComponent implements OnInit {
       }
       this.http.post('reset/changepassword', params).subscribe(
         (response: any) => {
-          this.http.successMessage('Updated');
+          this.http.successMessage('Bijgewerkt');
           this.passwordformGroup.reset();
           this.showPasswordField = false;
         },
@@ -317,7 +317,7 @@ export class ProfileComponent implements OnInit {
       )
     }
     else {
-      this.http.errorMessage("A password should be alphanumeric. First letter of the password should be capital. Password must contain a special character (@, $, !, &, etc). Password length must be greater than 8 characters.");
+      this.http.errorMessage("Een wachtwoord moet alfanumeriek zijn. De eerste letter van het wachtwoord moet een hoofdletter zijn. Het wachtwoord moet een speciaal teken bevatten (@, $, !, &, enz.). Het wachtwoord moet langer zijn dan 8 tekens.");
     }
   }
 
@@ -330,7 +330,7 @@ export class ProfileComponent implements OnInit {
       this.formGroup.value['username'] = this.userDetails.firstname;
       this.http.post('user/update', this.formGroup.value).subscribe(
         (response: any) => {
-          this.http.successMessage("Updated Successfully");
+          this.http.successMessage("Succesvol bijgewerkt");
           this.showAddressField = false;
         },
         (error: any) => {
@@ -372,7 +372,7 @@ export class ProfileComponent implements OnInit {
         }
         else {
           this.modalRef?.hide();
-          this.http.successMessage("Order Placed Successfully.");
+          this.http.successMessage("Boeking succesvol geplaatst.");
           this.router.navigate(['/home']);
           this.storage.clearProducts();
           // this.updateWallet(wallet, interestUsed);
@@ -418,7 +418,7 @@ export class ProfileComponent implements OnInit {
     this.myFormGroup.value['employee'] = true;
     this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
       (response: any) => {
-        this.http.successMessage("Created Successfully");
+        this.http.successMessage("Succesvol aangemaakt");
         this.myFormGroup.reset();
         this.showList = true;
         this.loadTeamUsers();
@@ -434,7 +434,7 @@ export class ProfileComponent implements OnInit {
     user['username'] = user.firstname;
     this.http.post('user/update', user).subscribe(
       (response: any) => {
-        this.http.successMessage("Deleted Successfully");
+        this.http.successMessage("Succesvol verwijderd");
         this.loadTeamUsers();
       },
       (error: any) => {
@@ -446,7 +446,7 @@ export class ProfileComponent implements OnInit {
   cancelOrder(order: any) {
     this.http.post('order/cancel-order', { id: order.id, status: 0 }).subscribe(
       (response: any) => {
-        this.http.successMessage("Canceled Successfully");
+        this.http.successMessage("Succesvol geannuleerd");
         this.modalRef?.hide();
         this.loadData();
         location.reload();
@@ -468,7 +468,7 @@ export class ProfileComponent implements OnInit {
   makeWithdraw() {
     this.http.post('withdraw/create', { user_id: this.userDetails.id, amount: this.currentWallet, team_id: this.team_id }).subscribe(
       (response: any) => {
-        this.http.successMessage("Request sent Successfully");
+        this.http.successMessage("Verzoek succesvol verstuurd");
         this.modalRef?.hide();
         this.loadData();
         location.reload();
@@ -501,7 +501,7 @@ export class ProfileComponent implements OnInit {
       (body: any) => {
         this.http.post('send-payment-link', data).subscribe(
           (body: any) => {
-            this.http.successMessage("Payment link Sent to the Email!");
+            this.http.successMessage("Betalingslink verstuurd naar uw e-mail!");
             location.reload();
           })
       })

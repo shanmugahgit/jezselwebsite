@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row all-text-white">
             <div class="col-md-12 align-self-center">
-                <h1 class="innerpage-title">Cart</h1>
+                <h1 class="innerpage-title">Store</h1>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
                                                 {{x.description}} - <b> <span>&#8364;</span>{{x.price}}</b>
                                             </label>
                                         </div>
-                                        <h4 class="cancel-options">Cancel Options</h4>
+                                        <h4 class="cancel-options">Ga verder met winkelen</h4>
                                         <div class="form-check" *ngFor="let x of data.cancelLists">
                                             <input class="form-check-input" type="radio" value=""
                                                 id="flexCheckDefault" name="{{i}}" (change)="updateProducts($event, i, x.id)" value="{{x.label}}" [checked]="x.selected">
@@ -101,7 +101,7 @@
                     <div class="pb-left">
                         <div id="moreFilters" class="collapse show">
                             <div class="filter-block">
-                                <h6 class="mb-3">Summary</h6>
+                                <h6 class="mb-3">Overzicht</h6>
                                 <hr>
                                 <div class="summary" *ngFor="let product of dataLists;let i =index;">
                                     <table class="w-100">
@@ -111,7 +111,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-60">Price Per Hour</td>
+                                            <td class="w-60">Prijs per uur</td>
                                             <td class="w-40 jezsel-cart-txt-right"><span>&#8364;</span>{{product.priceperhr}}</td>
                                         </tr>
                                         <tr *ngFor="let x of product['Extras']">
@@ -120,7 +120,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <h4 class="jezsel-cart-advance-payment">Advance Payment</h4> 
+                                                <h4 class="jezsel-cart-advance-payment">Borg</h4> 
                                             </td>
                                             <td class="jezsel-cart-txt-right">
                                                 <h4><span>&#8364;</span><span [innerHtml]="getAdvancePayment(product.advancePayment)">{{product.advancePayment}}</span></h4>
@@ -129,15 +129,14 @@
                                     </table>
                                     <hr>
                                 </div>
-                                <h5 class="jezsel-cart-text-b">Total: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                                <h5 class="jezsel-cart-text-b">No Orders found: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
                                 </h5>
                             </div>
                         </div>
                         <div class="mb-left">
                             <button class="btn btn-primary FilterBtn jezsel-cart-pr-btn" [disabled]="dataLists.length==0"
-                                (click)="proceed()"> Proceed </button>
-                            <button type="submit" class="btn btn-primary FilterBtn" routerLink="/"> Continue
-                                Shopping </button>
+                                (click)="proceed()"> Betalen</button>
+                            <button type="submit" class="btn btn-primary FilterBtn" routerLink="/"> Ga verder met winkelen </button>
                         </div>
                     </div>
                 </form>

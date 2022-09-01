@@ -438,7 +438,7 @@ export class ServicesComponent implements OnInit {
             this.router.navigate(['/cart']);
           }
           else {
-            this.http.errorMessage(product.name + " has been already booked in this slot. Please select different slot.")
+            this.http.errorMessage("Het " + product.name + "is al geboekt in deze periode. Gelieve een andere periode te kiezen.")
           }
         }, (error: any) => {
           this.http.exceptionHandling(error);

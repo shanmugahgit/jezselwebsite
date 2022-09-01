@@ -3,27 +3,27 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="login-box">
-                    <h3 class="text-center text-primary mb-4">Login</h3>
+                    <h3 class="text-center text-primary mb-4">Inloggen</h3>
                     <form class="login-form" [formGroup]="myFormGroup" (ngSubmit)="login()">
                         <div class="row">
                             <div class="col-md-12 email">
-                                <label>Email Address / Phone Number</label>
-                                <input type="text" name="email" formControlName="email" placeholder="Enter your Email Address / Phone Number">
+                                <label>E-mailadres / telefoonnummer</label>
+                                <input type="text" name="email" formControlName="email" placeholder="Enter your E-mailadres / telefoonnummer">
                             </div>
                             <div class="col-md-12 password">
-                                <label>Password</label>
-                                <input type="password" name="email" formControlName="password" placeholder="Enter password">
+                                <label>Wachtwoord</label>
+                                <input type="password" name="email" formControlName="password" placeholder="Enter Wachtwoord">
                             </div>
                             <div class="col-md-12 d-flex justify-content-between">
                                 <div class="forget-btn">
-                                    <a routerLink="/forget-password">Forget Password?</a>
+                                    <a routerLink="/forget-password">Wachtwoord vergeten?</a>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" name="button">Login</button>
+                                <button type="submit" name="button">Inloggen</button>
                             </div>
                             <div class="login-btm text-center">
-                                <p>New to Jezsel? <a class="text-primary" routerLink="/register">Create an account</a></p>
+                                <p>Bent u nog geen klant? <a class="text-primary" routerLink="/register">Maak een account aan</a></p>
                             </div>
                         </div>
                     </form>

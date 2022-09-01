@@ -37,7 +37,7 @@
 
               
               <h5 class="mb-4"><span class="h4 text-primary">${{serviceDetails.priceperhr}}</span> / hr
-                <button class="btn btn-primary pull-right" (click)="bookNow(serviceDetails)">Book Now</button>
+                <button class="btn btn-primary pull-right" (click)="bookNow(serviceDetails)">Boek nu</button>
               </h5>
             <!-- <p [innerHtml]="serviceDetails.description"></p> -->
 
@@ -295,7 +295,7 @@
 
       <div class="col-lg-4 col-sm-6 col-xs-12" *ngFor="let product of similarProducts">
           <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
-            <div class="readmore"><span>Readmore</span></div>
+            <div class="readmore"><span>Lees meer</span></div>
               <div class="jezl-hm-truck-image">
                   <img [src]="product.path + product.thumbnail">
               </div>
@@ -304,7 +304,7 @@
               </div>
               <div class="jezl-cst-bnbtn">
                   <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
-                   <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product)">Book now</a>   
+                   <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product)">Boek nu</a>   
               </div>
           </div>
           <!-- item end here -->

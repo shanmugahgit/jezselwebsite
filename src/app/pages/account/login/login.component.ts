@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.http.postAuth('login', this.myFormGroup.value).subscribe(
       (response: any)=>{
-        this.http.successMessage("Login Successfully");
+        this.http.successMessage("Succesvol ingelogd");
         this.myFormGroup.reset();
         this.storage.setToken(response.token);
         this.storage.setUserDetails(response);

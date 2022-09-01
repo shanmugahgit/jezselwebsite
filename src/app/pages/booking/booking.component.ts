@@ -250,7 +250,7 @@ export class BookingComponent implements OnInit {
                   }
                 });
                 this.modalRef?.hide();
-                this.http.successMessage("Order Placed Successfully.");
+                this.http.successMessage("Boeking succesvol geplaatst.");
                 this.router.navigate(['/home']);
                 this.storage.clearProducts();
                 // this.updateWallet(wallet, interestUsed);
@@ -278,7 +278,7 @@ export class BookingComponent implements OnInit {
     this.modalRef = this.modalService.show(this.termstemplate, {
       backdrop: 'static',
       keyboard: false,
-      class: 'modal-sm'
+      class: 'modal-xl bottom-15'
     });
   }
 
@@ -337,7 +337,7 @@ export class BookingComponent implements OnInit {
             }
             else {
               this.modalRef?.hide();
-              this.http.successMessage("Order Placed Successfully.");
+              this.http.successMessage("Boeking succesvol geplaatst.");
               this.router.navigate(['/home']);
               this.storage.clearProducts();
               // this.updateWallet(wallet, interestUsed);
@@ -394,7 +394,7 @@ export class BookingComponent implements OnInit {
               (body: any) => {
                 this.formGroup.reset();
                 this.modalRef?.hide();
-                this.http.successMessage("Payment link Sent!");
+                this.http.successMessage("Verstuur betalingslink!");
                 this.storage.clearProducts();
                 this.router.navigate(['/home']);
                 // this.dataLists.length = 0;
@@ -461,7 +461,7 @@ export class BookingComponent implements OnInit {
       )
     }
     else {
-      this.http.errorMessage("Please enter the coupon code");
+      this.http.errorMessage("Vul a.u.b. uw kortingscode in");
     }
   }
 

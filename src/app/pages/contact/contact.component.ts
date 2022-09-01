@@ -37,7 +37,7 @@ export class ContactComponent implements OnInit {
   save(){
     this.http.post('enquiry/create', this.myFormGroup.value).subscribe(
       (response: any)=>{
-        this.http.successMessage("Message sent Successfully.");
+        this.http.successMessage("Het bericht is succesvol verzonden.");
         this.myFormGroup.reset();
       }
     )

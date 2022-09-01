@@ -23,18 +23,18 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                 <div class="feature-box h-100">  
                     <div class="tab_container">
                         <input id="tab1" type="radio" name="tabs" [checked]="formGroup.value.type == 'rent'" (click)="selectSection('rent')">
-                        <label for="tab1"><img src="assets/images/icon/verhuur-icon.png"><span>Rent</span></label>
+                        <label for="tab1"><img src="assets/images/icon/verhuur-icon.png"><span>Verhuur</span></label>
                         <input id="tab2" type="radio" name="tabs" [checked]="formGroup.value.type == 'staffing'" (click)="selectSection('staffing')">
-                        <label for="tab2"><img src="assets/images/icon/uitzenden-icon.png" class="staffing"><span>Staffing</span></label>
+                        <label for="tab2"><img src="assets/images/icon/uitzenden-icon.png" class="staffing"><span>Uitzend</span></label>
                         <input id="tab3" type="radio" name="tabs" [checked]="formGroup.value.type == 'transport'" (click)="selectSection('transport')">
-                        <label for="tab3"><img src="assets/images/icon/transport-icon.png"><span>Transporting</span></label>
+                        <label for="tab3"><img src="assets/images/icon/transport-icon.png"><span>Transport</span></label>
                         <section id="content1" class="tab-content">
                             <form [formGroup]="formGroup" (ngSubmit)="search()">
                                 <div class="row"  id="jezl-hm-search">
                                     <div class="padding8">
                                         <div class="form-group"> <span><img src="assets/images/icon/location.png"></span>
                                             <!-- <input type="hidden" formControlName="locationid"> -->
-                                            <input class="form-control" type="text" placeholder="City, Point of Interest or U.S. Zip Code" (focus)="showLocationData()" (keypress)="showLocationData()" formControlName="location">
+                                            <input class="form-control" type="text" placeholder="Stad" (focus)="showLocationData()" (keypress)="showLocationData()" formControlName="location">
                                             <ul class="drop" *ngIf="showSelectLocation">
                                                 <li *ngFor="let loc of locations | filterArray:formGroup.value.location" (click)="selectedLocation(loc)"><a>{{loc.name}}</a></li>
                                             </ul>
@@ -42,30 +42,30 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                                     </div>
                                     <div class="padding8">
                                         <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
-                                            <input class="form-control" type="text" id="datepicker" autocomplete="off" placeholder="Check-in">
+                                            <input class="form-control" type="text" id="datepicker" autocomplete="off" placeholder="Aanvang">
                                         </div>
                                     </div>
                                     <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
                                             <!-- <input class="form-control" type="text" id="timepicker" autocomplete="off" placeholder="Check-in"> -->
-                                            <select class="form-control" placeholder="check-in Time" formControlName="checkintime" (change)="changeCheckin()">
-                                            <option value="">check-in Time</option>
+                                            <select class="form-control" placeholder="Aanvangstijd" formControlName="checkintime" (change)="changeCheckin()">
+                                            <option value="">Aanvangstijd</option>
                                             <option *ngFor="let x of slots" [disabled]="checkinDisabled(x)" value="{{x}}">{{x}}</option>
                                         </select>
                                         </div>
                                     </div>
                                     <div class="padding8">
                                         <div class="form-group"> <span><img src="assets/images/icon/calendar.png"></span>
-                                            <input class="form-control" type="text" id="datepicker-out" autocomplete="off" placeholder="Check-out">
+                                            <input class="form-control" type="text" id="datepicker-out" autocomplete="off" placeholder="Einddatum">
                                         </div>
                                     </div>
 
                                     <div class="padding8">
                                         <div class="form-group">
                                             <span><img src="assets/images/icon/time.png"></span>
-                                            <select class="form-control" placeholder="check-out Time" formControlName="checkouttime">
-                                            <option value="">check-out Time</option>
+                                            <select class="form-control" placeholder="Eindtijd" formControlName="checkouttime">
+                                            <option value="">Eindtijd</option>
                                             <option *ngFor="let x of slots" [disabled]="checkoutDisabled(x)" value="{{x}}">{{x}}</option>
                                         </select>
 
@@ -117,22 +117,22 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
 
                             </div>
                         </div>
-                    <button type="submit" class="jezl-ser-shw-btn">Show {{config.totalItems}} Results</button>
+                    <button type="submit" class="jezl-ser-shw-btn">Toon {{config.totalItems}} resultaat</button>
 
                     </form>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <div class="resultBar barSpaceAdjust jezl-ser-c-pagination">
-                    <h2>We found <span>{{config.totalItems}}</span> Results for you</h2>
-                    <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)">
+                    <h2>We hebben <span>{{config.totalItems}}</span> resultaten voor u gevonden</h2>
+                    <pagination-controls class="paginationCommon blogPagination categoryPagination" (pageChange)="pageChanged($event)" previousLabel="Vorige" nextLabel="Volgende">
                     </pagination-controls>
                 </div>
                 <div class="row jezl-hm-services-gclm jezl-hm-services-g">
 
                     <div class="col-md-6 col-sm-6 col-xs-6" *ngFor="let product of products|slice:0:getSlice | paginate: config">
                         <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
-                            <div class="readmore"><span>Readmore</span></div>
+                            <div class="readmore"><span>Lees meer</span></div>
                             <div class="jezl-hm-truck-image">
                                 <img [src]="product.path + product.thumbnail">
                             </div>
@@ -140,8 +140,8 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                                 {{product.name}} 
                             </div>
                             <div class="jezl-cst-bnbtn">
-                                <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
-                                 <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>   
+                                <div class="t-rat-hr">€{{product.priceperhr}} / uur</div>
+                                 <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Boek nu</a>   
                             </div>
                         </div>
                         <!-- item end here -->
@@ -209,7 +209,7 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
 
                     <div class="col-lg-4 col-sm-6 col-xs-12" *ngFor="let product of products|slice:getSlice | paginate: config">
                         <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
-                            <div class="readmore"><span>Readmore</span></div>
+                            <div class="readmore"><span>Lees meer</span></div>
                             <div class="jezl-hm-truck-image">
                                 <img [src]="product.path + product.thumbnail">
                             </div>
@@ -217,8 +217,8 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
                                 {{product.name}} 
                             </div>
                             <div class="jezl-cst-bnbtn">
-                                <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
-                                 <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Book now</a>   
+                                <div class="t-rat-hr">€{{product.priceperhr}} / uur</div>
+                                 <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product, $event)">Boek nu</a>   
                             </div>
                         </div>
                         <!-- item end here -->

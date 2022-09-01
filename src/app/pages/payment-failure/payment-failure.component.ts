@@ -21,7 +21,7 @@ export class PaymentFailureComponent implements OnInit {
     this.input.status = 2;
     this.http.post('order/update-status', this.input).subscribe(
       (response: any) => {
-        this.http.successMessage("Order Updated Successfully.");
+        this.http.successMessage("Bestelling met success bijgewerkt.");
         this.storage.clearProducts();
         localStorage.removeItem('odere');
         // this.router.navigateByUrl('my-orders');

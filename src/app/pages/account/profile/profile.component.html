@@ -33,13 +33,12 @@
                     <div class="jezel-pro-login-tl">
                         <div class="jezel-pro-login-name">{{userDetails.firstname}} {{userDetails.lastname}}</div>
                         <div class="jezel-pro-login-emailid">{{userDetails.email}}</div>
-                        <div class="jezel-pro-logout"><a href="javascript:void(0);" (click)="logout()">Logout</a></div>
+                        <div class="jezel-pro-logout"><a href="javascript:void(0);" (click)="logout()">Uitloggen</a></div>
                     </div>
                     <!-- Login nel end here -->
 
                     <a class="nav-link active pl-4" id="v-pills-my-orders-tab" data-toggle="pill"
-                        href="#v-pills-my-orders" role="tab" aria-controls="v-pills-my-orders" aria-selected="true">My
-                        Orders</a>
+                        href="#v-pills-my-orders" role="tab" aria-controls="v-pills-my-orders" aria-selected="true">Mijn boekingen</a>
                     <a class="nav-link pl-4" id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address"
                         role="tab" aria-controls="v-pills-address" aria-selected="false">Profiel & instellingen</a>
                     <!--<a class="nav-link pl-4" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password"
@@ -54,7 +53,7 @@
                         *ngIf="!team_id||(team_id&&teamowner)">Wallet</a>
                     <a class="nav-link pl-4" id="v-pills-employees-tab" data-toggle="pill" href="#v-pills-employees"
                         role="tab" aria-controls="v-pills-employees" aria-selected="false"
-                        *ngIf="!team_id||(team_id&&teamowner)">Employees</a>
+                        *ngIf="!team_id||(team_id&&teamowner)">Werknemers</a>
                 </div>
             </div>
             <div class="col-lg-9">
@@ -67,7 +66,7 @@
                         aria-labelledby="v-pills-my-orders-tab">
                         <div class="jezsel-profile-section shadow">
 
-                            <h3>My Orders</h3>
+                            <h3>Mijn boekingen</h3>
                             <!-- <h5>Wallet - {{currentWallet}}</h5> -->
                             <div class="row mt-3">
                                 <div class="col-lg-12 col-12 align-self-center table-responsive ">
@@ -75,10 +74,10 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>BookedOn</th>
-                                                <th>Advance Paid</th>
-                                                <th>Payment Status</th>
-                                                <th>View Details</th>
+                                                <th>Geboekt op</th>
+                                                <th>Betaalde borg</th>
+                                                <th>Status van betaling</th>
+                                                <th>Meer informatie</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -87,16 +86,15 @@
                                                 <td>{{data.createdAt|date:'mediumDate'}}</td>
                                                 <td><span>&#8364;</span>{{data.total}}</td>
                                                 <td>
-                                                    <span *ngIf="data.status == 1"> Success</span>
-                                                    <span *ngIf="data.status == 2"> Failure</span>
-                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus!=2"> In Progress <button class="btn btn-primary ml-2" (click)="sendPaymentLink(data)">Pay now</button></span>
-                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus==2"> In Progress(Payment Link sent to the email)</span>
+                                                    <span *ngIf="data.status == 1"> Succes</span>
+                                                    <span *ngIf="data.status == 2"> Mislukt</span>
+                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus!=2"> In behandeling <button class="btn btn-primary ml-2" (click)="sendPaymentLink(data)">Betalen</button></span>
+                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus==2"> In behandeling (Betaallink verstuurd naar e-mail)</span>
                                                 </td>
-                                                <td><button class="btn btn-primary" (click)="viewDetails(data)">View
-                                                        Details</button></td>
+                                                <td><button class="btn btn-primary" (click)="viewDetails(data)">Zie details</button></td>
                                             </tr>
                                             <tr *ngIf="ordersdataLists.length==0">
-                                                <td colspan="5" class="text-center">No Orders found</td>
+                                                <td colspan="5" class="text-center">Geen bestellingen gevonden</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -195,16 +193,13 @@
                                     <tbody>
                                         <tr>
                                             <td valign="top">Wachtwoord <i class="fa fa-info-circle" title="
-                                                A password should be alphanumeric.
-First letter of the password should be capital.
-Password must contain a special character (@, $, !, &, etc).
-Password length must be greater than 8 characters."></i></td>
+                                                Een wachtwoord moet alfanumeriek zijn. De eerste letter van het wachtwoord moet een hoofdletter zijn. Het wachtwoord moet een speciaal teken bevatten (@, $, !, &, enz.). Het wachtwoord moet langer zijn dan 8 tekens."></i></td>
                                             <td valign="top">:</td>
                                             <td valign="top" *ngIf="!showPasswordField">************</td>
                                             <td valign="top" *ngIf="showPasswordField">
                                                 <form class="mt-3" [formGroup]="passwordformGroup" (ngSubmit)="save()">
                                                     <input class="form-control" type="password"
-                                                        placeholder="Enter Password" formControlName="password">
+                                                        placeholder="Enter Wachtwoord" formControlName="password">
                                                 </form>
                                             </td>
                                         </tr>
@@ -225,7 +220,7 @@ Password length must be greater than 8 characters."></i></td>
 
 
                         <div class="jezsel-profile-section shadow">
-                            <h3>Address</h3>
+                            <h3>Adres</h3>
                             <form class="mt-3" [formGroup]="formGroup" (ngSubmit)="updateAddress()">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -233,8 +228,8 @@ Password length must be greater than 8 characters."></i></td>
                                             <select class="form-control" formControlName="type"
                                                 [attr.disabled]="!showAddressField ? '' : null">
                                                 <option value="">Type</option>
-                                                <option value="business">Business</option>
-                                                <option value="customer">Customer</option>
+                                                <option value="business">Zakelijke</option>
+                                                <option value="customer">Particulier</option>
                                             </select>
                                         </div>
                                     </div>
@@ -262,7 +257,7 @@ Password length must be greater than 8 characters."></i></td>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h3>Vesigingsadres</h3>
+                                        <h3>Vestigingsadres</h3>
                                         <div class="form-group mt-4">
                                             <input class="form-control" type="text" placeholder="Straat"
                                                 formControlName="vesigingstraat"
@@ -292,7 +287,7 @@ Password length must be greater than 8 characters."></i></td>
                                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"
                                                 (change)="sync($event)" [attr.disabled]="!showAddressField ? '' : null">
                                             <label class="form-check-label" for="defaultCheck1">
-                                                (Vestigingsadres) is the same as the invoice adres
+                                                Vestigingsadres is hetzelfde als het factuuradres
                                             </label>
                                         </div>
                                     </div>
@@ -327,7 +322,7 @@ Password length must be greater than 8 characters."></i></td>
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="mt-4">Contact Details</h3>
+                                <h3 class="mt-4">Contact details</h3>
                                 <div class="row mt-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -477,15 +472,15 @@ Password length must be greater than 8 characters."></i></td>
                             <div class="jezel-profile-balance-interest-g">
                                 <ul>
                                     <li>
-                                        <div>Balance</div>
+                                        <div>Saldo</div>
                                         <div class="jezel-bi-amount">€ {{currentWallet}}</div>
                                     </li>
                                     <li>
-                                        <div>Interest</div>
+                                        <div>Rente</div>
                                         <div class="jezel-bi-amount">€ {{currentInterest}}</div>
                                     </li>
                                     <li>
-                                        <div><strong>Total</strong></div>
+                                        <div><strong>Totaal</strong></div>
                                         <div class="jezel-bi-amount"><strong>€ <span
                                                     [innerHtml]="getTotal()"></span></strong></div>
                                     </li>
@@ -507,11 +502,11 @@ Password length must be greater than 8 characters."></i></td>
                                 aria-orientation="horizontal">
                                 <a class="nav-link active pl-4" id="v-pills-deposit-tab" data-toggle="pill"
                                     href="#v-pills-deposit" role="tab" aria-controls="v-pills-deposit"
-                                    aria-selected="false" (click)="showWithdraw=false;showDeposit=true;">Deposit</a>
+                                    aria-selected="false" (click)="showWithdraw=false;showDeposit=true;">Opwaarderen</a>
                                 <a class="nav-link pl-4" id="v-pills-withdraw-tab" data-toggle="pill"
                                     href="#v-pills-withdraw" role="tab" aria-controls="v-pills-withdraw"
                                     aria-selected="true" (click)="showWithdraw=true;showDeposit=false;"
-                                    *ngIf="(!team_id||(team_id&&teamowner))&&!disableWithdraw()">Withdraw</a>
+                                    *ngIf="(!team_id||(team_id&&teamowner))&&!disableWithdraw()">Uitbetalen</a>
                             </div>
                             <div class="tab-pane fade show active" id="v-pills-deposit" role="tabpanel"
                                 aria-labelledby="v-pills-deposit-tab" *ngIf="showDeposit">
@@ -531,7 +526,7 @@ Password length must be greater than 8 characters."></i></td>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" type="text" placeholder="Enter Amount"
+                                                        <input class="form-control" type="text" placeholder="Voer bedrag in"
                                                             [(ngModel)]="amount" name="amount" appAcceptNumberOnly>
                                                     </div>
                                                 </div>
@@ -580,8 +575,7 @@ Password length must be greater than 8 characters."></i></td>
                                             <div class="col-md-4">
                                                 <button class="btn btn-primary" (click)="openWithdrawModal()"
                                                     [disabled]="disableWithdraw()"
-                                                    *ngIf="!team_id||(team_id&&teamowner)">Make Withdrawl
-                                                    Request</button>
+                                                    *ngIf="!team_id||(team_id&&teamowner)">Een verzoek tot uitbetaling</button>
 
                                             </div>
                                         </div>
@@ -629,10 +623,10 @@ Password length must be greater than 8 characters."></i></td>
                                 aria-orientation="horizontal">
                                 <a class="nav-link active pl-4" id="v-pills-deposit-tab1" data-toggle="pill"
                                     href="#v-pills-deposit1" role="tab" aria-controls="v-pills-deposit1"
-                                    aria-selected="false" (click)="showWithdraw1=false;showDeposit1=true;">Deposit</a>
+                                    aria-selected="false" (click)="showWithdraw1=false;showDeposit1=true;">Opwaarderen</a>
                                 <a class="nav-link pl-4" id="v-pills-withdraw-tab1" data-toggle="pill"
                                     href="#v-pills-withdraw1" role="tab" aria-controls="v-pills-withdraw1"
-                                    aria-selected="true" (click)="showWithdraw1=true;showDeposit1=false;">Withdraw</a>
+                                    aria-selected="true" (click)="showWithdraw1=true;showDeposit1=false;">Uitbetalen</a>
                             </div>
                             <div class="tab-pane fade" id="v-pills-withdraw1" role="tabpanel"
                                 aria-labelledby="v-pills-withdraw-tab1" *ngIf="showWithdraw1">
@@ -694,9 +688,9 @@ Password length must be greater than 8 characters."></i></td>
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Deposit</th>
-                                                        <th>Payment Status</th>
-                                                        <th>Deposited On</th>
+                                                        <th>Opwaarderen</th>
+                                                        <th>Status van Betaling</th>
+                                                        <th>Gestort op</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -743,11 +737,11 @@ Password length must be greater than 8 characters."></i></td>
 
 
                                 <div class="col-md-6">
-                                    <h3>Employees</h3>
+                                    <h3>Werknemers</h3>
                                 </div>
                                 <div class="col-md-6">
                                     <button class="pull-right btn btn-primary"
-                                        (click)="showList = false">Create</button>
+                                        (click)="showList = false">Aanmaken</button>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -769,12 +763,12 @@ Password length must be greater than 8 characters."></i></td>
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Insertion</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Delete</th>
+                                                <th>Voornaam</th>
+                                                <th>Achternaam</th>
+                                                <th>Tussenvoegsel</th>
+                                                <th>E-mail</th>
+                                                <th>Telefoonnummer</th>
+                                                <th>Verwijderen</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -803,33 +797,33 @@ Password length must be greater than 8 characters."></i></td>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="login-box">
-                                            <h3 class="text-center text-primary mb-4">Create Employee</h3>
+                                            <h3 class="text-center text-primary mb-4">Maak gastaccount</h3>
                                             <form class="login-form" [formGroup]="myFormGroup">
                                                 <div class="row">
                                                     <div class="col-md-4 email">
-                                                        <label>First Name</label>
+                                                        <label>Voornaam</label>
                                                         <input type="text" name="firstname" formControlName="firstname"
-                                                            placeholder="Enter your First Name">
+                                                            placeholder="Enter your Voornaam">
                                                     </div>
                                                     <div class="col-md-4 password">
-                                                        <label>Insertion</label>
+                                                        <label>Tussenvoegsel</label>
                                                         <input type="text" name="insertion" formControlName="insertion"
-                                                            placeholder="Enter Insertion">
+                                                            placeholder="Enter Tussenvoegsel">
                                                     </div>
                                                     <div class="col-md-4 password">
-                                                        <label>Last Name</label>
+                                                        <label>Achternaam</label>
                                                         <input type="text" name="lastname" formControlName="lastname"
-                                                            placeholder="Enter Last Name">
+                                                            placeholder="Enter Achternaam">
                                                     </div>
                                                     <div class="col-md-4 password">
-                                                        <label>Email</label>
+                                                        <label>E-mail</label>
                                                         <input type="text" name="email" formControlName="email"
-                                                            placeholder="Enter Email">
+                                                            placeholder="Enter E-mail">
                                                     </div>
                                                     <div class="col-md-4 password">
-                                                        <label>Phone Number</label>
+                                                        <label>Telefoonnummer</label>
                                                         <input type="text" name="phone" formControlName="phone"
-                                                            placeholder="Enter Phone Number">
+                                                            placeholder="Enter Telefoonnummer">
                                                     </div>
                                                     <!-- <div class="col-md-4 password">
                                                         <label>Password</label>
@@ -838,11 +832,11 @@ Password length must be greater than 8 characters."></i></td>
                                                     </div> -->
                                                     <div class="col-md-6">
                                                         <button type="submit" name="button"
-                                                            (click)="register()">Create</button>
+                                                            (click)="register()">Aanmaken</button>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <button type="submit" name="button"
-                                                            (click)="showList=true">Cancel</button>
+                                                            (click)="showList=true">Annuleren</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -868,7 +862,7 @@ Password length must be greater than 8 characters."></i></td>
 <ng-template #template>
     <div id="myModalId">
         <div class="modal-header">
-            <h4 class="modal-title pull-left">View Order Details</h4>
+            <h4 class="modal-title pull-left">Zie boekingsdetails</h4>
             <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
                 <span aria-hidden="true" class="visually-hidden">&times;</span>
             </button>
@@ -879,12 +873,12 @@ Password length must be greater than 8 characters."></i></td>
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Service</th>
+                            <th>dienst</th>
                             <th>Type</th>
-                            <th>Price</th>
-                            <th>Checkin</th>
-                            <th>Checkout</th>
-                            <th>Extras</th>
+                            <th>Prijs</th>
+                            <th>Aanvang</th>
+                            <th>Einde</th>
+                            <th>Extra’s</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -900,8 +894,8 @@ Password length must be greater than 8 characters."></i></td>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Price</th>
+                                            <th>Naam</th>
+                                            <th>Prijs</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -927,7 +921,7 @@ Password length must be greater than 8 characters."></i></td>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="modalRef?.hide()">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="modalRef?.hide()">Sluiten</button>
         </div>
     </div>
 

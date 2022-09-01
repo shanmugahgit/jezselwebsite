@@ -32,12 +32,12 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (!this.myFormGroup.value.password) {
-      this.http.errorMessage("Please enter the password");
+      this.http.errorMessage("Vul a.u.b. uw wachtwoord in");
     }
     else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.myFormGroup.value.password)) && (/^[A-Z]/.test(this.myFormGroup.value.password))) {
       this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
         (response: any) => {
-          this.http.successMessage("Registered Successfully");
+          this.http.successMessage("Succesvol geregistreerd");
           this.myFormGroup.reset();
           this.router.navigate(['/login']);
         },
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       )
     }
     else {
-      this.http.errorMessage("A password should be alphanumeric. First letter of the password should be capital. Password must contain a special character (@, $, !, &, etc). Password length must be greater than 8 characters.");
+      this.http.errorMessage("Een wachtwoord moet alfanumeriek zijn. De eerste letter van het wachtwoord moet een hoofdletter zijn. Het wachtwoord moet een speciaal teken bevatten (@, $, !, &, enz.). Het wachtwoord moet langer zijn dan 8 tekens.");
     }
   }
 }
