@@ -12806,7 +12806,7 @@
         align-items: center;
         }
         .jezl-htso-sec-st .htso img{
-        width: 70px;
+        width: 50px;
         height: auto;
         margin-bottom: 10px;
         }
@@ -12817,9 +12817,9 @@
         text-transform: none;
         }
         .jezl-htso-sec-st .htso p{
-        text-align: justify;
+        text-align:center;
         color: #9a99a2;
-        font-size: 18px;
+        font-size: 14px;
         line-height: 20px;
 
         }
