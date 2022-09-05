@@ -12806,10 +12806,23 @@
         align-items: center;
         }
         .jezl-htso-sec-st .htso img{
-        width: 50px;
-        height: auto;
+         height: auto;
         margin-bottom: 10px;
         }
+        .jezl-htso-sec-st .htso img.na{
+        width: 45px;
+        }
+        .jezl-htso-sec-st .htso img.ro{
+                width: 60px;
+        }
+        .jezl-htso-sec-st .htso img.si{
+                width: 55px;
+        }  
+        .jezl-htso-sec-st .htso img.op{
+                width: 45px;
+        }               
+
+
         .jezl-htso-sec-st .htso .title{ 
         font-size: 18px;
         font-weight: bold;
