@@ -25,9 +25,9 @@
 
        <!-- Tab line -->
       <div class="col-lg-12 col-md-12 col-sm-12 ">
-        <h1 class="text-capitalize">{{serviceDetails.name}} / {{serviceDetails.type}}</h1>
+        <h1 class="text-capitalize">{{serviceDetails.name}} / <span [innerHtml]="getType(serviceDetails.type)">{{serviceDetails.type}}</span></h1>
         <ul class="nav nav-tabs tab-line">
-          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-de-1"> Description
+          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-de-1"> Omschrijving
             </a> </li>
           <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab-de-2"> Availability </a> </li> -->
         </ul>
@@ -288,8 +288,7 @@
         <p class="subtitle text-secondary nopadding">Similar Services</p>
         <h1 class="paddtop1 font-weight lspace-sm">You may also like </h1>
       </div>
-      <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="" class="blist text-sm ml-2"> See
-          all Services<i class="fas fa-angle-double-right ml-2"></i></a></div>
+      <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="" class="blist text-sm ml-2"> Zie alle diensten<i class="fas fa-angle-double-right ml-2"></i></a></div>
     </div>
     <div class="row jezl-hm-services-gclm jezl-hm-services-g mt-5">
 

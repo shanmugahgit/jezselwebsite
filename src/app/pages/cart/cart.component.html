@@ -98,11 +98,11 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="dataLists.length==0">
-                        <p>No Products added</p>
+                        <p>Geen diensten toegevoegd</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-3 col-sm-12 Filter-left jezselcart-rtb">
+            <div class="col-lg-4 col-md-3 col-sm-12 Filter-left jezselcart-rtb pb-2">
                 <form action="#" autocomplete="off">
                     <div class="pb-left">
                         <div id="moreFilters" class="collapse show">
@@ -135,7 +135,9 @@
                                     </table>
                                     <hr>
                                 </div>
-                                <h5 class="jezsel-cart-text-b">No Orders found: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                                <h5 class="jezsel-cart-text-b" *ngIf="dataLists.length==0">Te betalen borg
+                                </h5>
+                                <h5 class="jezsel-cart-text-b" *ngIf="dataLists.length>0">Totaal: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
                                 </h5>
                             </div>
                         </div>

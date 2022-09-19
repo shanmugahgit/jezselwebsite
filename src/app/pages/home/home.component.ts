@@ -262,6 +262,11 @@ export class HomeComponent implements OnInit {
       }).change((ev: any) => {
         this.formGroup.patchValue({ checkoutdate: ev.target.value });
       });
+      $("#datepicker").datepicker({
+        altField: "#alternate",
+    });
+
+    // $("#datepicker").datepicker("option", "monthNames", ["Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7", "Test8", "Test9", "Test10", "Test11", "Test12"]);
     })
   }
 

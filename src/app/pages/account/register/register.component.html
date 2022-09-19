@@ -3,32 +3,32 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="login-box">
-                    <h3 class="text-center text-primary mb-4">Create Your Account</h3>
+                    <h3 class="text-center text-primary mb-4">Registreer uw account</h3>
                     <form class="login-form" [formGroup]="myFormGroup" (ngSubmit)="register()">
                         <div class="row">
                             <div class="col-md-6 email">
                                 <label>Voornaam</label>
                                 <input type="text" name="firstname" formControlName="firstname"
-                                    placeholder="Enter your Voornaam">
+                                    placeholder="Voer uw Voornaam">
                             </div>
                             <div class="col-md-6 password">
                                 <label>Tussenvoegsel</label>
                                 <input type="text" name="insertion" formControlName="insertion"
-                                    placeholder="Enter Tussenvoegsel">
+                                    placeholder="Voer Tussenvoegsel">
                             </div>
                             <div class="col-md-6 password">
                                 <label>Achternaam</label>
                                 <input type="text" name="lastname" formControlName="lastname"
-                                    placeholder="Enter Achternaam">
+                                    placeholder="Voer Achternaam">
                             </div>
                             <div class="col-md-6 password">
                                 <label>E-mail</label>
-                                <input type="text" name="email" formControlName="email" placeholder="Enter E-mail">
+                                <input type="text" name="email" formControlName="email" placeholder="Voer E-mail">
                             </div>
                             <div class="col-md-6 password">
                                 <label>Telefoonnummer</label>
                                 <input type="text" name="phone" formControlName="phone"
-                                    placeholder="Enter Telefoonnummer">
+                                    placeholder="Voer Telefoonnummer">
                             </div>
                             <div class="col-md-6 password">
                                 <label>Wachtwoord <i class="fa fa-info-circle" title="
@@ -37,7 +37,7 @@ First letter of the password should be capital.
 Password must contain a special character (@, $, !, &, etc).
 Password length must be greater than 8 characters."></i></label>
                                 <input type="password" name="password" formControlName="password"
-                                    placeholder="Enter Wachtwoord">
+                                    placeholder="Voer Wachtwoord">
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">
@@ -49,7 +49,7 @@ Password length must be greater than 8 characters."></i></label>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" name="button">Register</button>
+                                <button type="submit" name="button">Registreer</button>
                             </div>
                             <div class="login-btm text-center">
                                 <p>Bent u al een klant? <a class="text-primary" routerLink="/login">Inloggen</a></p>

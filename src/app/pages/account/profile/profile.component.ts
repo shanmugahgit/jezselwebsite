@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getTotal() {
-    return parseFloat(this.currentWallet + this.currentInterest).toFixed(2);
+    return (Number(this.currentWallet) + Number(this.currentInterest)).toFixed(2);
   }
 
   ngOnInit(): void {
@@ -506,6 +506,62 @@ export class ProfileComponent implements OnInit {
           })
       })
 
+  }
+
+  sendPayment(data: any) {
+    if (data.total) {
+      let order: any = {};
+      order.total = data.total;
+      order.status = 3;
+      order.products = [];
+      order.amountpaid = data.total;
+      order.type = 'wallet';
+      order.team_id = this.team_id ? this.team_id : ''
+      this.http.post('order/make-order', order).subscribe(
+        (order: any) => {
+          this.http.delete('order/deleteOrder/', data.id).subscribe(
+            (test: any) => {
+
+            })
+          let pName: any = 'Add Money to your Wallet'
+          if (data.total > 0) {
+            let prop = { id: order.id, total: data.total, pname: pName }
+            this.http.post('payment/ideal', prop).subscribe(
+              (body: any) => {
+                let reference: any = { id: order.id };
+                reference.paymentchargeid = body && body.paymentchargeid || null;
+                window.location.href = body.url
+                this.modalRef?.hide();
+                localStorage.setItem('odere', JSON.stringify(reference));
+                this.storage.clearProducts();
+              })
+
+          }
+          else {
+            this.modalRef?.hide();
+            this.http.successMessage("Boeking succesvol geplaatst.");
+            this.router.navigate(['/home']);
+            this.storage.clearProducts();
+          }
+        });
+    }
+    else {
+      this.http.errorMessage("Verzoek mislukt");
+    }
+  }
+
+  getType(type: any){
+    let result = '';
+    if(type == 'Rent'){
+      result = 'Verhuur';
+    }
+    else if(type == 'Staffing'){
+      result = 'Uitzend';
+    }
+    else if(type == 'Transport'){
+      result = 'Transport';
+    }
+    return result;
   }
 
 }

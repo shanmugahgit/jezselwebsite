@@ -12,7 +12,7 @@
 <!-- ======================= Banner innerpage -->
 
 <div class="jezel-inner-page-banner-area">
-    <h1>My Profile</h1> 
+    <h1>Mijn Profiel</h1> 
     <img src="assets/images/profile.jpg"> 
 </div>
 
@@ -199,7 +199,7 @@
                                             <td valign="top" *ngIf="showPasswordField">
                                                 <form class="mt-3" [formGroup]="passwordformGroup" (ngSubmit)="save()">
                                                     <input class="form-control" type="password"
-                                                        placeholder="Enter Wachtwoord" formControlName="password">
+                                                        placeholder="Voer Wachtwoord" formControlName="password">
                                                 </form>
                                             </td>
                                         </tr>
@@ -228,7 +228,7 @@
                                             <select class="form-control" formControlName="type"
                                                 [attr.disabled]="!showAddressField ? '' : null">
                                                 <option value="">Type</option>
-                                                <option value="business">Zakelijke</option>
+                                                <option value="business">Zakelijk</option>
                                                 <option value="customer">Particulier</option>
                                             </select>
                                         </div>
@@ -236,7 +236,7 @@
                                     <div class="col-md-6"></div>
                                     <div class="col-md-6">
                                         <div *ngIf="formGroup.value.type == 'business'">
-                                            <h3>Company details</h3>
+                                            <h3>Bedrijfsgegevens</h3>
                                             <div class="form-group mt-4">
                                                 <input class="form-control" type="text" placeholder="Bedrijfsnaam"
                                                     formControlName="bedrijfsnaam"
@@ -368,7 +368,7 @@
                                             <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid"
                                                 *ngIf="showAddressField">Update</button>
                                             <button class="btn btn-info ml-3" *ngIf="showAddressField"
-                                                (click)="showAddressField=false;">Cancel</button>
+                                                (click)="showAddressField=false;">Annuleren</button>
                                         </div>
                                     </div>
                                 </div>
@@ -387,7 +387,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input class="form-control" type="password" placeholder="Enter Password"
+                                            <input class="form-control" type="password" placeholder="Voer Password"
                                                 formControlName="password">
                                         </div>
                                     </div>
@@ -395,7 +395,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input class="form-control" type="password"
-                                                placeholder="Enter Confirm Password" formControlName="confirmpassword">
+                                                placeholder="Voer Confirm Password" formControlName="confirmpassword">
                                             <p class="text-danger"
                                                 *ngIf="passwordformControls.password.value!=passwordformControls.confirmpassword.value">
                                                 Password and Confirm password does not match</p>
@@ -457,7 +457,7 @@
                                                 <td>{{data.updatedAt|date:'mediumDate'}}</td>
                                             </tr>
                                             <tr *ngIf="withdrawdataLists.length==0">
-                                                <td colspan="5" class="text-center">No Records found</td>
+                                                <td colspan="5" class="text-center">Geen gegevens gevonden</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -506,7 +506,11 @@
                                 <a class="nav-link pl-4" id="v-pills-withdraw-tab" data-toggle="pill"
                                     href="#v-pills-withdraw" role="tab" aria-controls="v-pills-withdraw"
                                     aria-selected="true" (click)="showWithdraw=true;showDeposit=false;"
-                                    *ngIf="(!team_id||(team_id&&teamowner))&&!disableWithdraw()">Uitbetalen</a>
+                                    *ngIf="(!team_id||(team_id&&teamowner))">Uitbetalen</a>
+                                <!-- <a class="nav-link pl-4" id="v-pills-withdraw-tab" data-toggle="pill"
+                                    href="#v-pills-withdraw" role="tab" aria-controls="v-pills-withdraw"
+                                    aria-selected="true" (click)="showWithdraw=true;showDeposit=false;"
+                                    *ngIf="(!team_id||(team_id&&teamowner))&&!disableWithdraw()">Uitbetalen</a> -->
                             </div>
                             <div class="tab-pane fade show active" id="v-pills-deposit" role="tabpanel"
                                 aria-labelledby="v-pills-deposit-tab" *ngIf="showDeposit">
@@ -531,8 +535,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button class="btn btn-primary" *ngIf="amount>0" (click)="submitChoice()">Make
-                                                        Deposit</button>
+                                                    <button class="btn btn-primary" *ngIf="amount>0" (click)="submitChoice()">Storting doen</button>
                                                 </div>
                                             </div>
 
@@ -557,7 +560,7 @@
                                                                 <td>{{data.createdAt|date:'mediumDate'}}</td>
                                                             </tr>
                                                             <tr *ngIf="depositdataLists.length==0">
-                                                                <td colspan="4" class="text-center">No Records found
+                                                                <td colspan="4" class="text-center">Geen gegevens gevonden
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -605,7 +608,7 @@
                                                             <td>{{data.updatedAt|date:'mediumDate'}}</td>
                                                         </tr>
                                                         <tr *ngIf="withdrawdataLists.length==0">
-                                                            <td colspan="5" class="text-center">No Records found</td>
+                                                            <td colspan="5" class="text-center">Geen gegevens gevonden</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -650,15 +653,15 @@
                                                         <td>{{i+1}}</td>
                                                         <td><span>&#8364;</span>{{data.amount}}</td>
                                                         <td>
-                                                            <span *ngIf="data.status == 1"> Accepted </span>
-                                                            <span *ngIf="data.status == 3"> In Progress </span>
-                                                            <span *ngIf="data.status == 2"> Rejected </span>
+                                                            <span *ngIf="data.status == 1"> Succes </span>
+                                                            <span *ngIf="data.status == 3"> In behandeling  </span>
+                                                            <span *ngIf="data.status == 2"> Mislukt </span>
                                                         </td>
                                                         <td>{{data.createdAt|date:'mediumDate'}}</td>
                                                         <td>{{data.updatedAt|date:'mediumDate'}}</td>
                                                     </tr>
                                                     <tr *ngIf="withdrawdataLists.length==0">
-                                                        <td colspan="5" class="text-center">No Records found</td>
+                                                        <td colspan="5" class="text-center">Geen gegevens gevonden</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -674,7 +677,7 @@
                                             <div class="row" *ngIf="choice">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" type="" placeholder="Enter Amount"
+                                                        <input class="form-control" type="" placeholder="Voer Amount"
                                                             [(ngModel)]="amount" name="amount">
                                                     </div>
                                                 </div>
@@ -698,14 +701,14 @@
                                                         <td>{{i+1}}</td>
                                                         <td><span>&#8364;</span>{{data.total}}</td>
                                                         <td>
-                                                            <span *ngIf="data.status == 1"> Success</span>
-                                                            <span *ngIf="data.status == 2"> Failure</span>
-                                                            <span *ngIf="data.status == 3"> In Progress</span>
+                                                            <span *ngIf="data.status == 1"> Succes</span>
+                                                            <span *ngIf="data.status == 2"> Mislukt</span>
+                                                            <span *ngIf="data.status == 3"> In behandeling  <button class="btn btn-primary ml-2" (click)="sendPayment(data)">Betalen</button></span>
                                                         </td>
                                                         <td>{{data.createdAt|date:'mediumDate'}}</td>
                                                     </tr>
                                                     <tr *ngIf="depositdataLists.length==0">
-                                                        <td colspan="4" class="text-center">No Records found
+                                                        <td colspan="4" class="text-center">Geen gegevens gevonden
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -749,7 +752,7 @@
                                     <div class="row" *ngIf="choice">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="" placeholder="Enter Amount"
+                                                <input class="form-control" type="" placeholder="Voer Amount"
                                                     [(ngModel)]="amount" name="amount">
                                             </div>
                                         </div>
@@ -783,7 +786,7 @@
                                                             class="fa fa-trash"></i></button></td>
                                             </tr>
                                             <tr *ngIf="employeeLists.length==0">
-                                                <td colspan="7" class="text-center">No Records found</td>
+                                                <td colspan="7" class="text-center">Geen gegevens gevonden</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -803,32 +806,32 @@
                                                     <div class="col-md-4 email">
                                                         <label>Voornaam</label>
                                                         <input type="text" name="firstname" formControlName="firstname"
-                                                            placeholder="Enter your Voornaam">
+                                                            placeholder="Voer uw Voornaam">
                                                     </div>
                                                     <div class="col-md-4 password">
                                                         <label>Tussenvoegsel</label>
                                                         <input type="text" name="insertion" formControlName="insertion"
-                                                            placeholder="Enter Tussenvoegsel">
+                                                            placeholder="Voer Tussenvoegsel">
                                                     </div>
                                                     <div class="col-md-4 password">
                                                         <label>Achternaam</label>
                                                         <input type="text" name="lastname" formControlName="lastname"
-                                                            placeholder="Enter Achternaam">
+                                                            placeholder="Voer Achternaam">
                                                     </div>
                                                     <div class="col-md-4 password">
                                                         <label>E-mail</label>
                                                         <input type="text" name="email" formControlName="email"
-                                                            placeholder="Enter E-mail">
+                                                            placeholder="Voer E-mail">
                                                     </div>
                                                     <div class="col-md-4 password">
                                                         <label>Telefoonnummer</label>
                                                         <input type="text" name="phone" formControlName="phone"
-                                                            placeholder="Enter Telefoonnummer">
+                                                            placeholder="Voer Telefoonnummer">
                                                     </div>
                                                     <!-- <div class="col-md-4 password">
                                                         <label>Password</label>
                                                         <input type="password" name="password"
-                                                            formControlName="password" placeholder="Enter Password">
+                                                            formControlName="password" placeholder="Voer Password">
                                                     </div> -->
                                                     <div class="col-md-6">
                                                         <button type="submit" name="button"
@@ -886,7 +889,7 @@
                         <tr *ngFor="let order of selectedProduct;let i = index;">
                             <td>{{i+1}}</td>
                             <td>{{order.name}}</td>
-                            <td>{{order.type}}</td>
+                            <td [innerHtml]="getType(order.type)">{{order.type}}</td>
                             <td><span>&#8364;</span>{{order.price}}</td>
                             <td>{{order.checkindate|date:'mediumDate'}} {{order.checkintime}}</td>
                             <td>{{order.checkoutdate|date:'mediumDate'}} {{order.checkouttime}}</td>
@@ -903,18 +906,18 @@
                                             <td>{{extras.extraName}}</td>
                                             <td><span>&#8364;</span>{{extras.price}}</td>
                                         </tr>
-                                        <tr *ngIf="order.extras.length==0">
+                                        <tr *ngIf="order&&order.extras&&order.extras.length==0">
                                             <td colspan="2">No Extras Found</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </td>
                             <td><button class="btn btn-primary" (click)="cancelOrder(order)"
-                                    *ngIf="order.maxcanceldate&&order.status!=0">Cancel</button><span
-                                    class="text-danger" *ngIf="order.status==0">Canceled</span></td>
+                                    *ngIf="order.maxcanceldate&&order.status!=0">Annuleren</button><span
+                                    class="text-danger" *ngIf="order.status==0">Annuleren</span></td>
                         </tr>
                         <tr *ngIf="selectedProduct.length==0">
-                            <td colspan="7" class="text-center">No Records found</td>
+                            <td colspan="7" class="text-center">Geen gegevens gevonden</td>
                         </tr>
                     </tbody>
                 </table>
@@ -938,7 +941,7 @@
             </button>
         </div>
         <div class="modal-body mb-2">
-            <p>You have <span>&#8364;</span>{{currentWallet}} balance in your account.Are you proceed for Withdraw
+            <p>You have <span>&#8364;</span><span [innerHtml]="getTotal()"></span> balance in your account.Are you proceed for Withdraw
                 request ?</p>
         </div>
         <div class="modal-footer">

@@ -67,6 +67,9 @@ export class BookingComponent implements OnInit {
 
     let checkoutDates: any = [];
     this.dataLists.forEach((element: any) => {
+      if(element.advancePayment){
+        element.advancePayment = element.advancePayment ? element.advancePayment.toFixed(2) : element.advancePayment;
+      }
       if (element.search) {
         var date = element.search.checkoutdate.split("-").reverse().join("-");
         checkoutDates.push(new Date(date))
@@ -236,6 +239,9 @@ export class BookingComponent implements OnInit {
             this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
             this.formGroup.value['coupon_id'] = this.couponId;
             this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
+            if(!amountPaid){
+              this.formGroup.value.status = 1;
+            }
             this.http.post('order/make-order', this.formGroup.value).subscribe(
               (order: any) => {
                 this.uploadLicense(order.id);
@@ -306,6 +312,9 @@ export class BookingComponent implements OnInit {
         this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
         this.formGroup.value['coupon_id'] = this.couponId;
         this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
+        if(!amountPaid){
+          this.formGroup.value.status = 1;
+        }
         this.http.post('order/make-order', this.formGroup.value).subscribe(
           (order: any) => {
             this.uploadLicense(order.id);
@@ -494,6 +503,10 @@ export class BookingComponent implements OnInit {
         }
       )
     }
+  }
+
+  getAdvancePayment(advance: any){
+    return advance ? advance.toFixed(2) : advance;
   }
 
 }

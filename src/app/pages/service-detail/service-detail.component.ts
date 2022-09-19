@@ -85,4 +85,18 @@ export class ServiceDetailComponent implements OnInit {
     this.communication.openProductModal.emit(product)
   }
 
+  getType(type: any){
+    let result = '';
+    if(type == 'Rent'){
+      result = 'Verhuur';
+    }
+    else if(type == 'Staffing'){
+      result = 'Uitzend';
+    }
+    else if(type == 'Transport'){
+      result = 'Transport';
+    }
+    return result;
+  }
+
 }

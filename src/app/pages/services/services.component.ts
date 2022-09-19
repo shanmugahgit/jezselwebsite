@@ -32,6 +32,7 @@ export class ServicesComponent implements OnInit {
   public staffingPercentageDiscount = StaffingDiscount;
   public transportPercentageDiscount = TransportDiscount;
   public showSelectLocation: boolean = false;
+  public showVA: boolean = false;
 
   formGroup: FormGroup = new FormGroup({
     location: new FormControl('', Validators.required),
@@ -138,19 +139,19 @@ export class ServicesComponent implements OnInit {
     let nationality = [];
     let voertuig = [];
     for(let i = 0;i < this.selectedFilter.length;i++){
-      if(this.selectedFilter[i].category == 'Vehicles'){
+      if(this.selectedFilter[i].category == 'Voertuigen'){
         vehicle.push(this.selectedFilter[i].id);
       }
-      if(this.selectedFilter[i].category == 'Fuel'){
+      if(this.selectedFilter[i].category == 'Brandstof'){
         fuel.push(this.selectedFilter[i].id);
       }
-      if(this.selectedFilter[i].category == 'Transmission'){
+      if(this.selectedFilter[i].category == 'Transmissie'){
         transmission.push(this.selectedFilter[i].id);
       }
-      if(this.selectedFilter[i].category == 'Parking space'){
+      if(this.selectedFilter[i].category == 'Parkeerruimte'){
         parkingspace.push(this.selectedFilter[i].id);
       }
-      if(this.selectedFilter[i].category == 'Storage space'){
+      if(this.selectedFilter[i].category == 'Laadruimte'){
         storagespace.push(this.selectedFilter[i].id);
       }
       if(this.selectedFilter[i].category == 'Beroep'){
@@ -181,6 +182,9 @@ export class ServicesComponent implements OnInit {
     body.voertuig = voertuig.join();
     // body.filter = this.selectedFilter && this.selectedFilter.join();
     body.search = this.formGroup.value;
+    if(this.formGroup.valid){
+      this.showVA = true;
+    }
     this.http.post('products', body).subscribe(
       (response: any) => {
         this.config.totalItems = response.count || 0;

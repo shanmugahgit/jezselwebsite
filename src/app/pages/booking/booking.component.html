@@ -12,7 +12,7 @@
 </div> -->
 
 <div class="jezel-inner-page-banner-area">
-    <h1>Booking</h1>
+    <h1>Boeking</h1>
     <img src="assets/images/location.jpg"> 
 </div>
 
@@ -23,7 +23,7 @@
 	Form -->
 <section class="pt80 pb80 eleform">
     <div class="container">      
-        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left  jezsel-profile-section">
+        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left  jezsel-profile-section jezselcart-rtb">
             <form action="#" autocomplete="off">
                 <div class="pb-left">
                     <div id="moreFilters" class="collapse show">
@@ -86,15 +86,15 @@
                     <div class="form-group">
                         <select class="form-control" formControlName="type">
                             <option value="">Type</option>
-                            <option value="business">Zakelijke</option>
-                            <option value="customer">klant</option>
+                            <option value="business">Zakelijk</option>
+                            <option value="customer">Particulier</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
                     <div *ngIf="formGroup.value.type == 'business'">
-                        <h3>Company details</h3>
+                        <h3>Bedrijfsgegevens</h3>
                         <div class="form-group mt-4">
                             <input class="form-control" type="text" placeholder="Bedrijfsnaam"
                                 formControlName="bedrijfsnaam">
@@ -199,21 +199,21 @@
             <div class="row mt-4" *ngIf="isEnableDriver()">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="First Name" formControlName="driverFirstName">
+                        <input class="form-control" type="text" placeholder="Voornaam" formControlName="driverFirstName">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Email" formControlName="driverEmail">
+                        <input class="form-control" type="text" placeholder="E-mail" formControlName="driverEmail">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" type="text" placeholder="Address" formControlName="driverAddress"></textarea>
+                        <textarea class="form-control" type="text" placeholder="Adres" formControlName="driverAddress"></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Last Name" formControlName="driverLastName">
+                        <input class="form-control" type="text" placeholder="Achternaam" formControlName="driverLastName">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Phone Number"
+                        <input class="form-control" type="text" placeholder="Mobiele nummer"
                             formControlName="driverPhone">
                     </div>
                     <div class="upload-btn-wrapper">
@@ -244,8 +244,7 @@
                 <div class="col-md-6 mt-4">
                     <div class="form-group">
                         <button class="btn btn-primary btn-lg btn-grad" type="submit"
-                            [disabled]="formGroup.invalid||(!formGroup.value.termsAndConditions||formGroup.value.termsAndConditions==false)">Order
-                            Now</button>
+                            [disabled]="formGroup.invalid||(!formGroup.value.termsAndConditions||formGroup.value.termsAndConditions==false)">Bestel nu</button>
                     </div>
                 </div>
             </div>
