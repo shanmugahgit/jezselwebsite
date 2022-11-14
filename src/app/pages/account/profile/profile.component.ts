@@ -92,7 +92,7 @@ export class ProfileComponent implements OnInit {
       insertion: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
+      phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
       password: new FormControl('123', Validators.required),
       newsletter: new FormControl('', Validators.required),
       team_id: new FormControl('', Validators.required),
@@ -219,6 +219,14 @@ export class ProfileComponent implements OnInit {
         if (response.wallet) {
           this.currentWallet = response.wallet;
           this.currentInterest = response.interest;
+          if (response.interest) {
+            let interest = Number(response.interest);
+            let wallet = Number(response.wallet);
+            if ((interest + wallet) == 0) {
+              this.currentWallet = 0;
+              this.currentInterest = 0;
+            }
+          }
         }
       }
     )
@@ -255,7 +263,10 @@ export class ProfileComponent implements OnInit {
               extraName = findExtra.description
             }
             element['extraName'] = extraName;
-            element2.extras.push(element);
+            let isExist = element2.extras.find((element3: any)=>((element.product_id == element3.product_id)&&(element.extra_id == element3.extra_id)))
+            if(!isExist){
+              element2.extras.push(element);
+            }  
           }
         });
       }
@@ -416,17 +427,26 @@ export class ProfileComponent implements OnInit {
   registerUser(team_id: any) {
     this.myFormGroup.value['team_id'] = team_id
     this.myFormGroup.value['employee'] = true;
-    this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
-      (response: any) => {
-        this.http.successMessage("Succesvol aangemaakt");
-        this.myFormGroup.reset();
-        this.showList = true;
-        this.loadTeamUsers();
-      },
-      (error: any) => {
-        this.http.exceptionHandling(error);
-      }
-    )
+    if (this.myFormGroup.controls.phone.errors && this.myFormGroup.controls.phone.errors.required) {
+      this.http.errorMessage("Voer uw 10 cijferig telefoonnummer in");
+    }
+    else if (this.myFormGroup.controls.phone.errors && this.myFormGroup.controls.phone.errors.minlength) {
+      this.http.errorMessage("Voer uw 10 cijferig telefoonnummer in");
+    }
+    else {
+      this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
+        (response: any) => {
+          this.http.successMessage("Succesvol aangemaakt");
+          this.myFormGroup.reset();
+          this.showList = true;
+          this.loadTeamUsers();
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }
+
   }
 
   updateStatus(user: any) {
@@ -466,7 +486,7 @@ export class ProfileComponent implements OnInit {
   }
 
   makeWithdraw() {
-    this.http.post('withdraw/create', { user_id: this.userDetails.id, amount: this.currentWallet, team_id: this.team_id }).subscribe(
+    this.http.post('withdraw/create', { user_id: this.userDetails.id, amount: this.getTotal(), team_id: this.team_id }).subscribe(
       (response: any) => {
         this.http.successMessage("Verzoek succesvol verstuurd");
         this.modalRef?.hide();
@@ -483,6 +503,9 @@ export class ProfileComponent implements OnInit {
     let result = false;
     let findWithdraw = this.withdrawdataLists.find((element: any) => (element.status == 3));
     if (findWithdraw) {
+      result = true;
+    }
+    if ((this.getTotal() == '0') || (this.getTotal() == '0.00')) {
       result = true;
     }
     return result;
@@ -550,18 +573,24 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  getType(type: any){
+  getType(type: any) {
     let result = '';
-    if(type == 'Rent'){
+    if (type == 'Rent') {
       result = 'Verhuur';
     }
-    else if(type == 'Staffing'){
+    else if (type == 'Staffing') {
       result = 'Uitzend';
     }
-    else if(type == 'Transport'){
+    else if (type == 'Transport') {
       result = 'Transport';
     }
     return result;
+  }
+
+  isNotExpired(cancelDate: any){
+    let strSplit = cancelDate.split(".")
+    let cancellationDate = strSplit[0].replace(/T/g, " ")
+    return (new Date(cancellationDate) < new Date) ? false : true;;
   }
 
 }

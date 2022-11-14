@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  baseurl: 'https://demo.jezsel.nl/jezsel/',
-  authurl: 'https://demo.jezsel.nl/jezsel/api/'
+  baseurl: 'http://localhost:8083/jezsel/',
+  authurl: 'http://localhost:8083/jezsel/api/'
+  // baseurl: 'https://demo.jezsel.nl/jezsel/',
+  // authurl: 'https://demo.jezsel.nl/jezsel/api/'
 };
 
 /*

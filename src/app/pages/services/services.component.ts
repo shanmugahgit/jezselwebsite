@@ -46,8 +46,10 @@ export class ServicesComponent implements OnInit {
 
   @ViewChild('leftnavbar') leftnavbar: any;
   @ViewChild('productImg') productImg: any;
-
-  constructor(private route: ActivatedRoute, private http: HttpRequestService, private router: Router, private storage: StorageService, private communication: CommunicationService) { }
+  userDetails: any;
+  constructor(private route: ActivatedRoute, private http: HttpRequestService, private router: Router, private storage: StorageService, private communication: CommunicationService) {
+    this.userDetails = this.storage.getUserDetails() ? this.storage.getUserDetails() : {};
+  }
 
   ngOnInit(): void {
     let serachInputs = localStorage.getItem('search') && JSON.parse(localStorage.getItem('search') || '') || {};
@@ -101,6 +103,11 @@ export class ServicesComponent implements OnInit {
       }).change((ev: any) => {
         this.formGroup.patchValue({ checkoutdate: ev.target.value });
       });
+      $("#datepicker").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+      $("#datepicker").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
+      
+      $("#datepicker-out").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+      $("#datepicker-out").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
     })
   }
 
@@ -189,16 +196,31 @@ export class ServicesComponent implements OnInit {
       (response: any) => {
         this.config.totalItems = response.count || 0;
         this.products = response && response.data;
-        // this.http.post('products', body).subscribe(
-        //   (response: any) => {
-        //     this.config.totalItems+= response.count || 0;
-        //     this.products = this.products.concat(response.data);
-        //     this.calulateTotalAmount();
-        //   }, (error: any) => {
-        //     this.http.exceptionHandling(error);
-        //   }
-        // )
+        console.log(this.products);
         this.calulateTotalAmount();
+
+      }, (error: any) => {
+        this.http.exceptionHandling(error);
+      }
+    )
+  }
+
+  checkAvailabilityProducts() {
+    let body: any = {};
+    body.search = this.formGroup.value;
+    if(this.formGroup.valid){
+      this.showVA = true;
+    }
+    this.http.post('products', body).subscribe(
+      (response: any) => {
+        this.config.totalItems = response.count || 0;
+        this.products = response && response.data;
+        if(this.userDetails && this.userDetails.id){
+          console.log(response.data.filter((element: any)=>(element.userid==this.userDetails.id)));
+        }
+        
+        this.calulateTotalAmount();
+
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -375,13 +397,13 @@ export class ServicesComponent implements OnInit {
       else {
         let message = '';
         if (this.formGroup.value.type.toLowerCase() == 'rent') {
-          message = 'Please select minium one hour';
+          message = 'Selecteer alstublieft minimaal een uur.';
         }
         else if (this.formGroup.value.type.toLowerCase() == 'staffing') {
-          message = 'Please select minium eight hours';
+          message = 'Selecteer alstublieft minimaal acht uur.';
         }
         else if (this.formGroup.value.type.toLowerCase() == 'transport') {
-          message = 'Please select minium four hours';
+          message = 'Selecteer alstublieft minimaal vier uur.';
         }
         this.http.errorMessage(message);
       }

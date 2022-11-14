@@ -13,6 +13,9 @@ export class SetpasswordComponent implements OnInit {
   userDetails: any = {};
   constructor(private http: HttpRequestService, private router: Router, private storage: StorageService) {
     this.userDetails = this.storage.getUserDetails() ? this.storage.getUserDetails() : {};
+    if(!this.userDetails || !this.userDetails.id){
+      this.router.navigateByUrl('/login');
+    }
   }
 
   ngOnInit(): void {
@@ -28,7 +31,12 @@ export class SetpasswordComponent implements OnInit {
     }
     else if (this.myFormGroup.value.password != this.myFormGroup.value.confirmpassword) {
       this.http.errorMessage("Uw wachtwoord en bevestigd wachtwoord komen niet overeen");
-    } else {
+    }
+    else if (!this.userDetails || !this.userDetails.id) {
+      this.storage.clearUser();
+      this.router.navigateByUrl('/login');
+    }
+    else {
 
       if (!this.myFormGroup.value.password) {
         this.http.errorMessage("Vul a.u.b. uw wachtwoord in");

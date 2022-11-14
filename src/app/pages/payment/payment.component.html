@@ -13,28 +13,28 @@
 <div class="section section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-12 align-self-center mt-lg-0 mt-3">
-                <h6 class="mb-3">Overzicht </h6>
+            <div class="col-lg-12 col-12 align-self-center mt-lg-0 mt-3 jezselcart-rtb jezsel-profile-section" *ngIf="order">
+                <h1 class="mb-3"><strong>Overzicht</strong></h1>
                 <hr>
                 <div class="summary" *ngFor="let product of order.Orderhistories;let i =index;">
-                    <table>
+                    <table class="w-100">
                         <tr *ngIf="!product.extra_id">
                             <td>
                                 <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
                             </td>
-                            <td>
+                            <td class="float-right">
                                 <h4><span>&#8364;</span>{{product.price}}</h4>
                             </td>
                         </tr>
                         <tr *ngIf="product.extra_id">
                             <td>{{product.name}}</td>
-                            <td><span>&#8364;</span>{{product.price}}</td>
+                            <td class="float-right"><span>&#8364;</span>{{product.price}}</td>
                         </tr>
                         <tr *ngIf="!product.extra_id">
                             <td>
                                 <h4>Borg</h4>
                             </td>
-                            <td>
+                            <td class="float-right">
                                 <h4><span>&#8364;</span>{{product.advancepaid}}</h4>
                             </td>
                         </tr>

@@ -23,7 +23,7 @@
 	Form -->
 <section class="pt80 pb80 eleform">
     <div class="container">      
-        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left  jezsel-profile-section jezselcart-rtb">
+        <div class="col-lg-12 col-md-12 col-sm-12 Filter-left  jezsel-profile-section jezselcart-rtb booking-form">
             <form action="#" autocomplete="off">
                 <div class="pb-left">
                     <div id="moreFilters" class="collapse show">
@@ -84,8 +84,8 @@
             <div class="row">
                 <div class="col-md-6 jezsel-couponcode-text">
                     <div class="form-group">
-                        <select class="form-control" formControlName="type">
-                            <option value="">Type</option>
+                        <select class="form-control" formControlName="type" [ngClass]="{ 'is-invalid': (submittedForm&&!f.type.value) }">
+                            <option value="" disabled>Type</option>
                             <option value="business">Zakelijk</option>
                             <option value="customer">Particulier</option>
                         </select>
@@ -112,29 +112,29 @@
             <div class="jezsel-profile-section">
             <div class="row">
                 <div class="col-md-6 ">
-                    <h3>Vesigingsadres</h3>
+                    <h3>Vestigingsadres</h3>
                         <div class="form-group mt-4">
-                            <input class="form-control" type="text" placeholder="Straat" formControlName="vesigingstraat">
+                            <input class="form-control" type="text" placeholder="Straat" formControlName="vesigingstraat"  [ngClass]="{ 'is-invalid': (submittedForm&&!f.vesigingstraat.value) }">
                         </div>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Huisnr en toevoeging"
-                            formControlName="vesiginghuisnr">
+                            formControlName="vesiginghuisnr" [ngClass]="{ 'is-invalid': (submittedForm&&!f.vesiginghuisnr.value) }">
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Postcode"
-                            formControlName="vesigingpostcode">
+                            formControlName="vesigingpostcode" [ngClass]="{ 'is-invalid': (submittedForm&&!f.vesigingpostcode.value) }">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Plaats" formControlName="vesigingplaats">
+                        <input class="form-control" type="text" placeholder="Plaats" formControlName="vesigingplaats" [ngClass]="{ 'is-invalid': (submittedForm&&!f.vesigingplaats.value) }">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Land" formControlName="vesigingland">
+                        <input class="form-control" type="text" placeholder="Land" formControlName="vesigingland" [ngClass]="{ 'is-invalid': (submittedForm&&!f.vesigingland.value) }">
                     </div>
                     <div class="form-check mt-4">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"
                             (change)="sync($event)">
                         <label class="form-check-label" for="defaultCheck1">
-                            (Vestigingsadres) is the same as the invoice adres
+                            Vestigingsadres is hetzelfde als het factuuradres
                         </label>
                     </div>
                 </div>
@@ -143,22 +143,22 @@
                         <h3>Factuuradres</h3>
                         <div class="form-group mt-4">
                             <input class="form-control" type="text" placeholder="Straat"
-                                formControlName="factuurstraat">
+                                formControlName="factuurstraat" [ngClass]="{ 'is-invalid': (submittedForm&&!f.factuurstraat.value) }">
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Huisnr en toevoeging"
-                                formControlName="factuurhuisnr">
+                                formControlName="factuurhuisnr" [ngClass]="{ 'is-invalid': (submittedForm&&!f.factuurhuisnr.value) }">
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Postcode"
-                                formControlName="factuurpostcode">
+                                formControlName="factuurpostcode" [ngClass]="{ 'is-invalid': (submittedForm&&!f.factuurpostcode.value) }">
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Plaats"
-                                formControlName="factuurplaats">
+                                formControlName="factuurplaats" [ngClass]="{ 'is-invalid': (submittedForm&&!f.factuurplaats.value) }">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Land" formControlName="factuurland">
+                            <input class="form-control" type="text" placeholder="Land" formControlName="factuurland" [ngClass]="{ 'is-invalid': (submittedForm&&!f.factuurland.value) }">
                         </div>
                     </div>
                 </div>
@@ -167,17 +167,17 @@
             <div class="row mt-4">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <select class="form-control" formControlName="aanhef">
+                        <select class="form-control" formControlName="aanhef" [ngClass]="{ 'is-invalid': (submittedForm&&!f.aanhef.value) }">
                             <option value="">Aanhef</option>
                             <option value="dhr">Dhr</option>
                             <option value="mevr">Mevr</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Voornaam" formControlName="voornaam">
+                        <input class="form-control" type="text" placeholder="Voornaam" formControlName="voornaam" [ngClass]="{ 'is-invalid': (submittedForm&&!f.voornaam.value) }">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Achternaam" formControlName="achternaam">
+                        <input class="form-control" type="text" placeholder="Achternaam" formControlName="achternaam" [ngClass]="{ 'is-invalid': (submittedForm&&!f.achternaam.value) }">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -187,11 +187,11 @@
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="email" placeholder="Factuur e-mail"
-                            formControlName="factuuremail">
+                            formControlName="factuuremail" [ngClass]="{ 'is-invalid': (submittedForm&&!f.factuuremail.value) }">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="email" placeholder="Telefoon nr."
-                            formControlName="telefoonnr">
+                        <input class="form-control" type="text" placeholder="Telefoon nr."
+                            formControlName="telefoonnr" [ngClass]="{ 'is-invalid': (submittedForm&&!f.telefoonnr.value) }">
                     </div>
                 </div>
             </div>
@@ -244,7 +244,7 @@
                 <div class="col-md-6 mt-4">
                     <div class="form-group">
                         <button class="btn btn-primary btn-lg btn-grad" type="submit"
-                            [disabled]="formGroup.invalid||(!formGroup.value.termsAndConditions||formGroup.value.termsAndConditions==false)">Bestel nu</button>
+                            [disabled]="(!formGroup.value.termsAndConditions||formGroup.value.termsAndConditions==false)">Bestel nu</button>
                     </div>
                 </div>
             </div>
@@ -280,7 +280,7 @@
                 <span aria-hidden="true" class="visually-hidden">&times;</span>
             </button>
         </div>
-        <div class="modal-body mb-2 p-5">
+        <div class="modal-body mb-2 p-5 terms-content">
             <p [innerHtml]="termsAndConditions"></p>
         </div>
     </div>

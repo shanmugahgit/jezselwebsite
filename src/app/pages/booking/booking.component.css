@@ -35,3 +35,12 @@
 .jezsel-profile-section table {
   text-align: left !important;
 }
+
+.terms-content {
+  height: 400px;
+  overflow: auto;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid{
+  border-color: #dc3545 !important;
+  background-image: none !important;
+}

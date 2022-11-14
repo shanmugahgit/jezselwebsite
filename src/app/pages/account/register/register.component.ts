@@ -24,14 +24,20 @@ export class RegisterComponent implements OnInit {
       insertion: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
+      phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
       password: new FormControl('', Validators.required),
       newsletter: new FormControl('', Validators.required)
     })
   }
 
   register() {
-    if (!this.myFormGroup.value.password) {
+    if(this.myFormGroup.controls.email.status == 'INVALID'){
+      this.http.errorMessage("Voer uw e-mailadres");
+    }
+    else if(this.myFormGroup.controls.phone.status == 'INVALID'){
+      this.http.errorMessage("Voer uw 10 cijferig telefoonnummer in");
+    }
+    else if (!this.myFormGroup.value.password) {
       this.http.errorMessage("Vul a.u.b. uw wachtwoord in");
     }
     else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.myFormGroup.value.password)) && (/^[A-Z]/.test(this.myFormGroup.value.password))) {

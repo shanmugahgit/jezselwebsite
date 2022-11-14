@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpRequestService } from 'src/app/services/http-request/http-request.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 declare var $: any;
 @Component({
   selector: 'app-footer',
@@ -13,16 +14,20 @@ export class FooterComponent implements OnInit {
     email: '',
     address: ''
   };
-  constructor(private http: HttpRequestService) { }
+  email: any = '';
+  userDetails: any = {};
+  constructor(private http: HttpRequestService, private storage: StorageService) {
+    this.userDetails = this.storage.getUserDetails() ? this.storage.getUserDetails() : {};
+  }
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  loadData(){
+  loadData() {
     this.http.get('contactus').subscribe(
-      (response: any)=>{
-        if(response && Array.isArray(response) && (response.length>0)){
+      (response: any) => {
+        if (response && Array.isArray(response) && (response.length > 0)) {
           this.contactDetails = response[0];
         }
       }
@@ -30,22 +35,36 @@ export class FooterComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(()=>{
+    setTimeout(() => {
 
 
 
-      $(document).ready(function() {
-        $('#jezsel-ftmenu-show').click(function() {
+      $(document).ready(function () {
+        $('#jezsel-ftmenu-show').click(function () {
           $('.jezsel-ftmenu').toggle("fadein");
         });
       });
 
 
 
-      
+
 
 
     }, 200)
+  }
+
+  save() {
+    if (!this.email) {
+      this.http.errorMessage("Voer uw e-mailadres in")
+    }
+    else {
+      this.http.post('subscribe/email', { email: this.email }).subscribe(
+        (response: any) => {
+          this.http.successMessage("Geabonneerd.");
+          this.email = '';
+        }
+      )
+    }
   }
 
 }

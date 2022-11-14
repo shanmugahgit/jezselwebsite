@@ -29,7 +29,7 @@
                         <tr *ngFor="let data of dataLists;let i= index;">
                             <td>{{i+1}}</td>
                             <td>{{data.services}}</td>
-                            <td>{{data.updatedAt|date:'mediumDate'}}</td>
+                            <td>{{data.updatedAt|date:'dd/M/yyyy'}}</td>
                             <td>{{data.interestAmount}}</td>
                             <td><button class="btn btn-primary" (click)="viewDetails(data)">View Details</button></td>
                         </tr>
@@ -74,7 +74,7 @@
                                     <label>Checkin Date</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <span>{{order.checkindate|date:'mediumDate'}}</span>
+                                    <span>{{order.checkindate|date:'dd/M/yyyy'}}</span>
                                 </div>
                             </div>                        
                         </div>
@@ -94,7 +94,7 @@
                                     <label>Checkout Date</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <span>{{order.checkoutdate|date:'mediumDate'}}</span>
+                                    <span>{{order.checkoutdate|date:'dd/M/yyyy'}}</span>
                                 </div>
                             </div>                        
                         </div>

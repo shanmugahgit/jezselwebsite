@@ -61,7 +61,7 @@ export class CartComponent implements OnInit {
       id: 1,
       label: "Annuleren is niet mogelijk",
       hours: 0,
-      price: "0",
+      price: "0.00",
       days: 0,
       selected: false
     },

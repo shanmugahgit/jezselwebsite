@@ -32,35 +32,35 @@
                                 <div class="col-md-6">
                                     <label>Naam</label>
                                     <p>
-                                        <input type="text" name="name" placeholder="Voer your Naam" formControlName="name">
+                                        <input type="text" name="name" placeholder="Voer uw naam in" formControlName="name">
                                     </p>
                                 </div>
                                 <div class="col-md-6">
                                     <label>E-mail</label>
                                     <p>
-                                        <input type="text" name="email" placeholder="Your E-mail" formControlName="email">
+                                        <input type="text" name="email" placeholder="Voer uw e-mailadres in" formControlName="email">
                                     </p>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Telefoon</label>
                                     <p>
-                                        <input type="text" name="phone" placeholder="Your Telefoon" formControlName="phone">
+                                        <input type="text" name="phone" placeholder="Voer uw telefoonnummer in" formControlName="phone">
                                     </p>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Onderwerp</label>
                                     <p>
-                                        <input type="text" name="subject" placeholder="Your Onderwerp" formControlName="subject">
+                                        <input type="text" name="subject" placeholder="Uw onderwerp" formControlName="subject">
                                     </p>
                                 </div>
                                 <div class="col-md-12">
                                     <label>Bericht</label>
                                     <p>
-                                        <textarea name="message" placeholder="Your Bericht" formControlName="message"></textarea>
+                                        <textarea name="message" placeholder="Uw bericht" formControlName="message"></textarea>
                                     </p>
                                 </div>
                                 <div class="col-md-12">
-                                    <button type="submit">Verzend bericht</button>
+                                    <button type="submit" [ngClass]="{'send-disabled':myFormGroup.invalid}" [disabled]="myFormGroup.invalid">Verzend bericht</button>
                                 </div>
                             </div>
                             <div id="form-messages"></div>

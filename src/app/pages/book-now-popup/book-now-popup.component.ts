@@ -97,6 +97,11 @@ export class BookNowPopupComponent implements OnInit {
         $("#popupcheckindate").val(JSON.parse(searchData).checkindate);
         $("#popuocheckoutdate").val(JSON.parse(searchData).checkoutdate);
       }
+      $("#popupcheckindate").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+      $("#popupcheckindate").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
+      
+      $("#popuocheckoutdate").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+      $("#popuocheckoutdate").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
     }, 200)
   }
 
@@ -156,13 +161,13 @@ export class BookNowPopupComponent implements OnInit {
       else{
         let message = '';
         if(this.selectedProduct.type == 'Rent'){
-          message = 'Please select minium one hour';
+          message = 'Selecteer alstublieft minimaal een uur.';
         }
         else if(this.selectedProduct.type == 'Staffing'){
-          message = 'Please select minium eight hours';
+          message = 'Selecteer alstublieft minimaal acht uur.';
         }
         else if(this.selectedProduct.type == 'Transport'){
-          message = 'Please select minium four hours';
+          message = 'Selecteer alstublieft minimaal vier uur.';
         }
         this.http.errorMessage(message);
       }

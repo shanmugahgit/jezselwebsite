@@ -36,7 +36,7 @@
             <div class="text-block NopaddingDetails">
 
               
-              <h5 class="mb-4"><span class="h4 text-primary">${{serviceDetails.priceperhr}}</span> / hr
+              <h5 class="mb-4"><span class="h4 text-primary">v.a. €{{serviceDetails.priceperhr}}</span> / uur
                 <button class="btn btn-primary pull-right" (click)="bookNow(serviceDetails)">Boek nu</button>
               </h5>
             <!-- <p [innerHtml]="serviceDetails.description"></p> -->
@@ -285,8 +285,8 @@
 
     <div class="row mb-5">
       <div class="col-md-8">
-        <p class="subtitle text-secondary nopadding">Similar Services</p>
-        <h1 class="paddtop1 font-weight lspace-sm">You may also like </h1>
+        <p class="subtitle text-secondary nopadding">Vergelijkbare diensten</p>
+        <h1 class="paddtop1 font-weight lspace-sm">Misschien vind u ook leuk</h1>
       </div>
       <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a href="" class="blist text-sm ml-2"> Zie alle diensten<i class="fas fa-angle-double-right ml-2"></i></a></div>
     </div>
@@ -302,7 +302,7 @@
                   {{product.name}} 
               </div>
               <div class="jezl-cst-bnbtn">
-                  <div class="t-rat-hr">€{{product.priceperhr}} / hr</div>
+                  <div class="t-rat-hr">v.a. €{{product.priceperhr}} / uur</div>
                    <a href="javascript:void(0);" class="jezl-cst-booknow" (click)="bookNow(product)">Boek nu</a>   
               </div>
           </div>

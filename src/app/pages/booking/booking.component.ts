@@ -49,6 +49,7 @@ export class BookingComponent implements OnInit {
   termsAndConditions: any = '';
   coupon: any = '';
   currentBalance: any = 0;
+  teamowner: any = null;
   // currentWallet: any = 0;
   // currentInterest: any = 0;
   // interestUsed: any = 0;
@@ -57,6 +58,7 @@ export class BookingComponent implements OnInit {
   couponPrice: any = 0;
   couponId: any = null;
   driverLicense: any;
+  submittedForm: boolean = false;
   constructor(private storage: StorageService, private http: HttpRequestService, private router: Router, private modalService: BsModalService) {
     this.dataLists = this.storage.getProducts() ? this.storage.getProducts() : [];
     this.userDetails = this.storage.getUserDetails();
@@ -78,6 +80,16 @@ export class BookingComponent implements OnInit {
           element.maxcanceldate = this.addDays(element.cancelData.days, date2);
           element.cancelationfee = element.cancelData.price
         }
+
+        let utcDate = new Date(element.search.checkoutdate.split("-").reverse().join("-") + " " + element.search.checkouttime);
+        let month = utcDate.getUTCMonth() + 1;
+        
+        var d = new Date(utcDate.getUTCFullYear() + "-" + month  +"-" + utcDate.getUTCDate() + " " + utcDate.getUTCHours() + ":" + utcDate.getUTCMinutes())
+        element.search.maxcheckoutdateutc = [d.getMonth()+1,
+          d.getDate(),
+          d.getFullYear()].join('-')+' '+
+         [d.getHours(),
+          d.getMinutes()].join(':');;
       }
     });
     if (checkoutDates.length > 0) {
@@ -114,11 +126,19 @@ export class BookingComponent implements OnInit {
           response['telefoonnr'] = response.phone;
         }
         this.teamId = response['team_id'];
+        if (response.teamowner) {
+          this.teamowner = response.teamowner;
+        }
         this.formGroup.patchValue(response);
         this.http.post('order/my-wallet', { team_id: this.teamId ? this.teamId : '' }).subscribe(
           (response: any) => {
             if (response.wallet) {
               this.currentBalance = response.wallet;
+              if (response.interest) {
+                let interest = Number(response.interest);
+                let wallet = Number(response.wallet);
+                this.currentBalance = wallet + interest;
+              }
             }
           }
         )
@@ -204,7 +224,7 @@ export class BookingComponent implements OnInit {
       }
     }
     else {
-      // wallet+=this.total;
+      // wallet+=this.total; x
       // interestUsed = this.interestUsed;
       amountPaid = this.total;
     }
@@ -212,65 +232,81 @@ export class BookingComponent implements OnInit {
     // return { wallet: parseFloat(parseFloat(wallet).toFixed(2)), interestUsed: parseFloat(parseFloat(interestUsed).toFixed(2)), amountPaid: parseFloat(parseFloat(amountPaid).toFixed(2)) };
   }
 
+  get f() { 
+    return this.formGroup.controls; 
+  }
+
   orderNow() {
-    if (this.formGroup.value.useBalance) {
-      let walletInterest = this.getWalletInterest();
-      // let wallet = walletInterest.wallet;
-      // let interestUsed = walletInterest.interestUsed;
-      let amountPaid = walletInterest.amountPaid;
-      let amountUsed = walletInterest.amountUsed;
-      if (amountPaid > 0) {
+    this.submittedForm = true;
+    if(!this.formGroup.invalid){
+      if (this.formGroup.value.useBalance) {
+        let walletInterest = this.getWalletInterest();
+        // let wallet = walletInterest.wallet;
+        // let interestUsed = walletInterest.interestUsed;
+        let amountPaid = walletInterest.amountPaid;
+        let amountUsed = walletInterest.amountUsed;
+        if (amountPaid > 0) {
+          if(!this.teamId||(this.teamId&&this.teamowner)) {
+            this.openModal();
+          }
+          else{
+            this.http.errorMessage("U heeft onvoldoende saldo in de wallet om de bestelling af te ronden. Contacteer de hoofdgebruiker om het saldo op te waarderen.");
+          }
+        }
+        else {
+          this.formGroup.value['id'] = this.userDetails.id;
+          this.formGroup.value['username'] = this.userDetails.firstname;
+          let params = JSON.parse(JSON.stringify(this.formGroup.value));
+          delete params['termsAndConditions'];
+          delete params['useBalance'];
+          this.http.post('user/update', params).subscribe(
+            (response: any) => {
+              this.formGroup.value.total = this.total
+              this.formGroup.value.status = 3;
+              this.formGroup.value.products = this.dataLists;
+              this.formGroup.value['amountpaid'] = amountPaid;
+              this.formGroup.value['fromwallet'] = amountUsed;
+              // this.formGroup.value.status = 1;
+              this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
+              this.formGroup.value['coupon_id'] = this.couponId;
+              this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
+              if(!amountPaid){
+                this.formGroup.value.status = 1;
+              }
+              this.http.post('order/make-order', this.formGroup.value).subscribe(
+                (order: any) => {
+                  this.uploadLicense(order.id);
+                  let pName: any = "";
+                  order.Orderhistories.forEach((elm: any) => {
+                    if (!elm.extra_id) {
+                      if (!pName) {
+                        pName += elm.name + " - " + elm.type;
+                      } else {
+                        pName += ", " + elm.name + " - " + elm.type;
+                      }
+                    }
+                  });
+                  this.modalRef?.hide();
+                  this.http.successMessage("Boeking succesvol geplaatst.");
+                  this.router.navigate(['/home']);
+                  this.storage.clearProducts();
+                  // this.updateWallet(wallet, interestUsed);
+                });
+            },
+            (error: any) => {
+              this.http.exceptionHandling(error);
+            }
+          )
+        }
+      }
+      else if(!this.teamId||(this.teamId&&this.teamowner)) {
         this.openModal();
       }
-      else {
-        this.formGroup.value['id'] = this.userDetails.id;
-        this.formGroup.value['username'] = this.userDetails.firstname;
-        let params = JSON.parse(JSON.stringify(this.formGroup.value));
-        delete params['termsAndConditions'];
-        delete params['useBalance'];
-        this.http.post('user/update', params).subscribe(
-          (response: any) => {
-            this.formGroup.value.total = this.total
-            this.formGroup.value.status = 3;
-            this.formGroup.value.products = this.dataLists;
-            this.formGroup.value['amountpaid'] = amountPaid;
-            this.formGroup.value['fromwallet'] = amountUsed;
-            // this.formGroup.value.status = 1;
-            this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
-            this.formGroup.value['coupon_id'] = this.couponId;
-            this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
-            if(!amountPaid){
-              this.formGroup.value.status = 1;
-            }
-            this.http.post('order/make-order', this.formGroup.value).subscribe(
-              (order: any) => {
-                this.uploadLicense(order.id);
-                let pName: any = null;
-                order.Orderhistories.forEach((elm: any) => {
-                  if (!elm.extra_id) {
-                    if (!pName) {
-                      pName += elm.name + " - " + elm.type;
-                    } else {
-                      pName += ", " + elm.name + " - " + elm.type;
-                    }
-                  }
-                });
-                this.modalRef?.hide();
-                this.http.successMessage("Boeking succesvol geplaatst.");
-                this.router.navigate(['/home']);
-                this.storage.clearProducts();
-                // this.updateWallet(wallet, interestUsed);
-              });
-          },
-          (error: any) => {
-            this.http.exceptionHandling(error);
-          }
-        )
+      else{
+        this.http.errorMessage("U heeft onvoldoende saldo in de wallet om de bestelling af te ronden. Contacteer de hoofdgebruiker om het saldo op te waarderen.");
       }
     }
-    else {
-      this.openModal();
-    }
+    
   }
 
   openModal() {
@@ -318,7 +354,7 @@ export class BookingComponent implements OnInit {
         this.http.post('order/make-order', this.formGroup.value).subscribe(
           (order: any) => {
             this.uploadLicense(order.id);
-            let pName: any = null;
+            let pName: any = "";
             order.Orderhistories.forEach((elm: any) => {
               if (!elm.extra_id) {
                 if (!pName) {

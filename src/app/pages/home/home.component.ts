@@ -266,7 +266,11 @@ export class HomeComponent implements OnInit {
         altField: "#alternate",
     });
 
-    // $("#datepicker").datepicker("option", "monthNames", ["Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7", "Test8", "Test9", "Test10", "Test11", "Test12"]);
+    $("#datepicker").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+    $("#datepicker").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
+    
+    $("#datepicker-out").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+    $("#datepicker-out").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
     })
   }
 
@@ -353,13 +357,13 @@ export class HomeComponent implements OnInit {
       else {
         let message = '';
         if (this.formGroup.value.type.toLowerCase() == 'rent') {
-          message = 'Please select minium one hour';
+          message = 'Selecteer alstublieft minimaal een uur.';
         }
         else if (this.formGroup.value.type.toLowerCase() == 'staffing') {
-          message = 'Please select minium eight hours';
+          message = 'Selecteer alstublieft minimaal acht uur.';
         }
         else if (this.formGroup.value.type.toLowerCase() == 'transport') {
-          message = 'Please select minium four hours';
+          message = 'Selecteer alstublieft minimaal vier uur.';
         }
         this.http.errorMessage(message);
       }
