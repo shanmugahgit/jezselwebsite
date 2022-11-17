@@ -83,7 +83,7 @@ import { AcceptNumberOnlyDirective } from './directives/accept-number-only.direc
     ClickOutsideModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent], 
   entryComponents: [BookNowPopupComponent]
 })
 export class AppModule { }
