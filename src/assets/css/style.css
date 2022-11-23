@@ -12787,7 +12787,7 @@
 
         .jezl-hm-htso-sec{
         padding: 50px 0px;
-        background-color: #d9d9d9;
+        background-color: var(--jezl-g-red);
         } 
         .jezl-htso-sec-st {
         display: grid;
