@@ -43,7 +43,8 @@ export class RegisterComponent implements OnInit {
     else if ((/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(this.myFormGroup.value.password)) && (/^[A-Z]/.test(this.myFormGroup.value.password))) {
       this.http.postAuth('signup-user', this.myFormGroup.value).subscribe(
         (response: any) => {
-          this.http.successMessage("Succesvol geregistreerd");
+          this.http.successMessage("Succesvol geregistreerd"); 
+          this.http.successMessage("Uw gastaccount is succesvol aangemaakt. Verifieer uw account via de verstuurde link op uw opgegeven e-mailadres."); 
           this.myFormGroup.reset();
           this.router.navigate(['/login']);
         },

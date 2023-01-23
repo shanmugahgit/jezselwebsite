@@ -117,7 +117,8 @@ style="background:url(assets/images/{{title}}.jpg) repeat; background-size:cover
 
                             </div>
                         </div>
-                    <button type="submit" class="jezl-ser-shw-btn">Toon {{config.totalItems}} resultaat</button>
+                    <button type="submit" class="jezl-ser-shw-btn" *ngIf="config.totalItems==1||config.totalItems==0">Toon {{config.totalItems}} resultaat</button>
+                    <button type="submit" class="jezl-ser-shw-btn" *ngIf="config.totalItems>1">Toon {{config.totalItems}} resultaten</button>
 
                     </form>
                 </div>

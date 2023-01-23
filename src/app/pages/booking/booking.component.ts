@@ -439,7 +439,7 @@ export class BookingComponent implements OnInit {
               (body: any) => {
                 this.formGroup.reset();
                 this.modalRef?.hide();
-                this.http.successMessage("Verstuur betalingslink!");
+                this.http.successMessage("Betalingslink is verstuurd!");
                 this.storage.clearProducts();
                 this.router.navigate(['/home']);
                 // this.dataLists.length = 0;

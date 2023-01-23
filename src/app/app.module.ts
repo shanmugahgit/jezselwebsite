@@ -37,6 +37,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { GarantiesComponent } from './pages/garanties/garanties.component';
 import { SetpasswordComponent } from './pages/setpassword/setpassword.component';
 import { AcceptNumberOnlyDirective } from './directives/accept-number-only.directive';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { AcceptNumberOnlyDirective } from './directives/accept-number-only.direc
     ClickOutsideModule
   ],
   providers: [],
+  // providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent], 
   entryComponents: [BookNowPopupComponent]
 })
