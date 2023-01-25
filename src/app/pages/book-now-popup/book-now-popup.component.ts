@@ -102,7 +102,7 @@ export class BookNowPopupComponent implements OnInit {
       
       $("#popuocheckoutdate").datepicker("option", "monthNames", ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
       $("#popuocheckoutdate").datepicker("option", "dayNamesMin",["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"]);
-    }, 200)
+    })
   }
 
   getLocations(subsc: boolean) {

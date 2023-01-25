@@ -1554,7 +1554,7 @@
         border-radius: 0.5rem;
         padding: 0.5rem;
         z-index: 999999 !important;
-        position: absolute !important;
+        /* position: absolute !important; */
 
         }
 
