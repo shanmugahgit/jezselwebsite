@@ -1554,7 +1554,7 @@
         border-radius: 0.5rem;
         padding: 0.5rem;
         z-index: 999999 !important;
-        /* position: absolute !important; */
+       
 
         }
 
@@ -12958,7 +12958,7 @@
         color:#000;
         font-weight: bold;
         padding-top: 10px;
-        }
+           }
         #jezl-hm-search span{ margin-top: -2px;}
         #jezl-hm-search span img{
         width: 13px;
@@ -13494,7 +13494,7 @@
         font-size: 12px;
         font-weight: bold;
         }
-        .jezl-b-popup-g .tab-content .form-group{ margin-bottom: 25px;}
+        .jezl-b-popup-g .tab-content .form-group{ margin-bottom: 25px; position: relative;}
 
         .jezl-b-popup-g button.close {
         color: #fff;
@@ -13954,6 +13954,24 @@
                 margin-top: 150px;
 
         }
+        
+            .jezl-service-popup-detail {
+                       grid-template-columns: 1fr;
+     
+            }
+            
+            #jezl-hm-search select {
+            padding: 14px 5px 12px 12px; 
+            color: #7a8797;
+            font-size: 12px;
+           text-indent:15px;
+            color:#000;
+            font-weight: bold;
+            padding-top: 10px;
+         
+            }
+            
+            
 
         }
         

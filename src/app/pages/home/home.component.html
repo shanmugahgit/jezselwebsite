@@ -229,7 +229,7 @@
                 <div class="rent owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of rentproducts"
                         routerLink="/service-detail/{{product.route}}">
-                        <div class="t-logo"> <img src="assets/images/logo/benz-logo.png"></div>
+                        <div class="t-logo"> </div>
                         <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
@@ -528,7 +528,9 @@
                 <div class="hm-advertisement-owc owl-carousel owl-theme">
                     <!-- Single Starts -->
                        <div class="item" *ngFor="let adv of advertisementLists">
-                        <img src="{{adv.path}}{{adv.image}}">
+                        <a href="{{adv.title}}" *ngIf="adv.title!='test'" target="_blank"><img src="{{adv.path}}{{adv.image}}"></a>
+                        <img src="{{adv.path}}{{adv.image}}" *ngIf="adv.title=='test'">
+                        
                       </div>
                   </div>
                 
