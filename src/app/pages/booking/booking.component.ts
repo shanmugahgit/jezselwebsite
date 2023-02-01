@@ -130,7 +130,7 @@ export class BookingComponent implements OnInit {
           this.teamowner = response.teamowner;
         }
         this.formGroup.patchValue(response);
-        this.http.post('order/my-wallet', { team_id: this.teamId ? this.teamId : '' }).subscribe(
+        this.http.post('order/my-wallet', { team_id: this.teamId ? this.teamId : null }).subscribe(
           (response: any) => {
             if (response.wallet) {
               this.currentBalance = response.wallet;
@@ -269,7 +269,7 @@ export class BookingComponent implements OnInit {
               // this.formGroup.value.status = 1;
               this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
               this.formGroup.value['coupon_id'] = this.couponId;
-              this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
+              this.formGroup.value['team_id'] = this.teamId ? this.teamId : null;
               if(!amountPaid){
                 this.formGroup.value.status = 1;
               }
@@ -347,7 +347,7 @@ export class BookingComponent implements OnInit {
         // this.formGroup.value.status = 1;
         this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
         this.formGroup.value['coupon_id'] = this.couponId;
-        this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
+        this.formGroup.value['team_id'] = this.teamId ? this.teamId : null;
         if(!amountPaid){
           this.formGroup.value.status = 1;
         }
@@ -426,7 +426,7 @@ export class BookingComponent implements OnInit {
         this.formGroup.value.status = 3;
         this.formGroup.value.products = this.dataLists;
         this.formGroup.value['maxcheckoutdate'] = this.maxcheckoutdate;
-        this.formGroup.value['team_id'] = this.teamId ? this.teamId : '';
+        this.formGroup.value['team_id'] = this.teamId ? this.teamId : null;
         this.formGroup.value['amountpaid'] = amountPaid;
         this.formGroup.value['fromwallet'] = amountUsed
         this.formGroup.value['coupon_id'] = this.couponId;

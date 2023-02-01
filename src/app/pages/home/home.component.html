@@ -228,7 +228,7 @@
             <div class="col-lg-12">
                 <div class="rent owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of rentproducts"
-                        routerLink="/service-detail/{{product.route}}">
+                        routerLink="/service-detail/{{product.id}}">
                         <div class="t-logo"> </div>
                         <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
@@ -278,7 +278,7 @@
             <div class="col-lg-12">
                 <div class="staffing owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of staffingproducts"
-                        routerLink="/service-detail/{{product.route}}">
+                        routerLink="/service-detail/{{product.id}}">
                         <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">
@@ -325,7 +325,7 @@
             <div class="col-lg-12">
                 <div class="transport owl-carousel owl-theme jezl-hm-services-g">
                     <div class="item" *ngFor="let product of transportproducts"
-                        routerLink="/service-detail/{{product.route}}">
+                        routerLink="/service-detail/{{product.id}}">
                         <div class="readmore"><span>Lees meer</span></div>
                         <div class="jezl-hm-truck-image">
                             <img [src]="product.path + product.thumbnail">

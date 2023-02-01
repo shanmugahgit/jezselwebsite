@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-lg-5 col-md-6 col-sm-12">
                                         <div class="TravelGo-category-img TravelGo-category-list-img">
-                                            <a routerLink="/service-detail/{{data.route}}"><img
+                                            <a routerLink="/service-detail/{{data.id}}"><img
                                                     [src]="data.path + data.thumbnail" alt=""></a>
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                             <div class="TravelGo-category-content-title fl-wrap">
                                                 <div class="TravelGo-category-content-title-item">
                                                     <h3 class="title-sin_map"><a
-                                                            routerLink="/service-detail/{{data.route}}">{{data.name}}</a><a
+                                                            routerLink="/service-detail/{{data.id}}">{{data.name}}</a><a
                                                             class="jezsel-cart-service-trash"><i
                                                                 class="fas fa-trash"
                                                                 (click)="delete(i)"></i></a><span>&#8364;{{data.priceperhr}}</span>

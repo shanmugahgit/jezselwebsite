@@ -55,7 +55,7 @@ export class ServiceDetailComponent implements OnInit {
   
 
   loadData(route: any) {
-    this.http.get('product/' + route).subscribe(
+    this.http.get('productfind/' + route).subscribe(
       (response: any) => {
         if (response) {
           this.serviceDetails = response;

@@ -293,7 +293,7 @@
     <div class="row jezl-hm-services-gclm jezl-hm-services-g mt-5">
 
       <div class="col-lg-4 col-sm-6 col-xs-12" *ngFor="let product of similarProducts">
-          <div class="item" routerLink="/service-detail/{{product.route}}" #productImg>
+          <div class="item" routerLink="/service-detail/{{product.id}}" #productImg>
             <div class="readmore"><span>Lees meer</span></div>
               <div class="jezl-hm-truck-image">
                   <img [src]="product.path + product.thumbnail">
