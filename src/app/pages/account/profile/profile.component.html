@@ -906,7 +906,7 @@
                                             <td>{{extras.extraName}}</td>
                                             <td><span>&#8364;</span>{{extras.price}}</td>
                                         </tr>
-                                        <tr *ngIf="order&&order.extras&&order.extras.length==0">
+                                        <tr *ngIf="order&&(order.extras&&order.extras.length==0) ||(!order.extras) ">
                                             <td colspan="2">No Extras Found</td>
                                         </tr>
                                     </tbody>
@@ -944,6 +944,14 @@
             <!-- <p>You have <span>&#8364;</span><span [innerHtml]="getTotal()"></span> balance in your account.Are you proceed for Withdraw
                 request ?</p> -->
                 <p>U heeft (<span>&#8364;</span><span [innerHtml]="getTotal()"></span>) in uw wallet. Wilt u verder gaan met uw verzoek uitbetaling?</p>
+                <div class="row mt-2">
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Naam ontvanger" [(ngModel)]="naam">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Rekeningnummer(IBAN) ontvanger" [(ngModel)]="rekeningnummer">
+                    </div>
+                </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" (click)="makeWithdraw()" *ngIf="currentWallet">Ja</button>

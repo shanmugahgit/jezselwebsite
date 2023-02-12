@@ -33,6 +33,7 @@ export class ServicesComponent implements OnInit {
   public transportPercentageDiscount = TransportDiscount;
   public showSelectLocation: boolean = false;
   public showVA: boolean = false;
+  public showLoader: boolean = false;
 
   formGroup: FormGroup = new FormGroup({
     location: new FormControl('', Validators.required),
@@ -68,7 +69,7 @@ export class ServicesComponent implements OnInit {
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
-      totalItems: 100
+      totalItems: 0
     };
     this.getLocations();
     this.loadDatePicker();
@@ -129,7 +130,7 @@ export class ServicesComponent implements OnInit {
     return 4;
   }
 
-  getProducts() {
+  getProducts(navigate: any = '') {
     let body: any = {};
     body.offset = this.offset;
     body.limit = this.limit;
@@ -192,13 +193,17 @@ export class ServicesComponent implements OnInit {
     if(this.formGroup.valid){
       this.showVA = true;
     }
+    this.showLoader = true;
     this.http.post('products', body).subscribe(
       (response: any) => {
         this.config.totalItems = response.count || 0;
         this.products = response && response.data;
         console.log(this.products);
         this.calulateTotalAmount();
-
+        this.showLoader = false;
+        if(navigate){
+          navigate.scrollIntoView()
+        }
       }, (error: any) => {
         this.http.exceptionHandling(error);
       }
@@ -380,19 +385,19 @@ export class ServicesComponent implements OnInit {
     this.showSelectLocation = true;
 
   }
-  search() {
+  search(navigate: any) {
     let checkintimeIndex = slots.indexOf(this.formGroup.value.checkintime);
     let checkouttimeIndex = slots.indexOf(this.formGroup.value.checkouttime);
     if ((this.formGroup.value.checkindate == this.formGroup.value.checkoutdate)) {
       let findDifference = checkouttimeIndex - checkintimeIndex;
       if (findDifference > 3 && this.formGroup.value.type.toLowerCase() == 'rent') {
-        this.searchResult();
+        this.searchResult(navigate);
       }
       else if (findDifference > 31 && this.formGroup.value.type.toLowerCase() == 'staffing') {
-        this.searchResult();
+        this.searchResult(navigate);
       }
       else if (findDifference > 15 && this.formGroup.value.type.toLowerCase() == 'transport') {
-        this.searchResult();
+        this.searchResult(navigate);
       }
       else {
         let message = '';
@@ -409,15 +414,15 @@ export class ServicesComponent implements OnInit {
       }
     }
     else {
-      this.searchResult();
+      this.searchResult(navigate);
     }
   }
 
-  searchResult() {
+  searchResult(navigate: any) {
     localStorage.setItem('search', JSON.stringify(this.formGroup.value));
     this.router.navigateByUrl('services/' + this.formGroup.value.type);
     if (this.title == this.formGroup.value.type) {
-      this.getProducts();
+      this.getProducts(navigate);
     }
   }
   selectedLocation(loc: any) {

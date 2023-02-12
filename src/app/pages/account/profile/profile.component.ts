@@ -28,6 +28,8 @@ export class ProfileComponent implements OnInit {
   showWithdraw: boolean = false;
   showDeposit1: boolean = true;
   showWithdraw1: boolean = false;
+  naam: any = '';
+  rekeningnummer: any = '';
   myFormGroup: any;
   @ViewChild('template') template: any;
   selectedProduct: any;
@@ -486,17 +488,25 @@ export class ProfileComponent implements OnInit {
   }
 
   makeWithdraw() {
-    this.http.post('withdraw/create', { user_id: this.userDetails.id, amount: this.getTotal(), team_id: this.team_id }).subscribe(
-      (response: any) => {
-        this.http.successMessage("Verzoek succesvol verstuurd");
-        this.modalRef?.hide();
-        this.loadData();
-        location.reload();
-      },
-      (error: any) => {
-        this.http.exceptionHandling(error);
-      }
-    )
+    if(!this.naam){
+      this.http.errorMessage("Voer Naam ontvanger")
+    }
+    else if(!this.rekeningnummer){
+      this.http.errorMessage("Voer Rekeningnummer(IBAN) ontvanger")
+    }
+    else{
+      this.http.post('withdraw/create', { user_id: this.userDetails.id, amount: this.getTotal(), team_id: this.team_id, naam: this.naam, rekeningnummer: this.rekeningnummer }).subscribe(
+        (response: any) => {
+          this.http.successMessage("Verzoek succesvol verstuurd");
+          this.modalRef?.hide();
+          this.loadData();
+          location.reload();
+        },
+        (error: any) => {
+          this.http.exceptionHandling(error);
+        }
+      )
+    }
   }
 
   disableWithdraw() {

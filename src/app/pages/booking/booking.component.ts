@@ -358,9 +358,9 @@ export class BookingComponent implements OnInit {
             order.Orderhistories.forEach((elm: any) => {
               if (!elm.extra_id) {
                 if (!pName) {
-                  pName += elm.name + " - " + elm.type;
+                  pName += elm.name + " - " + elm.type + " (Borg)";
                 } else {
-                  pName += ", " + elm.name + " - " + elm.type;
+                  pName += ", " + elm.name + " - " + elm.type + " (Borg)";
                 }
               }
             });

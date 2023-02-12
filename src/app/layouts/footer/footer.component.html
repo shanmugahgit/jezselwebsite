@@ -1,97 +1,99 @@
 <!-- =======================
 	footer  -->
   
-<footer class="footer position-relative jezl-footer-tl">
-  <div class="container">
-  <div class="jezl-footer-g">
-    <div class="clm">
-      <img src="assets/images/footer-logo.png" class="footer-logo">
-      <ul class="jezl-footer-contact">
-
-        <li><img src="assets/images/icon/call-icon.png"> <a href="tel:{{contactDetails.phone}}"> {{contactDetails.phone}}</a></li>
-        <li><img src="assets/images/icon/envelop-icon.png"> <a href = "mailto:{{contactDetails.email}}"> {{contactDetails.email}}</a></li>
-        <li><img src="assets/images/icon/footer-location.png"> {{contactDetails.address}}</li>
-
-      </ul>
-    </div>
-    <!-- clm end here -->
-
-    <div class="clm">
-      <div class="ft-title">Over Jezsel.nl:</div>
-      <ul class="jezl-footer-contact">
-
-        <li><a href="#" routerLink="/">Home</a></li>
-        <li><a href="javascript:void(0);" id="jezsel-ftmenu-show">Diensten <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-              <ul  class="jezsel-ftmenu">
-                <li><a href="#" routerLink="/services/rent">Verhuur</a></li>
-                <li><a href="#" routerLink="/services/staffing">Uitzend</a></li>
-                <li><a href="#" routerLink="/services/transport">Transport</a></li> 
-              </ul>
-        
-        </li>
-
-        <li><a href="#" routerLink="/locations">Locaties</a></li>
- 
-      </ul>
-    </div>
-    <!-- clm end here -->
-
-    
-    
-    <div class="clm">
-      <div class="ft-title">Help en Contact:</div>
-      <ul class="jezl-footer-contact">
-
-        <li><a href="#" routerLink="/faq">Veelgestelde vragen</a></li>
-        <li><a href="#" routerLink="/">Certificaten</a></li>
-        <li><a href="#" routerLink="/contact">Contact</a></li>
-
-      </ul>
-    </div>
-    <!-- clm end here -->     
-    
-    
-    <div class="clm jezl-subscribe">
-      <div class="ft-title">Abonneren:</div>
-         <div class="jezl-subscribe-frm-g" *ngIf="!userDetails||!userDetails.firstname">
-            <input type="text" placeholder="Uw email" [(ngModel)]="email">
-            <button (click)="save()">
-              <svg  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.802246 9.96282C0.802246 9.33193 1.32849 8.8205 1.97765 8.8205H18.4334C19.0825 8.8205 19.6088 9.33193 19.6088 9.96282C19.6088 10.5937 19.0825 11.1051 18.4334 11.1051H1.97765C1.32849 11.1051 0.802246 10.5937 0.802246 9.96282Z" fill="#C4C4C4"/>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0367 1.1588C11.4957 1.6049 11.4957 2.32818 11.0367 2.77429L3.63993 9.96282L11.0367 17.1514C11.4957 17.5975 11.4957 18.3207 11.0367 18.7668C10.5776 19.213 9.8334 19.213 9.37438 18.7668L1.14652 10.7706C0.68749 10.3245 0.68749 9.60118 1.14652 9.15508L9.37438 1.1588C9.8334 0.712692 10.5776 0.712692 11.0367 1.1588Z" fill="#C4C4C4"/>
-              </svg>
-              </button>
-            <p class="jezl-flo-text">Meld je aan voor onze nieuwsbrief en volg ons.</p>
-          </div> 
-          <div class="jezl-ftr-social-icons">
-          <ul>
-
-            <li><a href="#"><i class="fab fa-facebook-f" ></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCYYn9zlA3gP1H_pnhT7lAeA/featured" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-
-          </ul>
-        </div> 
-
-
-
-    </div>
-    <!-- clm end here -->     
-
-  </div>
-  <!-- g end here -->
-  </div>
-
-
-
-  <div class="footer-copyright">
+  <footer class="footer position-relative jezl-footer-tl">
     <div class="container">
-      <div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left"> 
-        <div class="copyright-text">Copyright ©2022 Jezsel. Alle rechten voorbehouden.</div>        
+    <div class="jezl-footer-g">
+      <div class="clm">
+        <img src="assets/images/footer-logo.png" class="footer-logo">
+        <ul class="jezl-footer-contact">
+  
+          <li><img src="assets/images/icon/call-icon.png"> <a href="tel:{{contactDetails.phone}}"> {{contactDetails.phone}}</a></li>
+          <li><img src="assets/images/icon/envelop-icon.png"> <a href = "mailto:{{contactDetails.email}}"> {{contactDetails.email}}</a></li>
+          <li><img src="assets/images/icon/footer-location.png"> {{contactDetails.address}}</li>
+  
+        </ul>
+      </div>
+      <!-- clm end here -->
+  
+      <div class="clm">
+        <div class="ft-title">Over Jezsel.nl:</div>
+        <ul class="jezl-footer-contact">
+  
+          <li><a href="#" routerLink="/">Home</a></li>
+          <li><a href="javascript:void(0);" id="jezsel-ftmenu-show">Diensten <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul  class="jezsel-ftmenu">
+                  <li><a href="#" routerLink="/services/rent">Verhuur</a></li>
+                  <li><a href="#" routerLink="/services/staffing">Uitzend</a></li>
+                  <li><a href="#" routerLink="/services/transport">Transport</a></li> 
+                </ul>
+          
+          </li>
+  
+          <li><a href="#" routerLink="/locations">Locaties</a></li>
+   
+        </ul>
+      </div>
+      <!-- clm end here -->
+  
+      
+      
+      <div class="clm">
+        <div class="ft-title">Help en Contact:</div>
+        <ul class="jezl-footer-contact">
+  
+          <li><a href="#" routerLink="/faq">Veelgestelde vragen</a></li>
+          <li><a href="#" routerLink="/">Certificaten</a></li>
+          <li><a href="#" routerLink="/contact">Contact</a></li>
+  
+        </ul>
+      </div>
+      <!-- clm end here -->     
+      
+      
+      <div class="clm jezl-subscribe">
+        <div class="ft-title">Abonneren:</div>
+           <div class="jezl-subscribe-frm-g" *ngIf="!userDetails||!userDetails.firstname">
+              <input type="text" placeholder="Uw email" [(ngModel)]="email">
+              <button (click)="save()">
+                <svg  viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.802246 9.96282C0.802246 9.33193 1.32849 8.8205 1.97765 8.8205H18.4334C19.0825 8.8205 19.6088 9.33193 19.6088 9.96282C19.6088 10.5937 19.0825 11.1051 18.4334 11.1051H1.97765C1.32849 11.1051 0.802246 10.5937 0.802246 9.96282Z" fill="#C4C4C4"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.0367 1.1588C11.4957 1.6049 11.4957 2.32818 11.0367 2.77429L3.63993 9.96282L11.0367 17.1514C11.4957 17.5975 11.4957 18.3207 11.0367 18.7668C10.5776 19.213 9.8334 19.213 9.37438 18.7668L1.14652 10.7706C0.68749 10.3245 0.68749 9.60118 1.14652 9.15508L9.37438 1.1588C9.8334 0.712692 10.5776 0.712692 11.0367 1.1588Z" fill="#C4C4C4"/>
+                </svg>
+                </button>
+              <p class="jezl-flo-text">Meld je aan voor onze nieuwsbrief en volg ons.</p>
+            </div> 
+            <div class="jezl-ftr-social-icons">
+            <ul>
+  
+              <li><a href="https://www.facebook.com/jezsel.nl" target="_blank"><i class="fab fa-facebook-f" ></i></a></li>
+              <li><a href="https://www.youtube.com/@jezselnl" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+              <li><a href="https://wa.me/31762015771?" title="whats up" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/jezsel.nl/" target="_blank"><i class="fab fa-instagram" aria-hidden="true" ></i></a></li>
+              <li><a href="https://www.linkedin.com/company/jezsel-nl/" target="_blank"><i class="fab fa-linkedin" aria-hidden="true" ></i></a></li>
+  
+            </ul>
+          </div> 
+  
+  
+  
+      </div>
+      <!-- clm end here -->     
+  
+    </div>
+    <!-- g end here -->
+    </div>
+  
+  
+  
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left"> 
+          <div class="copyright-text">Copyright ©2022 Jezsel. Alle rechten voorbehouden.</div>        
+        </div>
       </div>
     </div>
-  </div>
-</footer>
-<!-- =======================
-	footer  --> 
+  </footer>
+  <!-- =======================
+    footer  --> 
+  
