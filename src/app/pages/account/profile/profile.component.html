@@ -39,6 +39,8 @@
 
                     <a class="nav-link active pl-4" id="v-pills-my-orders-tab" data-toggle="pill"
                         href="#v-pills-my-orders" role="tab" aria-controls="v-pills-my-orders" aria-selected="true">Mijn boekingen</a>
+                    <a class="nav-link pl-4" id="v-pills-invoices-tab" data-toggle="pill"
+                        href="#v-pills-invoices" role="tab" aria-controls="v-pills-invoices" aria-selected="true">Facturen</a>
                     <a class="nav-link pl-4" id="v-pills-address-tab" data-toggle="pill" href="#v-pills-address"
                         role="tab" aria-controls="v-pills-address" aria-selected="false">Profiel & instellingen</a>
                     <!--<a class="nav-link pl-4" id="v-pills-password-tab" data-toggle="pill" href="#v-pills-password"
@@ -53,7 +55,7 @@
                         *ngIf="!team_id||(team_id&&teamowner)">Wallet</a>
                     <a class="nav-link pl-4" id="v-pills-employees-tab" data-toggle="pill" href="#v-pills-employees"
                         role="tab" aria-controls="v-pills-employees" aria-selected="false"
-                        *ngIf="!team_id||(team_id&&teamowner)">Werknemers</a>
+                        *ngIf="!team_id||(team_id&&teamowner)">Gastaccount</a>
                 </div>
             </div>
             <div class="col-lg-9">
@@ -106,6 +108,41 @@
                     </div>
                     <!-- my orders end here -->
 
+                    <div class="tab-pane fade show " id="v-pills-invoices" role="tabpanel"
+                        aria-labelledby="v-pills-invoices-tab">
+                        <div class="jezsel-profile-section shadow">
+
+                            <h3>Facturen</h3>
+                            <!-- <h5>Wallet - {{currentWallet}}</h5> -->
+                            <div class="row mt-3">
+                                <div class="col-lg-12 col-12 align-self-center table-responsive ">
+                                    <table class="table table-bordered ">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Dienst</th>
+                                                <th>Gemaakt op</th>
+                                                <th>Meer informatie</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of invoiceLists;let i= index;">
+                                                <td>{{i+1}}</td>
+                                                <td>{{data.name}}</td>
+                                                <td>{{data.checkoutdate|date:'dd/M/yyyy'}} {{data.checkouttime}}</td>
+                                                <td><button class="btn btn-primary" (click)="viewInvoice(data)">Zie details</button></td>
+                                            </tr>
+                                            <tr *ngIf="invoiceLists.length==0">
+                                                <td colspan="3" class="text-center">Geen Facturen gevonden</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- profile section end here -->
+                    </div>
 
 
                     <div class="tab-pane fade" id="v-pills-address" role="tabpanel"
@@ -740,7 +777,7 @@
 
 
                                 <div class="col-md-6">
-                                    <h3>Werknemers</h3>
+                                    <h3>Gastaccount</h3>
                                 </div>
                                 <div class="col-md-6">
                                     <button class="pull-right btn btn-primary"
@@ -882,6 +919,7 @@
                             <th>Aanvang</th>
                             <th>Einde</th>
                             <th>Extra’s</th>
+                            <th>Factuur</th>
                             <th>Annuleren</th>
                         </tr>
                     </thead>
@@ -912,6 +950,7 @@
                                     </tbody>
                                 </table>
                             </td>
+                            <td><button class="btn btn-primary" (click)="viewInvoice(order)" *ngIf="order.invoiceid">Zie Factuur</button></td>
                             <td><button class="btn btn-primary" (click)="cancelOrder(order)"
                                     *ngIf="order.maxcanceldate&&order.status!=0&&isNotExpired(order.maxcanceldate)">Annuleren</button><span
                                     class="text-danger" *ngIf="order.status==0">Geannuleerd</span></td>
@@ -960,3 +999,55 @@
     </div>
 
 </ng-template>
+
+<ng-template #invoiceTemplate>
+    <div id="myModalId">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Zie Facturen details</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="invoicemodalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body jezsel-profile-myord-pp">
+            <div class="container profile-popup-content table-responsive">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Dienst</th>
+                            <th>Gemaakt op</th>
+                            <th>Bedrag</th>
+                            <th>Status</th>
+                            <th>Downloaden</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let inv of selectedInvoice;let i = index;">
+                            <td>{{i+1}}</td>
+                            <td>{{inv.productname}}</td>
+                            <td>{{inv.checkoutdate|date:'dd/M/yyyy'}} {{inv.checkouttime}}</td>
+                            <td>{{inv.total/100}}</td>
+                            <td class="text-capitalize">{{inv.status}}</td>
+                            <td><a href="{{inv.invoice_pdf}}" class="download">Download</a></td>
+                        </tr>
+                        <tr *ngIf="selectedInvoice.length==0">
+                            <td colspan="5" class="text-center">Geen gegevens gevonden</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="invoicemodalRef?.hide()">Sluiten</button>
+        </div>
+    </div>
+
+</ng-template>
+<div class="preloader" *ngIf="showLoader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>

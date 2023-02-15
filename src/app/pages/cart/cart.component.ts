@@ -109,8 +109,22 @@ export class CartComponent implements OnInit {
     this.updatedDisable();
   }
 
+  diff_hours(dt2: any, dt1: any) {
+
+    var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60);
+    return Math.abs(diff);
+    // return Math.abs(Math.round(diff));
+
+  }
+
   updatedDisable() {
     this.dataLists.forEach((element: any) => {
+      let checkindate = JSON.parse(JSON.stringify(((element.search.checkindate.split("-")).reverse()).join("-")));
+      let serviceDate = new Date(checkindate + " " + element.search.checkintime);
+      let currentDate = new Date();
+      let hours = this.diff_hours(currentDate, serviceDate);
+      console.log(hours)
       if (element.Extras) {
         let isExist = element.Extras.find((element2: any) => (element2.isGroup && element2.checked));
         if (isExist) {
@@ -121,6 +135,12 @@ export class CartComponent implements OnInit {
             else if (element2.isGroup) {
               element2.isDisabled = true;
             }
+            if ((element2.description.indexOf('24') >= 0) && (hours < 24)) {
+              element2.isDisabled = true;
+            }
+            else if ((element2.description.indexOf('48') >= 0) && (hours < 48)) {
+              element2.isDisabled = true;
+            }
           });
         }
         else {
@@ -128,10 +148,31 @@ export class CartComponent implements OnInit {
             if (element2.isGroup) {
               element2.isDisabled = false;
             }
+            if ((element2.description.indexOf('24') >= 0) && (hours < 24)) {
+              element2.isDisabled = true;
+            }
+            else if ((element2.description.indexOf('48') >= 0) && (hours < 48)) {
+              element2.isDisabled = true;
+            }
           });
         }
       }
+      if (element.cancelLists) {
+        element.cancelLists.forEach((element2: any) => {
+          if ((element2.hours == 24) && (hours < 24)) {
+            element2.isDisabled = true;
+          }
+          else if ((element2.hours == 48) && (hours < 48)) {
+            element2.isDisabled = true;
+          }
+          else{
+            element2.isDisabled = false;
+          }
+        });
+      }
     });
+    this.storage.clearSingleProduct(this.dataLists);
+    console.log(this.dataLists)
   }
 
   ngOnInit(): void {

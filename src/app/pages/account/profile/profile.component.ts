@@ -13,11 +13,14 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild('withdrawtemplate') withdrawtemplate: any;
+  @ViewChild('invoiceTemplate') invoiceTemplate: any;
   ordersdataLists: any = [];
   depositdataLists: any = [];
   withdrawdataLists: any = [];
   employeeLists: any = [];
+  invoiceLists: any = [];
   modalRef?: BsModalRef;
+  invoicemodalRef?: BsModalRef;
   amount: any = null;
   team_id: any = null;
   teamowner: any = null;
@@ -28,9 +31,11 @@ export class ProfileComponent implements OnInit {
   showWithdraw: boolean = false;
   showDeposit1: boolean = true;
   showWithdraw1: boolean = false;
+  showLoader: boolean = false;
   naam: any = '';
   rekeningnummer: any = '';
   myFormGroup: any;
+  selectedInvoice: any = [];
   @ViewChild('template') template: any;
   selectedProduct: any;
   formGroup: FormGroup = new FormGroup({
@@ -193,6 +198,15 @@ export class ProfileComponent implements OnInit {
         this.loadData();
         this.loadTeamUsers();
         this.loadTeams();
+        this.loadInvoices();
+      }
+    )
+  }
+
+  loadInvoices() {
+    this.http.get('userinvoice/' + this.userDetails.id).subscribe(
+      (response: any) => {
+        this.invoiceLists = response;
       }
     )
   }
@@ -265,10 +279,10 @@ export class ProfileComponent implements OnInit {
               extraName = findExtra.description
             }
             element['extraName'] = extraName;
-            let isExist = element2.extras.find((element3: any)=>((element.product_id == element3.product_id)&&(element.extra_id == element3.extra_id)))
-            if(!isExist){
+            let isExist = element2.extras.find((element3: any) => ((element.product_id == element3.product_id) && (element.extra_id == element3.extra_id)))
+            if (!isExist) {
               element2.extras.push(element);
-            }  
+            }
           }
         });
       }
@@ -488,13 +502,13 @@ export class ProfileComponent implements OnInit {
   }
 
   makeWithdraw() {
-    if(!this.naam){
+    if (!this.naam) {
       this.http.errorMessage("Voer Naam ontvanger")
     }
-    else if(!this.rekeningnummer){
+    else if (!this.rekeningnummer) {
       this.http.errorMessage("Voer Rekeningnummer(IBAN) ontvanger")
     }
-    else{
+    else {
       this.http.post('withdraw/create', { user_id: this.userDetails.id, amount: this.getTotal(), team_id: this.team_id, naam: this.naam, rekeningnummer: this.rekeningnummer }).subscribe(
         (response: any) => {
           this.http.successMessage("Verzoek succesvol verstuurd");
@@ -597,10 +611,34 @@ export class ProfileComponent implements OnInit {
     return result;
   }
 
-  isNotExpired(cancelDate: any){
+  isNotExpired(cancelDate: any) {
     let strSplit = cancelDate.split(".")
     let cancellationDate = strSplit[0].replace(/T/g, " ")
     return (new Date(cancellationDate) < new Date) ? false : true;;
+  }
+
+  viewInvoice(data: any) {
+    this.showLoader = true;
+    this.selectedInvoice = [];
+    this.http.get('userfindinvoice/' + data.invoiceid).subscribe(
+      (response: any) => {
+        response['checkoutdate'] = data.checkoutdate;
+        response['checkouttime'] = data.checkouttime;
+        response['productname'] = data.name;
+        this.selectedInvoice = [response];
+        this.showLoader = false;
+        if (this.selectedInvoice) {
+          this.invoicemodalRef = this.modalService.show(this.invoiceTemplate, {
+            backdrop: 'static',
+            keyboard: false,
+            class: 'modal-xl'
+          });
+        }
+      },
+      (error: any) => {
+        this.showLoader = false;
+      }
+    )
   }
 
 }

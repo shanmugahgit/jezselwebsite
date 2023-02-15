@@ -75,7 +75,7 @@ export class BookingComponent implements OnInit {
       if (element.search) {
         var date = element.search.checkoutdate.split("-").reverse().join("-");
         checkoutDates.push(new Date(date))
-        if (element.cancelData && element.cancelData.days) {
+        if (element.cancelData && element.cancelData.days&& element.cancelData.selected) {
           var date2 = element.search.checkindate.split("-").reverse().join("-");
           element.maxcanceldate = this.addDays(element.cancelData.days, date2);
           element.cancelationfee = element.cancelData.price
