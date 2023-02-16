@@ -641,4 +641,18 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  getInvoiceStatus(inv: any){
+    let status = '';
+    if(inv == 'open'){
+      status == 'Open';
+    }
+    else if(inv == 'paid'){
+      status == 'Betaald';
+    }
+    else{
+      status == inv;
+    }
+    return status;
+  }
+
 }

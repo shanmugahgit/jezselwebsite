@@ -1027,7 +1027,7 @@
                             <td>{{inv.productname}}</td>
                             <td>{{inv.checkoutdate|date:'dd/M/yyyy'}} {{inv.checkouttime}}</td>
                             <td>{{inv.total/100}}</td>
-                            <td class="text-capitalize">{{inv.status}}</td>
+                            <td [innerHtml]="getInvoiceStatus(inv.status)">{{inv.status}}</td>
                             <td><a href="{{inv.invoice_pdf}}" class="download">Download</a></td>
                         </tr>
                         <tr *ngIf="selectedInvoice.length==0">
