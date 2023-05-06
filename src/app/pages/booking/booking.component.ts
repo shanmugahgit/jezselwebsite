@@ -81,15 +81,54 @@ export class BookingComponent implements OnInit {
           element.cancelationfee = element.cancelData.price
         }
 
+        let splitstr: any = element.search.checkouttime.split(":");
+        if(splitstr && Array.isArray(splitstr) && splitstr.length>0){
+          splitstr[0] = (splitstr[0].length==1) ? "0" + splitstr[0] : splitstr[0];
+          element.search.checkouttime = splitstr.join(":");
+        }
         let utcDate = new Date(element.search.checkoutdate.split("-").reverse().join("-") + " " + element.search.checkouttime);
-        let month = utcDate.getUTCMonth() + 1;
-        
-        var d = new Date(utcDate.getUTCFullYear() + "-" + month  +"-" + utcDate.getUTCDate() + " " + utcDate.getUTCHours() + ":" + utcDate.getUTCMinutes())
-        element.search.maxcheckoutdateutc = [d.getMonth()+1,
-          d.getDate(),
+        let month: any = (utcDate.getUTCMonth() + 1).toString();
+        if(month && month.length==1){
+          month = "0" + month;
+        }
+
+        let splitstrutchours: any = utcDate.getUTCHours();
+        if(splitstrutchours){
+          splitstrutchours = (splitstrutchours.length==1) ? "0" + splitstrutchours : splitstrutchours;
+        }
+        let splitstrutcMinutes: any = utcDate.getUTCMinutes();
+        if(splitstrutcMinutes){
+          splitstrutcMinutes = (splitstrutcMinutes.length==1) ? "0" + splitstrutcMinutes : splitstrutcMinutes;
+        }
+        let utcdate: any = (utcDate.getUTCDate()).toString();
+        if(utcdate && utcdate.length==1){
+          utcdate = "0" + utcdate;
+        }
+
+        var d = new Date(utcDate.getUTCFullYear() + "-" + month  +"-" + utcdate + " " + splitstrutchours + ":" + splitstrutcMinutes)
+
+        let dhours: any = d.getHours();
+        if(dhours){
+          dhours = (dhours.length==1) ? "0" + dhours : dhours;
+        }
+
+        let dMinutes: any = d.getMinutes();
+        if(dMinutes){
+          dMinutes = (dMinutes.length==1) ? "0" + dMinutes : dMinutes;
+        }
+        let dmonth: any = (d.getMonth()+1).toString();
+        if(dmonth && dmonth.length==1){
+          dmonth = "0" + dmonth;
+        }
+        let ddate: any = (d.getDate()).toString();
+        if(ddate && ddate.length==1){
+          ddate = "0" + ddate;
+        }
+        element.search.maxcheckoutdateutc = [dmonth,
+          ddate,
           d.getFullYear()].join('-')+' '+
-         [d.getHours(),
-          d.getMinutes()].join(':');;
+         [dhours,
+          dMinutes].join(':');;
       }
     });
     if (checkoutDates.length > 0) {

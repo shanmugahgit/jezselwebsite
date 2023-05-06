@@ -232,7 +232,7 @@ export class ProfileComponent implements OnInit {
   loadWallet(team_id: any) {
     this.http.post('order/my-wallet', { team_id: team_id }).subscribe(
       (response: any) => {
-        if (response.wallet) {
+        // if (response.wallet) {
           this.currentWallet = response.wallet;
           this.currentInterest = response.interest;
           if (response.interest) {
@@ -243,7 +243,7 @@ export class ProfileComponent implements OnInit {
               this.currentInterest = 0;
             }
           }
-        }
+        // }
       }
     )
   }
@@ -644,13 +644,13 @@ export class ProfileComponent implements OnInit {
   getInvoiceStatus(inv: any){
     let status = '';
     if(inv == 'open'){
-      status == 'Open';
+      status = 'Open';
     }
     else if(inv == 'paid'){
-      status == 'Betaald';
+      status = 'Betaald';
     }
     else{
-      status == inv;
+      status = inv;
     }
     return status;
   }
