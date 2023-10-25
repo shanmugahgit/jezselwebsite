@@ -90,7 +90,11 @@
                                                 <td>
                                                     <span *ngIf="data.status == 1"> Succes</span>
                                                     <span *ngIf="data.status == 2"> Mislukt</span>
-                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus!=2"> In behandeling <button class="btn btn-primary ml-2" (click)="sendPaymentLink(data)">Betalen</button></span>
+                                                    <span *ngIf="data.status == 3&&data.paymentLinkstatus!=2"> In behandeling 
+                                                        <!-- changes disabled payment -->
+                                                        <!-- <button class="btn btn-primary ml-2" (click)="sendPaymentLink(data)">Betalen</button> -->
+                                                        <!-- changes disabled payment -->
+                                                    </span>
                                                     <span *ngIf="data.status == 3&&data.paymentLinkstatus==2"> In behandeling (Betaallink verstuurd naar e-mail)</span>
                                                 </td>
                                                 <td><button class="btn btn-primary" (click)="viewDetails(data)">Zie details</button></td>

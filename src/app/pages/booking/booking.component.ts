@@ -403,29 +403,26 @@ export class BookingComponent implements OnInit {
                 }
               }
             });
-            if (amountPaid > 0) {
-              let prop = { id: order.id, total: amountPaid, pname: pName }
-              this.http.post('payment/ideal', prop).subscribe(
-                (body: any) => {
-                  let reference: any = { id: order.id };
-                  reference.paymentchargeid = body && body.paymentchargeid || null;
-                  window.location.href = body.url
-                  this.modalRef?.hide();
-                  localStorage.setItem('odere', JSON.stringify(reference));
-                  this.storage.clearProducts();
-                  // this.http.successMessage("Ordered Successfully");
-                  // this.router.navigate(['/home']);
-                  // this.dataLists.length = 0;
-                  // this.updateWallet(wallet, interestUsed);
-                })
-            }
-            else {
+            //changes disabled payment
+            // if (amountPaid > 0) {
+            //   let prop = { id: order.id, total: amountPaid, pname: pName }
+            //   this.http.post('payment/ideal', prop).subscribe(
+            //     (body: any) => {
+            //       let reference: any = { id: order.id };
+            //       reference.paymentchargeid = body && body.paymentchargeid || null;
+            //       window.location.href = body.url
+            //       this.modalRef?.hide();
+            //       localStorage.setItem('odere', JSON.stringify(reference));
+            //       this.storage.clearProducts();
+            //     })
+            // }
+            // else {
               this.modalRef?.hide();
               this.http.successMessage("Boeking succesvol geplaatst.");
               this.router.navigate(['/home']);
               this.storage.clearProducts();
-              // this.updateWallet(wallet, interestUsed);
-            }
+            // }
+            //changes disabled payment
           });
       },
       (error: any) => {
