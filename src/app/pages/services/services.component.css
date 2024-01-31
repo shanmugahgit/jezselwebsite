@@ -50,6 +50,11 @@ option:disabled { background-color: #f3f3f3; }
     animation-delay: -0.8s;
     -webkit-animation-delay: -0.8s;
   }
+
+  .book-hr-basis{
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
   
   @keyframes preloader-fx {
     0% {

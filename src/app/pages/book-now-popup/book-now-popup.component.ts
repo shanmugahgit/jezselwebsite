@@ -40,10 +40,12 @@ export class BookNowPopupComponent implements OnInit {
     checkouttime: new FormControl('', Validators.required),
   })
   notavailable: boolean = false;
+  bookingType: any = '';
   constructor(private modalService: BsModalService, private communication: CommunicationService, private http: HttpRequestService, private storage: StorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.communication.openProductModal.subscribe((response) => {
+      this.bookingType = response['bookingType'];
       this.selectedProduct = JSON.parse(JSON.stringify(response));
       this.productPrice = JSON.parse(JSON.stringify(response.priceperhr));
       this.modalRef?.hide();
@@ -110,9 +112,9 @@ export class BookNowPopupComponent implements OnInit {
       var customPadding = 17; //custom modal padding (bootstrap modal)! 
       var topDatepicker = (offsetInput + inputHeight + customPadding) - offsetModal;
       // setTimeout(()=>{
-        $("#ui-datepicker-div").css({ top: topDatepicker });
+      $("#ui-datepicker-div").css({ top: topDatepicker });
       // })
-      
+
     });
   }
 
@@ -188,39 +190,93 @@ export class BookNowPopupComponent implements OnInit {
     }
   }
 
-  searchResult() {
-    let checkindate = this.formGroup.value.checkindate.split("-").reverse().join("-")
-    // let checkoutdate = this.formGroup.value.checkoutdate.split("-").reverse().join("-")
-    const fromDate: any = new Date();
-    const toDate: any = new Date(checkindate);
-    const diffTime: any = Math.abs(toDate - fromDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    this.notavailable = false;
-    this.alreadyBooked = false;
-    localStorage.setItem('search', JSON.stringify(this.formGroup.value));
-    if (this.selectedProduct.availabledays && (diffDays < this.selectedProduct.availabledays)) {
-      this.notavailable = true;
+  getDifferenceDays() {
+    if (this.bookingType == 'day') {
+      let Difference_In_Time = (new Date(this.formGroup.value.checkoutdate.split("-").reverse().join("-") + " " + this.formGroup.value.checkouttime).getTime()) - (new Date(this.formGroup.value.checkindate.split("-").reverse().join("-") + " " + this.formGroup.value.checkintime).getTime());
+      let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      return "U heeft " + Math.ceil(Difference_In_Days) + (Math.ceil(Difference_In_Days) > 1 ? " dagen" : " dag") + " geselecteerd";
     }
     else {
-      let parmas: any = {
-        product_id: this.selectedProduct.id,
-        type: this.selectedProduct.type,
-      };
-      let mergedParams = { ...parmas, ...this.formGroup.value };
-      this.http.post('order/availability', mergedParams).subscribe(
-        (response: any) => {
-          if (!response.booked || (response.booked == false)) {
-            this.calulateTotalAmount()
+      return "";
+    }
+  }
+
+  getBookingDays() {
+    if (this.bookingType == 'day') {
+      let Difference_In_Time = (new Date(this.formGroup.value.checkoutdate.split("-").reverse().join("-") + " " + this.formGroup.value.checkouttime).getTime()) - (new Date(this.formGroup.value.checkindate.split("-").reverse().join("-") + " " + this.formGroup.value.checkintime).getTime());
+      let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      let checkindate: any = (new Date(this.formGroup.value.checkindate.split("-").reverse().join("-") + " " + this.formGroup.value.checkintime));
+      let checkoutdate = new Date(checkindate.setDate(checkindate.getDate() + Math.ceil(Difference_In_Days)));
+      const yyyy = checkoutdate.getFullYear();
+      let mm: any = checkoutdate.getMonth() + 1; // Months start at 0!
+      let dd: any = checkoutdate.getDate();
+
+      if (dd < 10) dd = '0' + dd;
+      if (mm < 10) mm = '0' + mm;
+      let formattedcheckout = dd + '-' + mm + '-' + yyyy + " " + this.formGroup.value.checkintime;
+      return "U boekt voor " + this.formGroup.value.checkindate + " " + this.formGroup.value.checkintime + " - " + formattedcheckout;
+    }
+    else {
+      return "";
+    }
+  }
+
+  searchResult() {
+    let Difference_In_Time = (new Date(this.formGroup.value.checkoutdate.split("-").reverse().join("-") + " " + this.formGroup.value.checkouttime).getTime()) - (new Date(this.formGroup.value.checkindate.split("-").reverse().join("-") + " " + this.formGroup.value.checkintime).getTime());
+    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    if (Difference_In_Days < 1 && (this.bookingType == 'day')) {
+      this.http.errorMessage("Selecteer minimaal 1 dag");
+    }
+    else {
+      if (this.bookingType == 'day') {
+        let Difference_In_Time = (new Date(this.formGroup.value.checkoutdate.split("-").reverse().join("-") + " " + this.formGroup.value.checkouttime).getTime()) - (new Date(this.formGroup.value.checkindate.split("-").reverse().join("-") + " " + this.formGroup.value.checkintime).getTime());
+        let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        let checkindate: any = (new Date(this.formGroup.value.checkindate.split("-").reverse().join("-") + " " + this.formGroup.value.checkintime));
+        let checkoutdate = new Date(checkindate.setDate(checkindate.getDate() + Math.ceil(Difference_In_Days)));
+        const yyyy = checkoutdate.getFullYear();
+        let mm: any = checkoutdate.getMonth() + 1; // Months start at 0!
+        let dd: any = checkoutdate.getDate();
+
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+        let obj = { checkoutdate: dd + '-' + mm + '-' + yyyy, checkouttime: this.formGroup.value.checkintime };
+        $("#popuocheckoutdate").val(dd + '-' + mm + '-' + yyyy);
+        this.formGroup.patchValue(obj);
+      }
+      // return;
+      let checkindate = this.formGroup.value.checkindate.split("-").reverse().join("-")
+      // let checkoutdate = this.formGroup.value.checkoutdate.split("-").reverse().join("-")
+      const fromDate: any = new Date();
+      const toDate: any = new Date(checkindate);
+      const diffTime: any = Math.abs(toDate - fromDate);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      this.notavailable = false;
+      this.alreadyBooked = false;
+      localStorage.setItem('search', JSON.stringify(this.formGroup.value));
+      if (this.selectedProduct.availabledays && (diffDays < this.selectedProduct.availabledays)) {
+        this.notavailable = true;
+      }
+      else {
+        let parmas: any = {
+          product_id: this.selectedProduct.id,
+          type: this.selectedProduct.type,
+        };
+        let mergedParams = { ...parmas, ...this.formGroup.value };
+        this.http.post('order/availability', mergedParams).subscribe(
+          (response: any) => {
+            if (!response.booked || (response.booked == false)) {
+              this.calulateTotalAmount()
+            }
+            else {
+              this.alreadyBooked = true;
+            }
+          }, (error: any) => {
+            this.http.exceptionHandling(error);
           }
-          else {
-            this.alreadyBooked = true;
-          }
-        }, (error: any) => {
-          this.http.exceptionHandling(error);
-        }
-      )
-      // localStorage.setItem('search', JSON.stringify(this.formGroup.value));
-      // this.router.navigateByUrl('services/' + this.formGroup.value.type);
+        )
+        // localStorage.setItem('search', JSON.stringify(this.formGroup.value));
+        // this.router.navigateByUrl('services/' + this.formGroup.value.type);
+      }
     }
   }
 
@@ -336,13 +392,21 @@ export class BookNowPopupComponent implements OnInit {
       hours = 8;
     }
     product['advancePayment'] = product.priceperhr * hours;
+    if (this.bookingType == 'day') {
+      product['advancePayment'] = Number(product.advancepriceperday);
+    }
     this.storage.setProducts(product);
     this.router.navigate(['/cart']);
   }
 
   changeCheckin() {
+    this.calculated = false;
     let obj = { checkouttime: '' };
     this.formGroup.patchValue(obj);
+  }
+
+  changeCheckout() {
+    this.calculated = false;
   }
 
   checkoutDisabled(slot: any) {

@@ -17,15 +17,18 @@ export class PaymentSuccessComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.input.status = 1;
-    this.http.post('order/update-status', this.input).subscribe(
-        (response: any) => {
-          this.http.successMessage("Bestelling met success bijgewerkt.");
-          this.storage.clearProducts();
-          localStorage.removeItem('odere');
-          // this.router.navigateByUrl('my-orders');
-          // this.dataLists.length = 0;
-        })
+    if(this.input){
+      this.input.status = 1;
+      this.http.post('order/update-status', this.input).subscribe(
+          (response: any) => {
+            this.http.successMessage("Bestelling met success bijgewerkt.");
+            this.storage.clearProducts();
+            localStorage.removeItem('odere');
+            // this.router.navigateByUrl('my-orders');
+            // this.dataLists.length = 0;
+          })
+    }
+    
   }
 
 }

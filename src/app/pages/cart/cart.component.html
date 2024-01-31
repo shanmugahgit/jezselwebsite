@@ -41,7 +41,9 @@
                                                             routerLink="/service-detail/{{data.id}}">{{data.name}}</a><a
                                                             class="jezsel-cart-service-trash"><i
                                                                 class="fas fa-trash"
-                                                                (click)="delete(i)"></i></a><span>&#8364;{{data.priceperhr}}</span>
+                                                                (click)="delete(i)"></i></a>
+                                                                <span *ngIf="data.bookingType!='day'">&#8364;{{data.priceperhr}}</span>
+                                                                <span *ngIf="data.bookingType=='day'">&#8364;{{data.priceperday}}</span>
                                                     </h3>
                                                 </div>
                                             </div>
@@ -116,9 +118,13 @@
                                                 <h4 class="font-weight-bold">{{i+1}}. {{product.name}}</h4>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr *ngIf="product.bookingType!='day'">
                                             <td class="w-60">Prijs per uur</td>
                                             <td class="w-40 jezsel-cart-txt-right"><span>&#8364;</span>{{product.priceperhr}}</td>
+                                        </tr>
+                                        <tr *ngIf="product.bookingType=='day'">
+                                            <td class="w-60">Prijs per dag</td>
+                                            <td class="w-40 jezsel-cart-txt-right"><span>&#8364;</span>{{product.priceperday}}</td>
                                         </tr>
                                         <tr *ngFor="let x of product['Extras']">
                                             <td *ngIf="x.checked">{{x.description}}</td>
@@ -137,13 +143,13 @@
                                 </div>
                                 <h5 class="jezsel-cart-text-b" *ngIf="dataLists.length==0">Te betalen borg
                                 </h5>
-                                <h5 class="jezsel-cart-text-b" *ngIf="dataLists.length>0">Totaal: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
+                                <h5 class="jezsel-cart-text-b" *ngIf="dataLists.length>0">Af te rekenen borg: <span class="float-right"> <span>&#8364;</span>{{total}}</span>
                                 </h5>
                             </div>
                         </div>
                         <div class="mb-left">
                             <button class="btn btn-primary FilterBtn jezsel-cart-pr-btn" [disabled]="dataLists.length==0"
-                                (click)="proceed()"> Betalen</button>
+                                (click)="proceed()"> Reserveren</button>
                             <button type="submit" class="btn btn-primary FilterBtn" routerLink="/"> Ga verder met winkelen </button>
                         </div>
                     </div>

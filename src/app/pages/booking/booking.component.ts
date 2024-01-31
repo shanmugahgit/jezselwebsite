@@ -349,11 +349,12 @@ export class BookingComponent implements OnInit {
   }
 
   openModal() {
-    this.modalRef = this.modalService.show(this.template, {
-      backdrop: 'static',
-      keyboard: false,
-      class: 'modal-sm'
-    });
+    this.bookNow();
+    // this.modalRef = this.modalService.show(this.template, {
+    //   backdrop: 'static',
+    //   keyboard: false,
+    //   class: 'modal-sm'
+    // });
   }
   openTermsModal() {
     this.modalRef = this.modalService.show(this.termstemplate, {

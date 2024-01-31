@@ -16,5 +16,7 @@ select option:hover {
     opacity: 0;
 }
 option:disabled { background-color: #f3f3f3; }
-
-
+.book-hr-basis{
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}

@@ -43,7 +43,8 @@ const routes: Routes = [
   { path: 'my-orders', component: OrdersComponent, canActivate: [AuthGuardService] },
   { path: 'payment', component: PaymentComponent},
   { path: 'garanties', component: GarantiesComponent},
-  { path: 'payment-success', component: PaymentSuccessComponent, canActivate: [AuthGuardService] },
+  { path: 'payment-success', component: PaymentSuccessComponent },
+  // { path: 'payment-success', component: PaymentSuccessComponent, canActivate: [AuthGuardService] },
   { path: 'payment-failure', component: PaymentFailureComponent, canActivate: [AuthGuardService] },
   { path: '**', component: HomeComponent }
 ];

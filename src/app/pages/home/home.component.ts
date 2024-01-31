@@ -393,7 +393,20 @@ export class HomeComponent implements OnInit {
 
   bookNow(product: any, event: any) {
     event.stopPropagation()
+    product['bookingType'] = 'hr';
     this.communication.openProductModal.emit(product)
+  }
+
+  bookNowDay(product: any, event: any) {
+    if(!product.priceperday || !product.advancepriceperday){
+      event.stopPropagation()
+      this.http.errorMessage("Dit is niet mogelijk voor dagboekingen");
+    }
+    else{
+      event.stopPropagation()
+      product['bookingType'] = 'day';
+      this.communication.openProductModal.emit(product)
+    }    
   }
 
   changeCheckin() {

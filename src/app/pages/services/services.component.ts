@@ -118,7 +118,7 @@ export class ServicesComponent implements OnInit {
 
   get getSlice() {
     if(this.leftnavbar && this.leftnavbar.nativeElement && this.productImg && this.productImg.nativeElement){
-      let leftnavbarHeight = this.leftnavbar.nativeElement.offsetHeight;
+      let leftnavbarHeight = this.leftnavbar.nativeElement.offsetHeight + 79;
       let productImgHeight = this.productImg.nativeElement.offsetHeight;
       let commonHeight = 39;
       let marginBottom = 25;
@@ -440,14 +440,7 @@ export class ServicesComponent implements OnInit {
 
   bookNow(product: any, event: any) {
     event.stopPropagation()
-    // let leftnavbarHeight = this.leftnavbar.nativeElement.offsetHeight;
-    // let productImgHeight = this.productImg.nativeElement.offsetHeight;
-    // let commonHeight = 39;
-    // let marginBottom = 25;
-    // let productCardHeight = productImgHeight + marginBottom;
-    // let rightBar: any = (leftnavbarHeight - commonHeight) / productCardHeight;
-    // let limit = parseInt(rightBar) * 2;
-    // debugger;
+    product['bookingType'] = 'hr';
     if (localStorage.getItem('search')) {
       let parmas: any = {
         product_id: product.id,
@@ -479,6 +472,48 @@ export class ServicesComponent implements OnInit {
     else {
       this.communication.openProductModal.emit(product)
     }
+  }
+
+  bookNowDay(product: any, event: any) {
+    if(!product.priceperday || !product.advancepriceperday){
+      event.stopPropagation()
+      this.http.errorMessage("Dit is niet mogelijk voor dagboekingen");
+    }
+    else{
+      event.stopPropagation()
+      product['bookingType'] = 'day';
+      // if (localStorage.getItem('search')) {
+      //   let parmas: any = {
+      //     product_id: product.id,
+      //     type: product.type,
+      //   };
+      //   let mergedParams = { ...parmas, ...this.formGroup.value };
+      //   this.http.post('order/availability', mergedParams).subscribe(
+      //     (response: any) => {
+      //       if (!response.booked || (response.booked == false)) {
+      //         let hours = 24;
+      //         if (product.type == 'Rent') {
+      //           hours = 24;
+      //         }
+      //         else {
+      //           hours = 8;
+      //         }
+      //         product['advancePayment'] = product.priceperhr * hours;
+      //         this.storage.setProducts(product);
+      //         this.router.navigate(['/cart']);
+      //       }
+      //       else {
+      //         this.http.errorMessage("Het " + product.name + "is al geboekt in deze periode. Gelieve een andere periode te kiezen.")
+      //       }
+      //     }, (error: any) => {
+      //       this.http.exceptionHandling(error);
+      //     }
+      //   )
+      // }
+      // else {
+        this.communication.openProductModal.emit(product)
+      // }
+    }    
   }
 
   changeCheckin() {
