@@ -38,6 +38,10 @@ import { GarantiesComponent } from './pages/garanties/garanties.component';
 import { SetpasswordComponent } from './pages/setpassword/setpassword.component';
 import { AcceptNumberOnlyDirective } from './directives/accept-number-only.directive';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PaymentMobileSuccessComponent } from './pages/payment-mobile-success/payment-mobile-success.component';
+import { PaymentMobileFailureComponent } from './pages/payment-mobile-failure/payment-mobile-failure.component';
+import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,11 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     PaymentComponent,
     GarantiesComponent,
     SetpasswordComponent,
-    AcceptNumberOnlyDirective
+    AcceptNumberOnlyDirective,
+    PaymentMobileSuccessComponent,
+    PaymentMobileFailureComponent,
+    TermsAndConditionsComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,

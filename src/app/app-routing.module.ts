@@ -22,6 +22,10 @@ import { ProfileComponent } from './pages/account/profile/profile.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { GarantiesComponent } from './pages/garanties/garanties.component';
 import { SetpasswordComponent } from './pages/setpassword/setpassword.component';
+import { PaymentMobileSuccessComponent } from './pages/payment-mobile-success/payment-mobile-success.component';
+import { PaymentMobileFailureComponent } from './pages/payment-mobile-failure/payment-mobile-failure.component';
+import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,6 +39,7 @@ const routes: Routes = [
   { path: 'locations', component: LocationsComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'booking', component: BookingComponent, canActivate: [AuthGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
@@ -43,8 +48,10 @@ const routes: Routes = [
   { path: 'my-orders', component: OrdersComponent, canActivate: [AuthGuardService] },
   { path: 'payment', component: PaymentComponent},
   { path: 'garanties', component: GarantiesComponent},
-  { path: 'payment-success', component: PaymentSuccessComponent },
-  // { path: 'payment-success', component: PaymentSuccessComponent, canActivate: [AuthGuardService] },
+  { path: 'payment-success', component: PaymentSuccessComponent, canActivate: [AuthGuardService] },
+  { path: 'payment-mobile-success', component: PaymentMobileSuccessComponent },
+  { path: 'payment-mobile-failure', component: PaymentMobileFailureComponent },
+  { path: 'verification', component: VerificationComponent },
   { path: 'payment-failure', component: PaymentFailureComponent, canActivate: [AuthGuardService] },
   { path: '**', component: HomeComponent }
 ];
