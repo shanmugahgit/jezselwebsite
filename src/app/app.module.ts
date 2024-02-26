@@ -42,6 +42,7 @@ import { PaymentMobileSuccessComponent } from './pages/payment-mobile-success/pa
 import { PaymentMobileFailureComponent } from './pages/payment-mobile-failure/payment-mobile-failure.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { VerificationComponent } from './verification/verification.component';
+import { AlreadyVerfiedComponent } from './pages/already-verfied/already-verfied.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { VerificationComponent } from './verification/verification.component';
     PaymentMobileSuccessComponent,
     PaymentMobileFailureComponent,
     TermsAndConditionsComponent,
-    VerificationComponent
+    VerificationComponent,
+    AlreadyVerfiedComponent
   ],
   imports: [
     BrowserModule,

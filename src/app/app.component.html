@@ -1,5 +1,5 @@
-<app-header *ngIf="showPage&&router.url!='payment-mobile-success'&&router.url!='payment-mobile-failure'"></app-header>
+<app-header *ngIf="showPage&&url!='/payment-mobile-success'&&url!='/payment-mobile-failure'"></app-header>
 <router-outlet *ngIf="showPage"></router-outlet>
-<app-footer *ngIf="showPage&&router.url!='payment-mobile-success'&&router.url!='payment-mobile-failure'"></app-footer>
+<app-footer *ngIf="showPage&&url!='/payment-mobile-success'&&url!='/payment-mobile-failure'"></app-footer>
 
 <app-book-now-popup></app-book-now-popup>

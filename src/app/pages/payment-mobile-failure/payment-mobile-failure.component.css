@@ -1,0 +1,20 @@
+.japp-succes-payment {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.japp-sp-title {
+    color: #000000;
+    font-weight: bold;
+    padding-top: 100px;
+    margin-bottom: 33px;
+    font-size: 20px;
+}
+
+.japp-pag-rd-text {
+    padding-top: 20px;
+    font-size: 12px;
+    color: #333333;
+}

@@ -26,6 +26,7 @@ import { PaymentMobileSuccessComponent } from './pages/payment-mobile-success/pa
 import { PaymentMobileFailureComponent } from './pages/payment-mobile-failure/payment-mobile-failure.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { VerificationComponent } from './verification/verification.component';
+import { AlreadyVerfiedComponent } from './pages/already-verfied/already-verfied.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'payment-mobile-success', component: PaymentMobileSuccessComponent },
   { path: 'payment-mobile-failure', component: PaymentMobileFailureComponent },
   { path: 'verification', component: VerificationComponent },
+  { path: 'already_verified', component: AlreadyVerfiedComponent },
   { path: 'payment-failure', component: PaymentFailureComponent, canActivate: [AuthGuardService] },
   { path: '**', component: HomeComponent }
 ];
